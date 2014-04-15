@@ -1,0 +1,30 @@
+
+package com.aprendoz_desarrollo.data;
+
+
+
+/**
+ *  aprendoz_desarrollo.InscAlumAsigCurso
+ *  04/14/2014 10:05:53
+ * 
+ */
+public class InscAlumAsigCurso {
+
+    private InscAlumAsigCursoId id;
+
+    public InscAlumAsigCurso() {
+    }
+
+    public InscAlumAsigCurso(InscAlumAsigCursoId id) {
+        this.id = id;
+    }
+
+    public InscAlumAsigCursoId getId() {
+        return id;
+    }
+
+    public void setId(InscAlumAsigCursoId id) {
+        this.id = id;
+    }
+
+}

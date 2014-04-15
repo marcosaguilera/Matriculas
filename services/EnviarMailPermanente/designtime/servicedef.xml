@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" springFile="EnviarMailPermanente.spring.xml" type="JavaService" CRUDService="false" class="EnviarMailPermanente" id="EnviarMailPermanente">
+    <operation name="sendEmailNotification">
+        <parameter isList="false" typeRef="java.lang.String" name="correopadre"/>
+        <parameter isList="false" typeRef="java.lang.String" name="correomadre"/>
+        <parameter isList="false" typeRef="java.lang.String" name="nombreAcceso"/>
+        <parameter isList="false" typeRef="java.util.Date" name="hora"/>
+        <parameter isList="false" typeRef="java.util.Date" name="fechaActual"/>
+        <parameter isList="false" typeRef="java.util.Date" name="fecha"/>
+        <parameter isList="false" typeRef="java.util.Date" name="fecha2"/>
+        <parameter isList="false" typeRef="java.lang.String" name="ruta"/>
+        <parameter isList="false" typeRef="java.lang.String" name="observacion"/>
+        <parameter isList="false" typeRef="java.lang.String" name="grupo"/>
+        <parameter isList="false" typeRef="java.lang.String" name="nombreCompletoAlumno"/>
+        <parameter isList="false" typeRef="int" name="codigoAlumno"/>
+        <parameter isList="false" typeRef="java.lang.String" name="loggedMail"/>
+        <parameter isList="false" typeRef="java.lang.String" name="solicitud"/>
+        <parameter isList="false" typeRef="java.lang.String" name="nombredocente"/>
+        <parameter isList="false" typeRef="java.lang.String" name="maildocente"/>
+        <parameter isList="false" typeRef="int" name="tipo_sol"/>
+        <parameter isList="false" typeRef="java.lang.String" name="tipo_solicitud"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <dataobjects/>
+</service>

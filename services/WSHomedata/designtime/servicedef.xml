@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" springFile="WSHomedata.spring.xml" type="JavaService" CRUDService="false" class="WSHomedata" id="WSHomedata">
+    <operation name="sampleJavaOperation">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="sendData">
+        <parameter isList="false" typeRef="java.lang.Integer" name="nit"/>
+        <parameter isList="false" typeRef="java.lang.String" name="id"/>
+        <parameter isList="false" typeRef="java.lang.String" name="uri"/>
+        <parameter isList="false" typeRef="java.lang.Integer" name="value"/>
+        <parameter isList="false" typeRef="java.lang.String" name="subject"/>
+        <return isList="false" typeRef="java.lang.Boolean"/>
+    </operation>
+    <dataobjects/>
+</service>

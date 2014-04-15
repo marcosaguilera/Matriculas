@@ -1,0 +1,28 @@
+{
+	"methods": [{
+		"name": "sampleJavaOperation",
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "sendData",
+		"parameters": [{
+			"name": "nit",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "id",
+			"type": "java.lang.String"
+		}, {
+			"name": "uri",
+			"type": "java.lang.String"
+		}, {
+			"name": "value",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "subject",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.Boolean"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "WSHomedata.json"
+}

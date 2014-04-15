@@ -1,0 +1,16 @@
+{
+	"methods": [{
+		"name": "findAll",
+		"parameters": [{
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.Persona]"
+	}, {
+		"name": "sampleJavaOperation",
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "ActualizaDatos.json"
+}

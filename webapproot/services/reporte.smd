@@ -1,0 +1,21 @@
+{
+	"methods": [{
+		"name": "getReport",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.String"
+		}, {
+			"name": "ida",
+			"type": "java.lang.String"
+		}, {
+			"name": "cadenaAsig",
+			"type": "java.lang.String"
+		}, {
+			"name": "cadenaEst",
+			"type": "java.lang.String"
+		}],
+		"returnType": "com.wavemaker.runtime.server.DownloadResponse"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "reporte.json"
+}

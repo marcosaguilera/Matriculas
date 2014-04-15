@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" springFile="ActualizaDatos.spring.xml" type="JavaService" CRUDService="false" class="com.aprendoz.ActualizaDatos" id="ActualizaDatos">
+    <operation name="sampleJavaOperation">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="findAll">
+        <parameter isList="false" typeRef="java.lang.Integer" name="id"/>
+        <return isList="true" typeRef="com.aprendoz_desarrollo.data.Persona"/>
+    </operation>
+    <dataobjects/>
+</service>

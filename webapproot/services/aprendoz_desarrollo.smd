@@ -1,0 +1,329 @@
+{
+	"methods": [{
+		"name": "_countGrupoFamiliarUpdated",
+		"parameters": [{
+			"name": "idgrupofamiliar",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output._countGrupoFamiliarUpdatedRtnType]"
+	}, {
+		"name": "_detallesAlimentos",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "alergias",
+			"type": "java.lang.String"
+		}, {
+			"name": "especiales",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.Integer"
+	}, {
+		"name": "_existeFichaMedicaByUser",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output._existeFichaMedicaByUserRtnType]"
+	}, {
+		"name": "_getAnuncio",
+		"parameters": null,
+		"returnType": "[com.aprendoz_desarrollo.data.output._getAnuncioRtnType]"
+	}, {
+		"name": "_hqlAlergiasByUser",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output._hqlAlergiasByUserRtnType]"
+	}, {
+		"name": "_hqlFichaMedicaByUser",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output._hqlFichaMedicaByUserRtnType]"
+	}, {
+		"name": "_hqlPromociones",
+		"parameters": [{
+			"name": "codigo",
+			"type": "java.lang.String"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output._hqlPromocionesRtnType]"
+	}, {
+		"name": "_typeUserByUsername",
+		"parameters": [{
+			"name": "user",
+			"type": "java.lang.String"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output._typeUserByUsernameRtnType]"
+	}, {
+		"name": "_verificaResponsable",
+		"parameters": [{
+			"name": "idgf",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output._verificaResponsableRtnType]"
+	}, {
+		"name": "getAsignaturasMalas",
+		"parameters": [{
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "com.aprendoz_desarrollo.data.output.GetAsignaturasMalasRtnType"
+	}, {
+		"name": "getCoordinatorInfo",
+		"parameters": [{
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetCoordinatorInfoRtnType]"
+	}, {
+		"name": "getCostos",
+		"parameters": [{
+			"name": "idg",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "cod",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetCostosRtnType]"
+	}, {
+		"name": "getCostosTransporte",
+		"parameters": [{
+			"name": "idg",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "cod",
+			"type": "java.lang.String"
+		}, {
+			"name": "nuevo",
+			"type": "java.lang.Boolean"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetCostosTransporteRtnType]"
+	}, {
+		"name": "getGradoUsuario",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetGradoUsuarioRtnType]"
+	}, {
+		"name": "getGrupoFamiliarbyIdPersona",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetGrupoFamiliarbyIdPersonaRtnType]"
+	}, {
+		"name": "getGrupoFamiliarbyUser",
+		"parameters": [{
+			"name": "idgrupo",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetGrupoFamiliarbyUserRtnType]"
+	}, {
+		"name": "getIdPersonabyUser",
+		"parameters": [{
+			"name": "username",
+			"type": "java.lang.String"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetIdPersonabyUserRtnType]"
+	}, {
+		"name": "getIdbyUser",
+		"parameters": [{
+			"name": "user",
+			"type": "java.lang.String"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetIdbyUserRtnType]"
+	}, {
+		"name": "getInscPersonaGrupoFamiliar",
+		"parameters": [{
+			"name": "gf",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetInscPersonaGrupoFamiliarRtnType]"
+	}, {
+		"name": "getNombreGrupoFamiliar",
+		"parameters": [{
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "com.aprendoz_desarrollo.data.GrupoFamiliar"
+	}, {
+		"name": "getTipoCostoById",
+		"parameters": [{
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "com.aprendoz_desarrollo.data.TipoCosto"
+	}, {
+		"name": "getTipoPersonaByUser",
+		"parameters": [{
+			"name": "user",
+			"type": "java.lang.String"
+		}],
+		"returnType": "com.aprendoz_desarrollo.data.output.GetTipoPersonaByUserRtnType"
+	}, {
+		"name": "getTodosCostos",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "cod",
+			"type": "java.lang.String"
+		}, {
+			"name": "nuevo",
+			"type": "java.lang.Boolean"
+		}, {
+			"name": "sy",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "cod2",
+			"type": "java.lang.String"
+		}, {
+			"name": "idgrado",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "cod3",
+			"type": "java.lang.String"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetTodosCostosRtnType]"
+	}, {
+		"name": "getUserbyIdPersona",
+		"parameters": [{
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.GetUserbyIdPersonaRtnType]"
+	}, {
+		"name": "haveNewIntegrants",
+		"parameters": [{
+			"name": "grupo",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.HaveNewIntegrantsRtnType]"
+	}, {
+		"name": "hq_ls_grado",
+		"parameters": null,
+		"returnType": "[com.aprendoz_desarrollo.data.output.Hq_ls_gradoRtnType]"
+	}, {
+		"name": "hqlGetTotalPagar",
+		"parameters": [{
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.HqlGetTotalPagarRtnType]"
+	}, {
+		"name": "hqlPromociones",
+		"parameters": [{
+			"name": "codigo",
+			"type": "java.lang.String"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.HqlPromocionesRtnType]"
+	}, {
+		"name": "hql_ls_pais",
+		"parameters": null,
+		"returnType": "[com.aprendoz_desarrollo.data.output.Hql_ls_paisRtnType]"
+	}, {
+		"name": "listadoEstudiantesGrupoFamiliar",
+		"parameters": [{
+			"name": "idg",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.ListadoEstudiantesGrupoFamiliarRtnType]"
+	}, {
+		"name": "mailAcudiente",
+		"parameters": [{
+			"name": "grupo",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.MailAcudienteRtnType]"
+	}, {
+		"name": "mailMadre",
+		"parameters": [{
+			"name": "grupo",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.MailMadreRtnType]"
+	}, {
+		"name": "mailPadre",
+		"parameters": [{
+			"name": "grupo",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.MailPadreRtnType]"
+	}, {
+		"name": "maxSy",
+		"parameters": null,
+		"returnType": "[com.aprendoz_desarrollo.data.output.MaxSyRtnType]"
+	}, {
+		"name": "personaGetInfo",
+		"parameters": [{
+			"name": "username",
+			"type": "java.lang.String"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.PersonaGetInfoRtnType]"
+	}, {
+		"name": "returExitsValue",
+		"parameters": [{
+			"name": "user",
+			"type": "java.lang.String"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.ReturExitsValueRtnType]"
+	}, {
+		"name": "returnExistsValueGrupoFamiliar",
+		"parameters": [{
+			"name": "idg",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.ReturnExistsValueGrupoFamiliarRtnType]"
+	}, {
+		"name": "showInformationUser",
+		"parameters": [{
+			"name": "user",
+			"type": "java.lang.String"
+		}],
+		"returnType": "[com.aprendoz_desarrollo.data.output.ShowInformationUserRtnType]"
+	}, {
+		"name": "trackingPersonas",
+		"parameters": [{
+			"name": "usuario",
+			"type": "java.lang.String"
+		}],
+		"returnType": "com.aprendoz_desarrollo.data.output.TrackingPersonasRtnType"
+	}, {
+		"name": "updateDatosPersona",
+		"parameters": [{
+			"name": "pbool",
+			"type": "java.lang.Byte"
+		}, {
+			"name": "idp",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "java.lang.Integer"
+	}, {
+		"name": "updateInscPersonaGrupoFamiliar",
+		"parameters": [{
+			"name": "responsable",
+			"type": "java.lang.Boolean"
+		}, {
+			"name": "idipgf",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "java.lang.Integer"
+	}, {
+		"name": "updateServicios",
+		"parameters": [{
+			"name": "idiac",
+			"type": "java.lang.Integer"
+		}, {
+			"name": "inscribir",
+			"type": "java.lang.Boolean"
+		}],
+		"returnType": "java.lang.Integer"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "aprendoz_desarrollo.json"
+}
