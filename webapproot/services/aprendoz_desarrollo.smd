@@ -86,7 +86,7 @@
 			"type": "java.lang.Integer"
 		}, {
 			"name": "cod",
-			"type": "java.lang.Integer"
+			"type": "java.lang.String"
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output.GetCostosRtnType]"
 	}, {

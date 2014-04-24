@@ -47,7 +47,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  04/14/2014 10:06:26
+ *  04/23/2014 13:16:03
  * 
  */
 @SuppressWarnings("unchecked")
@@ -153,7 +153,7 @@ public class Aprendoz_desarrollo
         return ((List<GetGrupoFamiliarbyUserRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getGrupoFamiliarbyUserQueryName), idgrupo));
     }
 
-    public List<GetCostosRtnType> getCostos(Integer idg, Integer cod) {
+    public List<GetCostosRtnType> getCostos(Integer idg, String cod) {
         return ((List<GetCostosRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getCostosQueryName), idg, cod));
     }
 

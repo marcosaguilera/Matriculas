@@ -65,15 +65,15 @@ ActualizaDatos.widgets = {
 			editor: ["wm._TextEditor", {}, {}]
 		}],
 		button1: ["wm.Button", {"height":"31px","width":"264px","caption":"Click me","showing":false}, {"onclick":"serviceVariable1"}],
-		gui_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","padding":"5","layoutKind":"left-to-right"}, {}, {
+		gui_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right","padding":"5"}, {}, {
 			left_spacer: ["wm.Spacer", {"height":"48px","width":"30px"}, {}],
 			center_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","horizontalAlign":"left","width":"100%","verticalAlign":"top"}, {}, {
-				instructivo: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"135px","horizontalAlign":"left","width":"100%","verticalAlign":"top","padding":"0","layoutKind":"left-to-right"}, {}, {
+				instructivo: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"135px","horizontalAlign":"left","width":"100%","verticalAlign":"top","layoutKind":"left-to-right","padding":"0"}, {}, {
 					guia: ["wm.IFrame", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px","wm_Border_BottomStyleCurved4px"]},"height":"100%","width":"100%","border":"1","source":"http://aprendoz.rochester.edu.co/recursos/bnr_actualiz/bnr_actualiz.html","borderColor":"#aaa"}, {}]
 				}],
 				spacer1: ["wm.Spacer", {"height":"20px","width":"96px"}, {}],
 				personaLivePanel1: ["wm.LivePanel", {"verticalAlign":"top","horizontalAlign":"left"}, {}, {
-					userNameBox: ["wm.TextEditor", {"width":"215px","caption":"username","showing":false,"displayValue":"h","readonly":true}, {}, {
+					userNameBox: ["wm.TextEditor", {"width":"215px","caption":"username","showing":false,"readonly":true}, {}, {
 						binding: ["wm.Binding", {}, {}, {
 							wire: ["wm.Wire", {"targetProperty":"dataValue","source":"a_getUsernameActualizaDatos.dataValue"}, {}]
 						}],
@@ -87,8 +87,7 @@ ActualizaDatos.widgets = {
 							}]
 						}],
 						panel8: ["wm.Panel", {"height":"34px","horizontalAlign":"center","width":"100%","verticalAlign":"middle","layoutKind":"left-to-right"}, {}, {
-							picture1: ["wm.Picture", {"height":"19px","border":"0","width":"20px"}, {}],
-							personaSelect: ["wm.SelectEditor", {"_classes":{"domNode":["wm_FontSizePx_14px"]},"width":"450px","height":"28px"}, {"onchange":"personaSelectChange"}, {
+							personaSelect: ["wm.SelectEditor", {"_classes":{"domNode":["wm_FontSizePx_12px"],"captionNode":["wm_FontSizePx_10px"]},"width":"510px","caption":"Seleccione un integrante","height":"28px"}, {"onchange":"personaSelectChange"}, {
 								editor: ["wm._SelectEditor", {"displayField":"nombreCompleto","dataField":"pid","displayExpression":"${code}+\" - \"+${nombreCompleto}+\" - \"+${tipo}"}, {}, {
 									binding: ["wm.Binding", {}, {}, {
 										wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"a_getUserGroup"}, {}]
@@ -98,10 +97,10 @@ ActualizaDatos.widgets = {
 						}]
 					}],
 					space1: ["wm.Spacer", {"height":"150px","width":"96px","showing":false}, {}],
-					middlePanel: ["wm.Panel", {"height":"100%","horizontalAlign":"center","width":"100%","verticalAlign":"top","padding":"10","layoutKind":"left-to-right","lock":true,"showing":false}, {}, {
+					middlePanel: ["wm.Panel", {"height":"100%","horizontalAlign":"center","width":"100%","verticalAlign":"top","layoutKind":"left-to-right","lock":true,"padding":"10","showing":false}, {}, {
 						layers2: ["wm.Layers", {}, {}, {
 							layer2: ["wm.Layer", {"caption":"layer2","horizontalAlign":"center","verticalAlign":"top"}, {}, {
-								message: ["wm.Label", {"height":"95px","width":"100%","border":"0","caption":"PROCESO EXITOSO <br/><br/><br/>","align":"center","singleLine":false}, {}, {
+								message: ["wm.Label", {"height":"54px","width":"100%","border":"0","caption":"ACTUALIZACIÓN DE DATOS COMPLETA <br/><br/><br/>","align":"center","singleLine":false}, {}, {
 									format: ["wm.DataFormatter", {}, {}]
 								}],
 								boton_continuar: ["wm.Button", {"_classes":{"domNode":["wm_FontColor_White"]},"height":"60px","width":"250px","caption":"OPRIMA AQUÍ PARA CONTINUAR","borderColor":"#1c74b3"}, {"onclick":"boton_continuarClick"}]
@@ -175,7 +174,7 @@ ActualizaDatos.widgets = {
 											editor: ["wm._TextEditor", {}, {}]
 										}],
 										noTarjetaCredito: ["wm.TextEditor", {"width":"100%","caption":"No. Tarjeta Davivienda","height":"26px","readonly":true,"formField":"numeroTarjetaCredito"}, {}, {
-											editor: ["wm._TextEditor", {"required":true}, {}]
+											editor: ["wm._TextEditor", {}, {}]
 										}]
 									}]
 								}],
@@ -456,7 +455,7 @@ ActualizaDatos.widgets = {
 					}]
 				}],
 				insertVerificacionPersonaLiveForm: ["wm.LiveForm", {"height":"61px","verticalAlign":"top","horizontalAlign":"left","showing":false,"lock":true}, {"onSuccess":"insertVerificacionPersonaLiveFormSuccess"}],
-				nonAcepted_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"100%","horizontalAlign":"center","width":"100%","verticalAlign":"middle","padding":"10","layoutKind":"left-to-right","lock":true,"showing":false}, {}, {
+				nonAcepted_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"100%","horizontalAlign":"center","width":"100%","verticalAlign":"middle","layoutKind":"left-to-right","lock":true,"padding":"10","showing":false}, {}, {
 					layers3: ["wm.Layers", {}, {}, {
 						layer3: ["wm.Layer", {"caption":"layer2","horizontalAlign":"center","verticalAlign":"middle"}, {}, {
 							message1: ["wm.Label", {"height":"116px","width":"100%","border":"0","caption":"¡LO SENTIMOS!<br/>El proceso de actualización de datos por parte de tus padres, no ha sido realizado.<br>Una vez realizado podrás ingresar para ver tus calificaciones<br/><br/>Haga click en el botón para salir","align":"center","singleLine":false}, {}, {
@@ -471,7 +470,7 @@ ActualizaDatos.widgets = {
 						format: ["wm.DataFormatter", {}, {}]
 					}],
 					picture4: ["wm.Picture", {"height":"25px","border":"0","width":"25px","source":"resources/images/buttons/number_3.png","aspect":"h","showing":false}, {}],
-					boton_actualizar: ["wm.Button", {"height":"100%","width":"128px","caption":"Guardar","margin":"6","borderColor":"#1c74b3"}, {"onclick":"boton_actualizarClick"}]
+					boton_actualizar: ["wm.Button", {"height":"100%","width":"128px","caption":"Guardar","borderColor":"#1c74b3","margin":"6"}, {"onclick":"boton_actualizarClick"}]
 				}]
 			}],
 			right_spacer: ["wm.Spacer", {"height":"48px","width":"30px"}, {}]
