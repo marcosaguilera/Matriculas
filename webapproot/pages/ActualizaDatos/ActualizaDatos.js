@@ -9,76 +9,45 @@ dojo.declare("ActualizaDatos", wm.Page, {
      } 
   },
   a_getUsernameActualizaDatosSuccess: function(inSender, inDeprecated) {
-    try {
      var userName= this.userNameBox.getDataValue();
      this.a_getGrupoFamiliar.input.setValue("username", userName);
      this.a_getGrupoFamiliar.update();
 
      this.a_getRoleByUsernameSV.input.setValue("user", userName);
-     this.a_getRoleByUsernameSV.update();
-      
-    } catch(e) {
-      console.error('ERROR IN a_getUsernameActualizaDatosSuccess: ' + e); 
-    } 
+     this.a_getRoleByUsernameSV.update(); 
   },
   a_getGrupoFamiliarSuccess: function(inSender, inDeprecated) {
-    try {
      var json= this.a_getGrupoFamiliar.getItem(0);
      var _familia= json.data.idgf;
      var _persona= json.data.idp;
      this.a_getUserGroup.input.setValue("idgrupo", _familia);
      this.a_getUserGroup.update();
-     
-    } catch(e) {
-      console.error('ERROR IN a_getGrupoFamiliarSuccess: ' + e); 
-    }},
+  },
   personaSelectChange: function(inSender, inDisplayValue, inDataValue) {
-    try {
      var _persona= this.personaSelect.getDataValue();
-     if(_persona == undefined){
-
-     }
+     if(_persona == undefined){}
      if(_persona > 0){
       this.editPanel1.cancelEdit();
 
       var _persona= this.personaSelect.getDataValue();
       this.personaLiveVariable1.filter.setValue("idPersona", _persona);
       this.personaLiveVariable1.update();
-
      } 
-    } catch(e) {
-      console.error('ERROR IN personaSelectChange: ' + e); 
-    }},
+  },
   personaLiveVariable1Success: function(inSender, inDeprecated) {
-    try {
      this.personaDataGrid1.select(0);
-
-    } catch(e) {
-      console.error('ERROR IN personaLiveVariable1Success: ' + e); 
-    }},
+  },
   personaDataGrid1Selected: function(inSender, inIndex) {
-    try {
-     this.editPanel1.beginDataUpdate(); 
-      
-    } catch(e) {
-      console.error('ERROR IN personaDataGrid1Selected: ' + e); 
-    }},
+     this.editPanel1.beginDataUpdate();     
+  },
   boton_actualizarClick: function(inSender, inEvent) {
-    try {
      this.editPanel1.saveData();
-      
-    } catch(e) {
-      console.error('ERROR IN boton_actualizarClick: ' + e); 
-    }},
+  },
   personaLiveForm1UpdateData: function(inSender) {
-    try {
      var _persona= this.personaSelect.getDataValue();
      this.getUserByIdPersona.input.setValue("id", _persona);
      this.getUserByIdPersona.update();
-   
-    } catch(e) {
-      console.error('ERROR IN personaLiveForm1UpdateData: ' + e); 
-    }},
+  },
   getUserByIdPersonaSuccess: function(inSender, inDeprecated) {
     try {
      var _persona= this.personaSelect.getDataValue();
@@ -258,14 +227,15 @@ dojo.declare("ActualizaDatos", wm.Page, {
         this.nacionalidadEditor1.setDisplayValue("colombiano");
         // this.fechaIngresoEditor1.setDataValue(new Date("2013-08-14"));
         //datos laborales ocultos
-        this.celularEditor1.setDataValue("");
-        this.cargoEditor1.setDataValue("");
-        this.empresaEditor1.setDataValue("");
-        this.profesionEditor1.setDataValue("");
-        this.municipioEditor1.setDataValue("");
-        this.departamentoEditor1.setDataValue("");
-        this.direccionOficinaEditor1.setDataValue("");
-        this.telefonoOficinaEditor1.setDataValue("");
+        this.noTarjetaCredito.setDataValue(" ");
+        this.celularEditor1.setDataValue(" ");
+        this.cargoEditor1.setDataValue(" ");
+        this.empresaEditor1.setDataValue(" ");
+        this.profesionEditor1.setDataValue(" ");
+        this.municipioEditor1.setDataValue(" ");
+        this.departamentoEditor1.setDataValue(" ");
+        this.direccionOficinaEditor1.setDataValue(" ");
+        this.telefonoOficinaEditor1.setDataValue(" ");
 
       }if(_tipo > 1) {
         //readonly
@@ -305,12 +275,12 @@ dojo.declare("ActualizaDatos", wm.Page, {
         this.nacionalidadEditor1.setDisplayValue("colombiano");
         this.fechaIngresoEditor1.setDataValue(new Date("2013-08-14"));
         
-        this.saludPrepagadaEditor1.setDataValue("");
-        this.numeroContratoSaludEditor1.setDataValue("");
+        this.saludPrepagadaEditor1.setDataValue(" ");
+        this.numeroContratoSaludEditor1.setDataValue(" ");
         this.clinicaEmergenciaEditor1.setDataValue("");
         this.tipoSangreEditor1.setDisplayValue("NO APLICA");
-        this.gradoIngresoEditor1.setDataValue("");
-        this.colegioAnteriorEditor1.setDataValue("");
+        this.gradoIngresoEditor1.setDataValue(" ");
+        this.colegioAnteriorEditor1.setDataValue(" ");
         this.viveConEditor1.setDisplayValue("NO APLICA");
         this.noTarjetaCredito.show();
         //this.fechaIngresoEditor1.setDataValue(new Date());

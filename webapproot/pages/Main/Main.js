@@ -23,19 +23,7 @@ dojo.declare("Main", wm.Page, {
     } 
   },
  
-  inscalumasigDataGrid1Selected: function(inSender, inIndex) {
-    try {          
-           this.apr_esperados.update();           
-           this.apr_logrados.update();  
-           this.aprendizajeslv.update(); 
-            $('#main_rendimiento_aprendizajes').html('<img src="resources/images/loader.gif" style="position:absolute;left:410px;top:134px;" alt="loding..." />'); 
-                  this.aux201.setValue("dataValue", this.inscalumasigDataGridX.selectedItem.getData().id.idAsignatura); 
-                  this.aux203.setValue("dataValue", this.inscalumasigDataGridX.selectedItem.getData().id.asignatura); 
-                  
-    } catch(e) {
-      console.error('ERROR IN inscalumasigDataGrid1Selected: ' + e); 
-    } 
-  },
+
   button1Click: function(inSender, inEvent) {
     try {
        url= "resources/pdfcontrato/contratoRochester2011.pdf";
@@ -148,60 +136,8 @@ dojo.declare("Main", wm.Page, {
     } catch(e) {
       console.error('ERROR IN aprendizajesSelected: ' + e); 
     } 
-  },
+  }, 
  
-  boton_generar_informeClick: function(inSender, inEvent) {
-    try {
-      var idasignatura = this.inscalumasigDataGridX.selectedItem.getData().id.idAsignatura;
-      var idpersona = this.personaDataGridX.selectedItem.getData().id.idPersona;
-      var idanio = this.inscalumasigDataGridX.selectedItem.getData().id.idSy;
-      var idaString= this.inscalumasigDataGridX.selectedItem.getData().id.asignatura;
-      var nombres= this.personaDataGridX.selectedItem.getData().id.nombre1+" "+this.personaDataGridX.selectedItem.getData().id.nombre2;
-      var apellidos = this.personaDataGridX.selectedItem.getData().id.apellido1+" "+this.personaDataGridX.selectedItem.getData().id.apellido2;
-      var completo = nombres+" "+apellidos;
-      url= "services/reporte.download?method=getReport&idp="+idpersona+"&ida="+idasignatura+"&cadenaAsig="+idaString+"&cadenaEst="+completo;
-           window.open(url,"_BLANK"); 
- 
-    } catch(e) {
-      console.error('ERROR IN button5Click: ' + e); 
-    } 
-  },
-  
-  button6Click: function(inSender, inEvent) {
-    try {
-      this.panel10.hide();
-      this.panel9.hide();
-      this.DETALLES.hide();
-      this.panel_graficos.show();
-      this.apr_esperados.update();
-      this.apr_logrados.update();
- 
-    } catch(e) {
-      console.error('ERROR IN button6Click: ' + e); 
-    } 
-  },
-  
-  button7Click: function(inSender, inEvent) {
-    try {
-      this.panel_graficos.hide();
-      this.panel10.show();
-      this.panel9.show();
-      this.DETALLES.show();
-              
-    } catch(e) {
-      console.error('ERROR IN button7Click: ' + e); 
-    } 
-  },
- 
-  selectEditor2Change: function(inSender, inDisplayValue, inDataValue) {
-    try {
-      this.Vista_Alumn_Asig.update();
-      
-    } catch(e) {
-      console.error('ERROR IN selectEditor2Change: ' + e); 
-    } 
-  },
-  
   button8Click: function(inSender, inEvent) {
     try {
       this.inscalumasigDataGrid1.clearSelection();
@@ -213,14 +149,7 @@ dojo.declare("Main", wm.Page, {
     } 
   },
  
-  apr_esperadosSuccess: function(inSender, inDeprecated) {
-    try {
-      $('#main_rendimiento_aprendizajes').drawAprGraph();
-        
-    } catch(e) {
-      console.error('ERROR IN apr_esperadosSuccess: ' + e); 
-    } 
-  },
+  
   
   //cuando termine de cargar la variable de apr_logrados satisfactoriamente, se cargara el grafico 
    apr_logradosSuccess: function(inSender, inDeprecated) {
@@ -231,44 +160,7 @@ dojo.declare("Main", wm.Page, {
       console.error('ERROR IN apr_logradosSuccess: ' + e); 
     } 
   },
- 
-  personaDataGridXCellClick: function(inSender, inEvent) {
-    try {
-     this.selectEditor2.enable();
-     this.listaSY.update();
-      
-    } catch(e) {
-      console.error('ERROR IN personaDataGridXCellClick: ' + e); 
-    } 
-  },
-  personaDataGridXSelected: function(inSender, inIndex) {
-    try {
-     this.selectEditor2.setDataValue(3);
-     this.defaultYear.setDataValue(3);
-     this.Vista_Alumn_Asig.update();
-      
-    } catch(e) {
-      console.error('ERROR IN personaDataGridXSelected: ' + e); 
-    } 
-  },
-  
-  inscalumasigDataGridXSelected: function(inSender, inIndex) {
-    try {
-     this.apr_logrados.update();            
-     $('#main_rendimiento_aprendizajes').html('<img src="resources/images/loader.gif" style="position:absolute;left:410px;top:134px;" alt="loding..." />');  
-     this.Vista_Aprendizajes.update();
-     var ida = this.inscalumasigDataGridX.selectedItem.getData().id.idAsignatura;
-     var idaString= this.inscalumasigDataGridX.selectedItem.getData().id.asignatura;
-     var nombres= this.personaDataGridX.selectedItem.getData().id.nombre1+" "+this.personaDataGridX.selectedItem.getData().id.nombre2;
-     var apellidos = this.personaDataGridX.selectedItem.getData().id.apellido1+" "+this.personaDataGridX.selectedItem.getData().id.apellido2;
-     this.completeString.setCaption("Se generará el informe (PDF) para el alumno: "+nombres +" "+apellidos+" en la asignatura: "+idaString);
-     this.boton_generar_informe.enable();
-              
-    } catch(e) {
-      console.error('ERROR IN inscalumasigDataGridXSelected: ' + e); 
-    } 
-  },
-  
+
   tabla_familia_principalSelected: function(inSender, inIndex) {
     try {
     //  this.personaLiveVariable3.update();
@@ -313,17 +205,7 @@ dojo.declare("Main", wm.Page, {
       console.error('ERROR IN VariableInscAlumApSuccess: ' + e); 
     } 
   },
- 
-  personaDataGridXSelectionChanged: function(inSender) {
-    try {
-     this.boton_generar_informe.disable();
-     this.apr_esperados.clearData();
-     this.apr_logrados.clearData();
-    } catch(e) {
-      console.error('ERROR IN personaDataGridXSelectionChanged: ' + e); 
-    } 
-  },
-  
+
  /*********************************
   *                              *
   * Implemenatacion de loaders   *
@@ -1323,11 +1205,11 @@ dojo.declare("Main", wm.Page, {
     try {
      var _value= this.matricula_select_estudiante.getDisplayValue();
      var _sub= _value.substring(0,5);
-     if(_sub >= 12000 && _sub <=13999){
+     if(_sub >= 12000 && _sub <=19999){
         this.controls_panel.hide();
         this.html_nuevo.show();
         this.html_antiguo.hide();
-     }if(_sub < 12000 || _sub > 13999){
+     }if(_sub < 12000){
         this.controls_panel.show();
         this.html_antiguo.show();  
         this.html_nuevo.hide();   
@@ -1496,113 +1378,7 @@ dojo.declare("Main", wm.Page, {
     } catch(e) {
       console.error('ERROR IN enfermeria_buttClick: ' + e); 
     }},  
-    
-  estudiante_gradoGrupoFamiliarSuccess: function(inSender, inDeprecated) {
-    try {
-     var idpersona= this.matricula_select_estudiante.getDataValue();
-     var _json= main.estudiante_gradoGrupoFamiliar.getItem(0); 
-     var _grado= _json.data.idgrado;
-     var _sy= _json.data.idsy;
-     var _codigoTransportes= "0023";
-     var _codigoTransportes2= "0023A";
-     var _codigoAlimentos= "0021";
-     var _codigoAlimentos2= "0022";
-     var _seguroVida= "0011";
-     var _seguroAccidente= "0012";
-     var _asopadres= "0014";
-     var _asopadres2= "0015";
-     var _asopadres3= "0016";
-     var _false= false;
-     var _true= true;
-     var _codigo= _json.data.codigo;
 
-     if(_codigo >= 12000 && _codigo <= 13999){
-       //transportes
-       this.a_listadoServicios.input.setValue("idp", idpersona);
-       this.a_listadoServicios.input.setValue("cod", _codigoTransportes);
-       this.a_listadoServicios.input.setValue("cod2", _codigoTransportes);
-       this.a_listadoServicios.input.setValue("cod3", _codigoTransportes2);
-       this.a_listadoServicios.input.setValue("nuevo", _true);
-       this.a_listadoServicios.input.setValue("sy", _sy);
-       this.a_listadoServicios.input.setValue("idgrado", _grado);
-       this.a_listadoServicios.update();
-       
-       //alimentos
-       this.a_listadoServiciosAlimentos.input.setValue("idp", idpersona);
-       this.a_listadoServiciosAlimentos.input.setValue("cod", _codigoAlimentos);
-       this.a_listadoServiciosAlimentos.input.setValue("nuevo", _true);
-       this.a_listadoServiciosAlimentos.input.setValue("sy", _sy);
-       this.a_listadoServiciosAlimentos.input.setValue("cod2", _codigoAlimentos2);
-       this.a_listadoServiciosAlimentos.input.setValue("cod3", _codigoAlimentos2);
-       this.a_listadoServiciosAlimentos.input.setValue("idgrado", _grado);
-       this.a_listadoServiciosAlimentos.update();
-
-       //seguros    
-       this.a_listadoServiciosSeguros.input.setValue("idp", idpersona);
-       this.a_listadoServiciosSeguros.input.setValue("cod", _seguroVida);
-       this.a_listadoServiciosSeguros.input.setValue("nuevo", _true);
-       this.a_listadoServiciosSeguros.input.setValue("sy", _sy);
-       this.a_listadoServiciosSeguros.input.setValue("cod2", _seguroAccidente);
-       this.a_listadoServiciosSeguros.input.setValue("cod3", _seguroAccidente);
-       this.a_listadoServiciosSeguros.input.setValue("idgrado", _grado);
-       this.a_listadoServiciosSeguros.update();
-
-       //asopadres
-       this.a_listadoServiciosAsopadres.input.setValue("idp", idpersona);
-       this.a_listadoServiciosAsopadres.input.setValue("cod", _asopadres);
-       this.a_listadoServiciosAsopadres.input.setValue("cod2", _asopadres2);
-       this.a_listadoServiciosAsopadres.input.setValue("cod3", _asopadres3);
-       this.a_listadoServiciosAsopadres.input.setValue("nuevo", _true);
-       this.a_listadoServiciosAsopadres.input.setValue("sy", _sy);
-       this.a_listadoServiciosAsopadres.input.setValue("idgrado", _grado);
-       this.a_listadoServiciosAsopadres.update();
-     }
-     else if(_codigo < 12000 || _codigo >13999){
-       //transportes
-       this.a_listadoServicios.input.setValue("idp", idpersona);
-       this.a_listadoServicios.input.setValue("cod", _codigoTransportes);
-       this.a_listadoServicios.input.setValue("cod2", _codigoTransportes);
-       this.a_listadoServicios.input.setValue("cod3", _codigoTransportes2);
-       this.a_listadoServicios.input.setValue("nuevo", _false);
-       this.a_listadoServicios.input.setValue("sy", _sy);
-       this.a_listadoServicios.input.setValue("idgrado", _grado);
-       this.a_listadoServicios.update();
-       
-       //alimentos
-       this.a_listadoServiciosAlimentos.input.setValue("idp", idpersona);
-       this.a_listadoServiciosAlimentos.input.setValue("cod", _codigoAlimentos);
-       this.a_listadoServiciosAlimentos.input.setValue("nuevo", _false);
-       this.a_listadoServiciosAlimentos.input.setValue("sy", _sy);
-       this.a_listadoServiciosAlimentos.input.setValue("cod2", _codigoAlimentos2);
-       this.a_listadoServiciosAlimentos.input.setValue("cod3", _codigoAlimentos2);
-       this.a_listadoServiciosAlimentos.input.setValue("idgrado", _grado);
-       this.a_listadoServiciosAlimentos.update();
-
-       //seguros    
-       this.a_listadoServiciosSeguros.input.setValue("idp", idpersona);
-       this.a_listadoServiciosSeguros.input.setValue("cod", _seguroVida);
-       this.a_listadoServiciosSeguros.input.setValue("nuevo", _false);
-       this.a_listadoServiciosSeguros.input.setValue("sy", _sy);
-       this.a_listadoServiciosSeguros.input.setValue("cod2", _seguroAccidente);
-       this.a_listadoServiciosSeguros.input.setValue("cod3", _seguroAccidente);
-       this.a_listadoServiciosSeguros.input.setValue("idgrado", _grado);
-       this.a_listadoServiciosSeguros.update();
-
-       //asopadres
-       this.a_listadoServiciosAsopadres.input.setValue("idp", idpersona);
-       this.a_listadoServiciosAsopadres.input.setValue("cod", _asopadres);
-       this.a_listadoServiciosAsopadres.input.setValue("cod2", _asopadres2);
-       this.a_listadoServiciosAsopadres.input.setValue("cod3", _asopadres3);
-       this.a_listadoServiciosAsopadres.input.setValue("nuevo", _false);
-       this.a_listadoServiciosAsopadres.input.setValue("sy", _sy);
-       this.a_listadoServiciosAsopadres.input.setValue("idgrado", _grado);
-       this.a_listadoServiciosAsopadres.update();
-     }
- 
-    } catch(e) {
-      console.error('ERROR IN estudiante_gradoGrupoFamiliarSuccess: ' + e); 
-    }},
-  
   agregar_alimClick: function(inSender, inEvent) {
     try {
      var _iac= this.alimentosDataGrid.selectedItem.getData().idiac;
@@ -1805,7 +1581,6 @@ dojo.declare("Main", wm.Page, {
     } 
   },
   contrato_buttClick: function(inSender, inEvent) {
-    try {
      main.a_informacionUsuario.update();
      var getter = main.a_informacionUsuario.getItem(0);
      var id= getter.data.idpersona;
@@ -1817,16 +1592,12 @@ dojo.declare("Main", wm.Page, {
         httpMethod: "POST",
         data:{ idp: id, 
                pass: clave,
-               uri: "/aprendozreports/MAT008",
+               uri: "/aprendozreports/MAT023NEW",
                format: formatType,
                params: {idpersona: _persona}
          }
        });
        inEvent.preventDefault();   
-      
-    } catch(e) {
-      console.error('ERROR IN contrato_buttClick: ' + e); 
-    } 
   },
   recibo_matricula_buttClick: function(inSender, inEvent) {
     try {
@@ -1960,13 +1731,9 @@ dojo.declare("Main", wm.Page, {
       console.error('ERROR IN contrato_seg_buttClick: ' + e); 
     }},
   pagar_bancoClick: function(inSender, inEvent) {
-    try {
+      this.continuar_final.enable();
       var url= "http://aprendoz.rochester.edu.co/recursos/Formato_de_consignacion_Banco_de_Bogota.pdf";
       window.open(url, "_BLANK");
-      
-    } catch(e) {
-      console.error('ERROR IN pagar_bancoClick: ' + e); 
-    } 
   },  
   a_getGroupCodeChange: function(inSender, inDisplayValue, inDataValue) {
     try {
@@ -2010,9 +1777,23 @@ dojo.declare("Main", wm.Page, {
     } catch(e) {
       console.error('ERROR IN getNuevoSuccess: ' + e); 
     }},
+    
+    calculateAge: function(birthMonth, birthDay, birthYear){
+      todayDate = new Date();
+      todayYear = todayDate.getFullYear();
+      todayMonth = todayDate.getMonth();
+      todayDay = todayDate.getDate();
+      age = todayYear - birthYear;    
+      if (todayMonth < birthMonth - 1){
+        age--;
+      }    
+      if (birthMonth - 1 == todayMonth && todayDay < birthDay){
+        age--;
+      }
+      return age;
+    },
 
   _fichaMedicasvSuccess: function(inSender, inDeprecated) {
-    try {
      var _json = main._fichaMedicasv.getItem(0);
      var _nombre = _json.data.nombrecompleto;
      var _emergencia = _json.data.emergencia;
@@ -2023,30 +1804,13 @@ dojo.declare("Main", wm.Page, {
      var _rh = _json.data.rh;
      var _telefono= _json.data.telefono;
 
-        var now= new Date();
-        var yearNow= now.getFullYear();
-        var monthNow= now.getMonth()+1;
-        var dayNow= now.getDate();
-
         var pureDate= _fecha;
         var bornDate = new Date(pureDate);   
         var yearBorn= bornDate.getFullYear();
         var monthBorn= bornDate.getMonth()+1;
         var dayBorn= bornDate.getDate();
-        console.log("<-- Año: "+yearNow+" "+"Mes: "+monthNow+" "+"Dia: "+dayNow);
-        console.log("--> Año: "+yearBorn+" "+"Mes: "+monthBorn+" "+"Dia: "+dayBorn);
-        var age= yearNow-yearBorn;
-          if(monthBorn <= monthNow){
-            //if(dayBorn <= dayNow){
-              this.edad.setDataValue((age+1)+" Años");
-            //  }
-            // else if(dayBorn = dayNow && dayBorn > dayNow){
-            //   this.edad.setDataValue((age)+" Añosy");
-            //  }
-          }   
-          else if(monthBorn > monthNow){
-            this.edad.setDataValue((age)+" Años");
-            } 
+
+     this.edad.setDataValue(this.calculateAge(monthBorn, dayBorn, yearBorn)+" Años"); 
      this.nombrecompleto.setDataValue(_nombre);
      this.gradoIngreso.setDataValue(_grado);
      this.rh.setDataValue(_rh);
@@ -2054,13 +1818,8 @@ dojo.declare("Main", wm.Page, {
      this.prepagada.setDataValue(_prepagada);
      this.telefono.setDataValue(_telefono);
      this.clinica_emergencia.setDataValue(_emergencia);
- 
-    } catch(e) {
-      console.error('ERROR IN _fichaMedicasvSuccess: ' + e); 
-    } 
   },
   pagar_pseClick: function(inSender, inEvent) {
-    try {
      var _grupo= this.a_getGroupCode.getDataValue();
      var _json= main.a_getInforUser.getItem(0);
      var n1 = _json.data.n1;
@@ -2073,7 +1832,7 @@ dojo.declare("Main", wm.Page, {
      this._whoIsPayResponsible.input.setValue("idgf", _grupo);
      this._whoIsPayResponsible.update();
 
-     this.concepto.setDataValue("PAGO_MATRICULA_2013-2014_FUND._COLEGIO_ROCHESTER");
+     this.concepto.setDataValue("PAGO_MATRICULA_2014-2015_FUND._COLEGIO_ROCHESTER");
      this.pagar_pse_butt.enable();
 
      var _id=  this.matricula_select_estudiante.getDataValue();
@@ -2082,10 +1841,7 @@ dojo.declare("Main", wm.Page, {
 
      this._totalPagarSV.input.setValue("idp", _id);
      this._totalPagarSV.update();
-      
-    } catch(e) {
-      console.error('ERROR IN pagar_pseClick: ' + e); 
-    } 
+     this.continuar_final.enable();
   },
   getNombreAlumnoSuccess: function(inSender, inDeprecated) {
     try {
@@ -2242,23 +1998,17 @@ dojo.declare("Main", wm.Page, {
       this.alimentoVar.setValue("recomendacionesEspeciales", detalles);
        
       this.detalleAlimento.setDataSet(this.alimentoVar);          
-      this.detalleAlimento.insertData();        
+      this.detalleAlimento.insertData();   
       
     } catch(e) {
       console.error('ERROR IN guardar_restricciones_alimenticiasClick: ' + e); 
-    } 
+    }      
   },
   
-  detalleAlimentoSuccess: function(inSender, inData) {
-    try {
+  detalleAlimentoSuccess: function(inSender, inData) {   
      alert("Detalles guardados exitosamente!"); 
-      
-    } catch(e) {
-      console.error('ERROR IN detalleAlimentoSuccess: ' + e); 
-    } 
   },
   _hqlAlergiasSuccess: function(inSender, inDeprecated) {
-    try {
      var _json=  main._hqlAlergias.getItem(0);
      var _idficha= _json.data.idficha;
      var _alergias= _json.data.alergias;
@@ -2277,32 +2027,25 @@ dojo.declare("Main", wm.Page, {
      this.medicamentos.setDataValue(_medicamentosActuales);
      this.medicamentos_no_permitidos.setDataValue(_medicamentosAlerta);
      this.recomendaciones.setDataValue(_recomendaciones);
-          
-    } catch(e) {
-      console.error('ERROR IN _hqlAlergiasSuccess: ' + e); 
-    }},
+  },
   guardar_fichaClick: function(inSender, inEvent) {
-    try {
     var _string= this.matricula_select_estudiante.getDisplayValue();
     var _codigo= _string.substring(0,5);
     console.log(_codigo);
 
-    if(_codigo >= 13000 && _codigo <=13999){
-      var idpersona= this.matricula_select_estudiante.getDataValue();
-      this._verificaExistenciaFichaMedica.input.setValue("idp", idpersona);
-      this._verificaExistenciaFichaMedica.update();
-    }
-    if(_codigo < 13000 || _codigo > 13999){
-      this.hsl_promociones.input.setValue("codigo", _codigo); 
-      this.hsl_promociones.update(); 
-    }  
+      if(_codigo >= 14000 && _codigo <=14999){
+        var idpersona= this.matricula_select_estudiante.getDataValue();
+        this._verificaExistenciaFichaMedica.input.setValue("idp", idpersona);
+        this._verificaExistenciaFichaMedica.update();
+      }
+      if(_codigo < 14000 || _codigo > 14999){
+        this.hsl_promociones.input.setValue("codigo", _codigo); 
+        this.hsl_promociones.update(); 
+      }  
     /*var idpersona= this.matricula_select_estudiante.getDataValue();
     this._verificaExistenciaFichaMedica.input.setValue("idp", idpersona);
-    this._verificaExistenciaFichaMedica.update();*/
-      
-    } catch(e) {
-      console.error('ERROR IN guardar_fichaClick: ' + e); 
-    }},
+    this._verificaExistenciaFichaMedica.update();*/     
+   },
 
     hsl_promocionesSuccess: function(inSender, inDeprecated) {
     try {
@@ -2326,8 +2069,8 @@ dojo.declare("Main", wm.Page, {
     } catch(e) {
       console.error('ERROR IN hsl_promocionesSuccess: ' + e); 
     }},
+    
   _verificaExistenciaFichaMedicaSuccess: function(inSender, inDeprecated) {
-    try {
      var idpersona= this.matricula_select_estudiante.getDataValue();
      var _json= main._verificaExistenciaFichaMedica.getItem(0);
      var _cont= main._verificaExistenciaFichaMedica.getCount();
@@ -2340,7 +2083,6 @@ dojo.declare("Main", wm.Page, {
      var _medicamentos= this.medicamentos.getDataValue();
      var _medicamentosAlerta= this.medicamentos_no_permitidos.getDataValue();
      var _recomendaciones= this.recomendaciones.getDataValue();
-
       if(_cont == 1){
         this._fichaMedicaVar.setValue("idfichaMedica", _idficha);
         this._fichaMedicaVar.setValue("persona.idPersona", idpersona);
@@ -2351,9 +2093,8 @@ dojo.declare("Main", wm.Page, {
         this._fichaMedicaVar.setValue("medicamentosActualidad", _medicamentos);
         this._fichaMedicaVar.setValue("medicamentosAlerta", _medicamentosAlerta);
         this._fichaMedicaVar.setValue("recomendacionesEspeciales", _recomendaciones);
-
         this.formularioFichaMedica.setDataSet(this._fichaMedicaVar);          
-        this.formularioFichaMedica.updateData();  
+        this.formularioFichaMedica.updateData(); 
       }
       if(_cont == 0){
         this._fichaMedicaVar.setValue("persona.idPersona", idpersona);
@@ -2368,10 +2109,7 @@ dojo.declare("Main", wm.Page, {
         this.formularioFichaMedica.setDataSet(this._fichaMedicaVar);          
         this.formularioFichaMedica.insertData();  
       }  
-
-      } catch(e) {
-      console.error('ERROR IN _verificaExistenciaFichaMedicaSuccess: ' + e); 
-    }},
+  },
   formularioFichaMedicaSuccess: function(inSender, inData) {
     try { 
      var value= main.matricula_select_estudiante.getDataValue();
@@ -2419,6 +2157,109 @@ dojo.declare("Main", wm.Page, {
     } catch(e) {
       console.error('ERROR IN formularioFichaMedicaSuccess: ' + e); 
     }},
+  estudiante_gradoGrupoFamiliarSuccess: function(inSender, inDeprecated) {
+    try {
+     var idpersona= this.matricula_select_estudiante.getDataValue();
+     var _json= main.estudiante_gradoGrupoFamiliar.getItem(0); 
+     var _grado= _json.data.idgrado;
+     var _sy= _json.data.idsy;
+     var _codigoTransportes= "0023";
+     var _codigoTransportes2= "0023A";
+     var _codigoAlimentos= "0021";
+     var _codigoAlimentos2= "0022";
+     var _seguroVida= "0011";
+     var _seguroAccidente= "0012";
+     var _asopadres= "0014";
+     var _asopadres2= "0015";
+     var _asopadres3= "0016";
+     var _false= false;
+     var _true= true;
+     var _codigo= _json.data.codigo;
+     console.log(_codigo);
+     if(_codigo >= 12000 && _codigo <= 19999){
+      console.log("ingreso por #1");
+       //transportes
+       this.a_listadoServicios.input.setValue("idp", idpersona);
+       this.a_listadoServicios.input.setValue("cod", _codigoTransportes);
+       this.a_listadoServicios.input.setValue("cod2", _codigoTransportes);
+       this.a_listadoServicios.input.setValue("cod3", _codigoTransportes2);
+       this.a_listadoServicios.input.setValue("nuevo", _true);
+       this.a_listadoServicios.input.setValue("sy", _sy);
+       this.a_listadoServicios.input.setValue("idgrado", _grado);
+       this.a_listadoServicios.update();
+       //alimentos
+       this.a_listadoServiciosAlimentos.input.setValue("idp", idpersona);
+       this.a_listadoServiciosAlimentos.input.setValue("cod", _codigoAlimentos);
+       this.a_listadoServiciosAlimentos.input.setValue("nuevo", _true);
+       this.a_listadoServiciosAlimentos.input.setValue("sy", _sy);
+       this.a_listadoServiciosAlimentos.input.setValue("cod2", _codigoAlimentos2);
+       this.a_listadoServiciosAlimentos.input.setValue("cod3", _codigoAlimentos2);
+       this.a_listadoServiciosAlimentos.input.setValue("idgrado", _grado);
+       this.a_listadoServiciosAlimentos.update();
+       //seguros    
+       this.a_listadoServiciosSeguros.input.setValue("idp", idpersona);
+       this.a_listadoServiciosSeguros.input.setValue("cod", _seguroVida);
+       this.a_listadoServiciosSeguros.input.setValue("nuevo", _true);
+       this.a_listadoServiciosSeguros.input.setValue("sy", _sy);
+       this.a_listadoServiciosSeguros.input.setValue("cod2", _seguroAccidente);
+       this.a_listadoServiciosSeguros.input.setValue("cod3", _seguroAccidente);
+       this.a_listadoServiciosSeguros.input.setValue("idgrado", _grado);
+       this.a_listadoServiciosSeguros.update();
+       //asopadres
+       this.a_listadoServiciosAsopadres.input.setValue("idp", idpersona);
+       this.a_listadoServiciosAsopadres.input.setValue("cod", _asopadres);
+       this.a_listadoServiciosAsopadres.input.setValue("cod2", _asopadres2);
+       this.a_listadoServiciosAsopadres.input.setValue("cod3", _asopadres3);
+       this.a_listadoServiciosAsopadres.input.setValue("nuevo", _true);
+       this.a_listadoServiciosAsopadres.input.setValue("sy", _sy);
+       this.a_listadoServiciosAsopadres.input.setValue("idgrado", _grado);
+       this.a_listadoServiciosAsopadres.update();
+     }
+     
+     else if(_codigo < 12000/* || _codigo >13999*/){
+      console.log("ingreso por #2");
+       //transportes
+       this.a_listadoServicios.input.setValue("idp", idpersona);
+       this.a_listadoServicios.input.setValue("cod", _codigoTransportes);
+       this.a_listadoServicios.input.setValue("cod2", _codigoTransportes);
+       this.a_listadoServicios.input.setValue("cod3", _codigoTransportes2);
+       this.a_listadoServicios.input.setValue("nuevo", _false);
+       this.a_listadoServicios.input.setValue("sy", _sy);
+       this.a_listadoServicios.input.setValue("idgrado", _grado);
+       this.a_listadoServicios.update();
+       //alimentos
+       this.a_listadoServiciosAlimentos.input.setValue("idp", idpersona);
+       this.a_listadoServiciosAlimentos.input.setValue("cod", _codigoAlimentos);
+       this.a_listadoServiciosAlimentos.input.setValue("nuevo", _false);
+       this.a_listadoServiciosAlimentos.input.setValue("sy", _sy);
+       this.a_listadoServiciosAlimentos.input.setValue("cod2", _codigoAlimentos2);
+       this.a_listadoServiciosAlimentos.input.setValue("cod3", _codigoAlimentos2);
+       this.a_listadoServiciosAlimentos.input.setValue("idgrado", _grado);
+       this.a_listadoServiciosAlimentos.update();
+       //seguros    
+       this.a_listadoServiciosSeguros.input.setValue("idp", idpersona);
+       this.a_listadoServiciosSeguros.input.setValue("cod", _seguroVida);
+       this.a_listadoServiciosSeguros.input.setValue("nuevo", _false);
+       this.a_listadoServiciosSeguros.input.setValue("sy", _sy);
+       this.a_listadoServiciosSeguros.input.setValue("cod2", _seguroAccidente);
+       this.a_listadoServiciosSeguros.input.setValue("cod3", _seguroAccidente);
+       this.a_listadoServiciosSeguros.input.setValue("idgrado", _grado);
+       this.a_listadoServiciosSeguros.update();
+       //asopadres
+       this.a_listadoServiciosAsopadres.input.setValue("idp", idpersona);
+       this.a_listadoServiciosAsopadres.input.setValue("cod", _asopadres);
+       this.a_listadoServiciosAsopadres.input.setValue("cod2", _asopadres2);
+       this.a_listadoServiciosAsopadres.input.setValue("cod3", _asopadres3);
+       this.a_listadoServiciosAsopadres.input.setValue("nuevo", _false);
+       this.a_listadoServiciosAsopadres.input.setValue("sy", _sy);
+       this.a_listadoServiciosAsopadres.input.setValue("idgrado", _grado);
+       this.a_listadoServiciosAsopadres.update();
+     }
+     
+    } catch(e) {
+      console.error('ERROR IN estudiante_gradoGrupoFamiliarSuccess: ' + e); 
+    }
+  },
   iraTransporteClick: function(inSender, inEvent) {
     try {
      this.transporte_buttClick(inSender, inEvent);
@@ -2875,6 +2716,31 @@ dojo.declare("Main", wm.Page, {
     } catch(e) {
       console.error('ERROR IN a_actualizaServicioAsopadresSuccess: ' + e); 
     } 
+  },
+  cambiar_estudiante_buttClick: function(inSender, inEvent) {
+    /*botones*/
+     main.actualizacion_butt.hide();
+     main.enfermeria_butt.hide();
+     main.servicios_butt.hide();
+     main.responsable_butt.hide();
+     main.documentos_butt.hide();
+     main.pago_butt.hide();
+     main.preparacion_butt.hide();
+     main.enfermeria_butt.show(); 
+
+     /*paneles*/ 
+     main.panel_servicios.hide();
+     main.reponsable_pagos.hide();
+     main.impresion_documentos.hide();
+     main.pagos.hide();
+     main.page_ActualizaDatos.hide();
+     main.top_banner_servicios.hide();
+     main.preparacion.hide();
+     main.asopadres.hide();
+     main.top_banner.show();
+     main.panel_selector_principal.show();
+     main.header_message.show();
+     main.ficha_medica.show();  
   },
   _end: 0
 });

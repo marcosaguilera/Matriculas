@@ -1,1 +1,6 @@
 *.txt
+*.ear
+
+export/Padres_Matriculas.zip
+
+dist/Padres_Matriculas.war

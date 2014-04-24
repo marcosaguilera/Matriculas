@@ -10,6 +10,22 @@
      opacity: 0.8;  
 }
 
-/*.Login .Login-_____________{
+/*.Login .Login-main_layout{
        background-image:url('resources/images/buttons/shield.png');
 }*/
+.Login .Login-loginButton {
+	background-color: #3652a5 !important;
+	border-radius: 2px;
+}
+
+.Login .Login-label6 {
+	background-color: #EDEDED;
+	border-radius: 0px 0px 5px 5px;
+}
+
+.Login .Login-main_layout {
+	background-image: url(http://aprendoz.rochester.edu.co/recursos/login_back.jpg);
+	background-repeat: no-repeat;
+background-size: cover;
+}
+

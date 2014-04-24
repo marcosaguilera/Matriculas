@@ -165,7 +165,7 @@ OR ( t.idTipoPersona  &gt;1 ))
     </query>
     <query name="getCostos">
         <query-param name="idg" type="java.lang.Integer"/>
-        <query-param name="cod" type="java.lang.Integer"/>
+        <query-param name="cod" type="java.lang.String"/>
         SELECT _c.idCosto as id, _c.codigo as codigo, _c.nombreProducto as nombre, _c.valor as valor, _c.nuevo as nuevo
 FROM Costos _c INNER JOIN _c.grado _g
 WHERE _g.idGrado=:idg and _c.codigo=:cod
@@ -204,7 +204,7 @@ Persona p WHERE p.nombreLdap=:usuario
         <query-param name="idp" type="java.lang.Integer"/>
         SELECT SUM(iac.valorFinalDescuento) as totalPagar
 FROM InscAlumCosto iac INNER JOIN iac.costos as c INNER JOIN iac.persona as p INNER JOIN iac.sy as sy
-WHERE p.idPersona=:idp AND iac.inscrito=1 and c.anual=1and sy.idSy=4
+WHERE p.idPersona=:idp AND iac.inscrito=1 and c.anual=1and sy.idSy=5
     </query>
     <query name="mailPadre">
         <query-param name="grupo" type="java.lang.Integer"/>
@@ -239,7 +239,7 @@ WHERE _p.codigo=:codigo and _sy.idSy=3
         <query-param name="idp" type="java.lang.Integer"/>
         SELECT _p.idPersona as idpersona, _p.codigo as codigo, _c.idCurso as idcurso, _c.curso as curso, _g.idGrado as idgrado, _g.grado as grado , _sy.idSy as idsy, _sy.schoolYear as sy
 FROM InscAlumCurso _iac INNER JOIN _iac.persona _p INNER JOIN _iac.curso _c INNER JOIN _iac.sy _sy INNER JOIN _c.grado _g
-WHERE _p.idPersona=:idp and _sy.idSy= 4
+WHERE _p.idPersona=:idp and _sy.idSy= 5
 ORDER BY _sy.idSy DESC
     </query>
     <query name="getTipoPersonaByUser">
