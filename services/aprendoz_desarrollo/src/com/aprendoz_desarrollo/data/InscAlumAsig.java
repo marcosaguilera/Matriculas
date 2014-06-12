@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 /**
  *  aprendoz_desarrollo.InscAlumAsig
- *  04/14/2014 10:05:53
+ *  06/09/2014 16:21:44
  * 
  */
 public class InscAlumAsig {

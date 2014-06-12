@@ -58,7 +58,8 @@ dojo.declare("ActualizaDatos", wm.Page, {
         
     } catch(e) {
       console.error('ERROR IN getUserByIdPersonaSuccess: ' + e); 
-    }},
+    }
+  },
   returnValueIfExistsSuccess: function(inSender, inDeprecated) {
     try {
      var _persona= this.personaSelect.getDataValue();
@@ -72,8 +73,8 @@ dojo.declare("ActualizaDatos", wm.Page, {
        this.v_insertActualizaPersona.setValue("persona.idPersona", _persona);
        this.v_insertActualizaPersona.setValue("actualizado", _bool);
        this.v_insertActualizaPersona.setValue("fecha", _fecha);
-       
-       this.insertVerificacionPersonaLiveForm.setDataSet(this.v_insertActualizaPersona);          
+       this.v_insertActualizaPersona.setValue("fechaCreacion", _fecha);
+       this.insertVerificacionPersonaLiveForm.setDataSet(this.v_insertActualizaPersona);       
        this.insertVerificacionPersonaLiveForm.insertData();        
      }  
      if(rt == 1){
@@ -126,23 +127,7 @@ dojo.declare("ActualizaDatos", wm.Page, {
          this.contentPanel.hide();
          this.footerPanel.hide();
          this.space1.show();
-         this.middlePanel.show();    
-        /* var _string= this.personaSelect.getDisplayValue();
-         var _codigo= _string.substring(0,5);
-         console.log(_codigo);
-         if(_codigo >= 13000 && _codigo <=13999){
-           //alert("Aparecera una panel con la opcion de CONTINUAR! Bienvenido");
-          /* this.headPanel.hide();
-           this.instructivo.hide();
-           this.contentPanel.hide();
-           this.footerPanel.hide();
-           this.space1.show();
-           this.middlePanel.show(); 
-         }
-         if(_codigo < 13000 || _codigo > 13999){
-          this.promocionSv.input.setValue("codigo", _codigo); 
-          this.promocionSv.update();           
-         }   */     
+         this.middlePanel.show();         
        }     
     },
   a_updatePersonaSuccess: function(inSender, inDeprecated) {
@@ -224,8 +209,8 @@ dojo.declare("ActualizaDatos", wm.Page, {
         
         //valores por defecto
         //this.gradoIngresoEditor1.setDisplayValue("PREJARDÍN");
-        this.nacionalidadEditor1.setDisplayValue("colombiano");
-        // this.fechaIngresoEditor1.setDataValue(new Date("2013-08-14"));
+        //this.nacionalidadEditor1.setDisplayValue("colombiano");
+        //this.fechaIngresoEditor1.setDataValue(new Date("2013-08-14"));
         //datos laborales ocultos
         this.noTarjetaCredito.setDataValue(" ");
         this.celularEditor1.setDataValue(" ");
@@ -272,8 +257,8 @@ dojo.declare("ActualizaDatos", wm.Page, {
         this.fechaIngresoEditor1.hide();
         
         //valores por defecto
-        this.nacionalidadEditor1.setDisplayValue("colombiano");
-        this.fechaIngresoEditor1.setDataValue(new Date("2013-08-14"));
+        //this.nacionalidadEditor1.setDisplayValue("colombiano");
+        //this.fechaIngresoEditor1.setDataValue(new Date("2013-08-14"));
         
         this.saludPrepagadaEditor1.setDataValue(" ");
         this.numeroContratoSaludEditor1.setDataValue(" ");

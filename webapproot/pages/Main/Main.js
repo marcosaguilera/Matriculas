@@ -1205,11 +1205,11 @@ dojo.declare("Main", wm.Page, {
     try {
      var _value= this.matricula_select_estudiante.getDisplayValue();
      var _sub= _value.substring(0,5);
-     if(_sub >= 12000 && _sub <=19999){
+     if(_sub >= 13000 && _sub <=12999){
         this.controls_panel.hide();
         this.html_nuevo.show();
         this.html_antiguo.hide();
-     }if(_sub < 12000){
+     }if(_sub < 13000){
         this.controls_panel.show();
         this.html_antiguo.show();  
         this.html_nuevo.hide();   
@@ -2046,23 +2046,44 @@ dojo.declare("Main", wm.Page, {
     this._verificaExistenciaFichaMedica.input.setValue("idp", idpersona);
     this._verificaExistenciaFichaMedica.update();*/     
    },
-
+    
     hsl_promocionesSuccess: function(inSender, inDeprecated) {
     try {
      var idpersona= this.matricula_select_estudiante.getDataValue();
      var _json= this.hsl_promociones.getItem(0);
      var _academica= _json.data.academico;
-     var _financiera= _json.data.financiera;   
-     if(_academica == false && _financiera == true ){
-       alert("Mensaje informativo:\n\nEn el sistema no se ha registrado la aprobación de matrícula desde el punto de vista académico. Por favor comuníquese con el Director de Nivel.");
+     var _financiera= _json.data.financiera;  
+     var _cra= _json.data.cra;
+
+     if(_academica == false && _financiera == false && _cra==false ){
+       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista académico, administrativo y CRA. Por favor comuníquese con el Director de Nivel, Giovanny Rentería (Ext. 4103) y Henry Sanchez (Ext. 4705).");
      }
-     if(_financiera == false && _academica == true ){
-       alert("Mensaje informativo:\n\nEn el sistema no se ha registrado la aprobación de matrícula desde el punto de vista administrativo (CRA, Mantenimiento o el Area Financiera). Por favor comuníquese con Giovanny Renteria (Ext. 4103) para identificar el tema pendiente.");
+
+     if(_academica == false && _cra==false && _financiera == true ){
+       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista académico y CRA. Por favor comuníquese con el Director de Nivel y Henry Sanchez (Ext. 4705).");
      }
-     if(_academica == false && _financiera == false){
-       alert("Mensaje informativo:\n\nEn el sistema no se ha registrado la aprobación de matrícula desde el punto de vista académico, ni administrativo (CRA, Mantenimiento o el Area Financiera). Por favor comuníquese con el Director de Nivel y con Giovanny Rentería (Ext. 4103) para identificar los temas pendientes.");
+
+     if(_academica == false && _cra==true && _financiera == false ){
+       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista académico y administrativo. Por favor comuníquese con el Director de Nivel y Giovanny Rentería (Ext. 4103).");
      }
-     if(_academica == true && _financiera == true){     
+
+     if(_academica == false && _cra==true && _financiera == true ){
+       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista académico. Por favor comuníquese con el Director de Nivel.");
+     }
+
+     if(_academica == true && _cra==false && _financiera == false ){
+       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista administrativo y CRA. Por favor comuníquese con Giovanny Rentería (Ext. 4103) y Henry Sanchez (Ext. 4705).");
+     }
+
+     if(_academica == true && _cra==false && _financiera == true ){
+       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista del CRA. Por favor comuníquese con Henry Sanchez (Ext. 4705).");
+     }
+
+     if(_academica == true && _cra==true && _financiera == false ){
+       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista administrativo. Por favor comuníquese con Giovanny Rentería (Ext. 4103).");
+     }
+
+     if(_academica == true && _cra==true && _financiera == true){     
       this._verificaExistenciaFichaMedica.input.setValue("idp", idpersona);
       this._verificaExistenciaFichaMedica.update();
     } 

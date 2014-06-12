@@ -36,12 +36,6 @@ WHERE p.nombreLdap=:user
         SELECT a.anuncio as anuncio
 FROM Anuncio a
     </query>
-    <query name="getIdbyUser">
-        <query-param name="user" type="java.lang.String"/>
-        SELECT _p.idPersona as id, _t.idTipoPersona as idtipo, _t.tipoPersona as tipo
-FROM Persona _p INNER JOIN _p.tipoPersona _t
-WHERE _p.nombreLdap=:user
-    </query>
     <query name="getCostosTransporte">
         <query-param name="idg" type="java.lang.Integer"/>
         <query-param name="cod" type="java.lang.String"/>
@@ -50,17 +44,23 @@ WHERE _p.nombreLdap=:user
 FROM Costos _c INNER JOIN _c.grado _g
 WHERE _g.idGrado=:idg and _c.codigo=:cod and _c.nuevo=:nuevo
     </query>
-    <query name="GetInscPersonaGrupoFamiliar">
-        <query-param name="gf" type="java.lang.Integer"/>
-        SELECT p.idPersona as idpersona, p.noDocumento as dni, p.nombre1 as nombre1, p.nombre2 as nombre2, p.apellido1 as apellido1, p.apellido2 as apellido2, tp.idTipoPersona as idtipopersona, tp.tipoPersona as tipoPersona, ipgf.responsable as responsable, gf.idGrupoFamiliar as idGrupoFamiliar, gf.grupoFamiliar as grupoFamiliar, ipgf.idInscPersonaGrupoFamiliar as idunico
-FROM InscPersonaGrupoFamiliar ipgf INNER JOIN ipgf.persona p INNER JOIN ipgf.tipoPersona tp INNER JOIN ipgf.grupoFamiliar gf
-WHERE gf.idGrupoFamiliar=:gf AND tp.idTipoPersona&gt;1
+    <query name="getIdbyUser">
+        <query-param name="user" type="java.lang.String"/>
+        SELECT _p.idPersona as id, _t.idTipoPersona as idtipo, _t.tipoPersona as tipo
+FROM Persona _p INNER JOIN _p.tipoPersona _t
+WHERE _p.nombreLdap=:user
     </query>
     <query name="returExitsValue">
         <query-param name="user" type="java.lang.String"/>
         SELECT COUNT(adp.idActualizacionDatosPersona) as retorno
 FROM ActualizacionDatosPersona adp INNER JOIN adp.persona p
 WHERE p.nombreLdap=:user
+    </query>
+    <query name="GetInscPersonaGrupoFamiliar">
+        <query-param name="gf" type="java.lang.Integer"/>
+        SELECT p.idPersona as idpersona, p.noDocumento as dni, p.nombre1 as nombre1, p.nombre2 as nombre2, p.apellido1 as apellido1, p.apellido2 as apellido2, tp.idTipoPersona as idtipopersona, tp.tipoPersona as tipoPersona, ipgf.responsable as responsable, gf.idGrupoFamiliar as idGrupoFamiliar, gf.grupoFamiliar as grupoFamiliar, ipgf.idInscPersonaGrupoFamiliar as idunico
+FROM InscPersonaGrupoFamiliar ipgf INNER JOIN ipgf.persona p INNER JOIN ipgf.tipoPersona tp INNER JOIN ipgf.grupoFamiliar gf
+WHERE gf.idGrupoFamiliar=:gf AND tp.idTipoPersona&gt;1
     </query>
     <query name="_countGrupoFamiliarUpdated">
         <query-param name="idgrupofamiliar" type="java.lang.Integer"/>
@@ -229,18 +229,18 @@ WHERE p.idPersona=:idp
 FROM Persona AS p INNER JOIN p.tipoPersona AS tipo INNER JOIN p.grupoFamiliar as familia
 WHERE  (tipo.idTipoPersona=4 OR tipo.idTipoPersona=12 OR tipo.idTipoPersona=12 OR tipo.idTipoPersona=7 OR tipo.idTipoPersona=8) AND familia.idGrupoFamiliar = :grupo
     </query>
-    <query name="_hqlPromociones">
-        <query-param name="codigo" type="java.lang.String"/>
-        SELECT _p.codigo as codigo, p.autorizadoAcademico as academico, p.autorizadoFinanciera as financiera, _sy.idSy as idsy
-FROM Promocion p INNER JOIN p.persona _p INNER JOIN p.sy _sy
-WHERE _p.codigo=:codigo and _sy.idSy=3
-    </query>
     <query name="getGradoUsuario">
         <query-param name="idp" type="java.lang.Integer"/>
         SELECT _p.idPersona as idpersona, _p.codigo as codigo, _c.idCurso as idcurso, _c.curso as curso, _g.idGrado as idgrado, _g.grado as grado , _sy.idSy as idsy, _sy.schoolYear as sy
 FROM InscAlumCurso _iac INNER JOIN _iac.persona _p INNER JOIN _iac.curso _c INNER JOIN _iac.sy _sy INNER JOIN _c.grado _g
 WHERE _p.idPersona=:idp and _sy.idSy= 5
 ORDER BY _sy.idSy DESC
+    </query>
+    <query name="_hqlPromociones">
+        <query-param name="codigo" type="java.lang.String"/>
+        SELECT _p.codigo as codigo, p.autorizadoAcademico as academico, p.autorizadoFinanciera as financiera, p.autorizadoCra as cra, _sy.idSy as idsy
+FROM Promocion p INNER JOIN p.persona _p INNER JOIN p.sy _sy
+WHERE _p.codigo=:codigo and _sy.idSy=4
     </query>
     <query name="getTipoPersonaByUser">
         <query-param name="user" type="java.lang.String"/>

@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "hqlGetTotalPagar" on 04/23/2014 13:14:51
+ * Generated for query "hqlGetTotalPagar" on 06/09/2014 18:05:27
  * 
  */
 public class HqlGetTotalPagarRtnType {

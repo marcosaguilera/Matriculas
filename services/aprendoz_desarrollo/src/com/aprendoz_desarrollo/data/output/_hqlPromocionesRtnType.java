@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "_hqlPromociones" on 04/23/2014 13:14:52
+ * Generated for query "_hqlPromociones" on 06/09/2014 18:05:27
  * 
  */
 public class _hqlPromocionesRtnType {
@@ -12,15 +12,17 @@ public class _hqlPromocionesRtnType {
     private String codigo;
     private Boolean academico;
     private Boolean financiera;
+    private Boolean cra;
     private Integer idsy;
 
     public _hqlPromocionesRtnType() {
     }
 
-    public _hqlPromocionesRtnType(String codigo, Boolean academico, Boolean financiera, Integer idsy) {
+    public _hqlPromocionesRtnType(String codigo, Boolean academico, Boolean financiera, Boolean cra, Integer idsy) {
         this.codigo = codigo;
         this.academico = academico;
         this.financiera = financiera;
+        this.cra = cra;
         this.idsy = idsy;
     }
 
@@ -46,6 +48,14 @@ public class _hqlPromocionesRtnType {
 
     public void setFinanciera(Boolean financiera) {
         this.financiera = financiera;
+    }
+
+    public Boolean getCra() {
+        return cra;
+    }
+
+    public void setCra(Boolean cra) {
+        this.cra = cra;
     }
 
     public Integer getIdsy() {

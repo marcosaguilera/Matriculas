@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.Cronograma
- *  04/14/2014 10:05:54
+ *  06/09/2014 16:21:43
  * 
  */
 public class Cronograma {

@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.BisUsers
- *  04/14/2014 10:05:53
+ *  06/09/2014 16:21:42
  * 
  */
 public class BisUsers {

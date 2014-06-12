@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  *  aprendoz_desarrollo.CurriculoGradoId
- *  04/14/2014 10:05:54
+ *  06/09/2014 16:21:44
  * 
  */
 public class CurriculoGradoId

@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.VistaEnvioCorreo
- *  04/14/2014 10:05:53
+ *  06/09/2014 16:21:44
  * 
  */
 public class VistaEnvioCorreo {
