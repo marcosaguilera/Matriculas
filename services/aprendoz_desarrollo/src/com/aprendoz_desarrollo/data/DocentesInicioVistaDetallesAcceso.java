@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo.data;
 
 /**
  *  aprendoz_desarrollo.DocentesInicioVistaDetallesAcceso
- *  06/09/2014 16:21:42
+ *  06/13/2014 10:26:50
  * 
  */
 public class DocentesInicioVistaDetallesAcceso {

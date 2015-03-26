@@ -47,7 +47,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  06/09/2014 18:05:50
+ *  06/13/2014 10:28:16
  * 
  */
 @SuppressWarnings("unchecked")
@@ -78,12 +78,12 @@ public class Aprendoz_desarrollo
         return ((List<_getAnuncioRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants._getAnuncioQueryName)));
     }
 
-    public List<GetCostosTransporteRtnType> getCostosTransporte(Integer idg, String cod, Boolean nuevo) {
-        return ((List<GetCostosTransporteRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getCostosTransporteQueryName), idg, cod, nuevo));
-    }
-
     public List<GetIdbyUserRtnType> getIdbyUser(String user) {
         return ((List<GetIdbyUserRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getIdbyUserQueryName), user));
+    }
+
+    public List<GetCostosTransporteRtnType> getCostosTransporte(Integer idg, String cod, Boolean nuevo) {
+        return ((List<GetCostosTransporteRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getCostosTransporteQueryName), idg, cod, nuevo));
     }
 
     public List<ReturExitsValueRtnType> returExitsValue(String user) {
@@ -203,12 +203,12 @@ public class Aprendoz_desarrollo
         return ((List<GetInscPersonaGrupoFamiliarRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.GetInscPersonaGrupoFamiliarQueryName), gf));
     }
 
-    public List<GetGradoUsuarioRtnType> getGradoUsuario(Integer idp) {
-        return ((List<GetGradoUsuarioRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getGradoUsuarioQueryName), idp));
-    }
-
     public List<_hqlPromocionesRtnType> _hqlPromociones(String codigo) {
         return ((List<_hqlPromocionesRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants._hqlPromocionesQueryName), codigo));
+    }
+
+    public List<GetGradoUsuarioRtnType> getGradoUsuario(Integer idp) {
+        return ((List<GetGradoUsuarioRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getGradoUsuarioQueryName), idp));
     }
 
     public com.aprendoz_desarrollo.data.TipoCosto getTipoCostoById(Integer id) {

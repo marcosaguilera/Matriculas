@@ -1207,12 +1207,12 @@ dojo.declare("Main", wm.Page, {
      var _sub= _value.substring(0,5);
      if(_sub >= 13000 && _sub <=12999){
         this.controls_panel.hide();
-        this.html_nuevo.show();
-        this.html_antiguo.hide();
+        //this.html_nuevo.show();
+        //this.html_antiguo.hide();
      }if(_sub < 13000){
-        this.controls_panel.show();
-        this.html_antiguo.show();  
-        this.html_nuevo.hide();   
+        //this.controls_panel.show();
+        //this.html_antiguo.show();  
+        //this.html_nuevo.hide();   
      }
         
      var value= main.matricula_select_estudiante.getDataValue();
@@ -2197,7 +2197,7 @@ dojo.declare("Main", wm.Page, {
      var _true= true;
      var _codigo= _json.data.codigo;
      console.log(_codigo);
-     if(_codigo >= 12000 && _codigo <= 19999){
+     if(_codigo >= 14000 && _codigo <= 14999){
       console.log("ingreso por #1");
        //transportes
        this.a_listadoServicios.input.setValue("idp", idpersona);
@@ -2237,7 +2237,7 @@ dojo.declare("Main", wm.Page, {
        this.a_listadoServiciosAsopadres.update();
      }
      
-     else if(_codigo < 12000/* || _codigo >13999*/){
+     else if(_codigo < 14000 || _codigo >14999){ /*else if(_codigo < 12000 || _codigo >13999){*/
       console.log("ingreso por #2");
        //transportes
        this.a_listadoServicios.input.setValue("idp", idpersona);
