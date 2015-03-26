@@ -5,7 +5,7 @@ package com.aprendoz_desarrollo;
 
 /**
  *  Query names for service "aprendoz_desarrollo"
- *  06/09/2014 18:05:50
+ *  06/13/2014 10:28:16
  * 
  */
 public class Aprendoz_desarrolloConstants {
@@ -15,8 +15,8 @@ public class Aprendoz_desarrolloConstants {
     public final static String _verificaResponsableQueryName = "_verificaResponsable";
     public final static String _typeUserByUsernameQueryName = "_typeUserByUsername";
     public final static String _getAnuncioQueryName = "_getAnuncio";
-    public final static String getCostosTransporteQueryName = "getCostosTransporte";
     public final static String getIdbyUserQueryName = "getIdbyUser";
+    public final static String getCostosTransporteQueryName = "getCostosTransporte";
     public final static String returExitsValueQueryName = "returExitsValue";
     public final static String _countGrupoFamiliarUpdatedQueryName = "_countGrupoFamiliarUpdated";
     public final static String getAsignaturasMalasQueryName = "getAsignaturasMalas";
@@ -40,8 +40,8 @@ public class Aprendoz_desarrolloConstants {
     public final static String getGrupoFamiliarbyIdPersonaQueryName = "getGrupoFamiliarbyIdPersona";
     public final static String mailMadreQueryName = "mailMadre";
     public final static String GetInscPersonaGrupoFamiliarQueryName = "GetInscPersonaGrupoFamiliar";
-    public final static String getGradoUsuarioQueryName = "getGradoUsuario";
     public final static String _hqlPromocionesQueryName = "_hqlPromociones";
+    public final static String getGradoUsuarioQueryName = "getGradoUsuario";
     public final static String getTipoCostoByIdQueryName = "getTipoCostoById";
     public final static String getTipoPersonaByUserQueryName = "getTipoPersonaByUser";
     public final static String personaGetInfoQueryName = "personaGetInfo";

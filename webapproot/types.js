@@ -355,7 +355,7 @@ wm.types = {
 			"fields": {
 				"actualizado": {
 					"exclude": [],
-					"fieldOrder": 2,
+					"fieldOrder": 3,
 					"include": [],
 					"isList": false,
 					"noChange": [],
@@ -364,11 +364,20 @@ wm.types = {
 				},
 				"fecha": {
 					"exclude": [],
-					"fieldOrder": 1,
+					"fieldOrder": 2,
 					"include": [],
 					"isList": false,
 					"noChange": [],
 					"required": true,
+					"type": "java.util.Date"
+				},
+				"fechaCreacion": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
 					"type": "java.util.Date"
 				},
 				"idActualizacionDatosPersona": {
@@ -382,7 +391,7 @@ wm.types = {
 				},
 				"persona": {
 					"exclude": [],
-					"fieldOrder": 3,
+					"fieldOrder": 4,
 					"include": [],
 					"isList": false,
 					"noChange": [],
@@ -450,7 +459,7 @@ wm.types = {
 			"fields": {
 				"actualizado": {
 					"exclude": [],
-					"fieldOrder": 2,
+					"fieldOrder": 3,
 					"include": [],
 					"isList": false,
 					"noChange": [],
@@ -459,16 +468,25 @@ wm.types = {
 				},
 				"fecha": {
 					"exclude": [],
-					"fieldOrder": 1,
+					"fieldOrder": 2,
 					"include": [],
 					"isList": false,
 					"noChange": [],
 					"required": true,
 					"type": "java.util.Date"
 				},
+				"fechaCreacion": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.util.Date"
+				},
 				"grupoFamiliar": {
 					"exclude": [],
-					"fieldOrder": 3,
+					"fieldOrder": 4,
 					"include": [],
 					"isList": false,
 					"noChange": [],
@@ -13366,6 +13384,15 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.Boolean"
 				},
+				"autorizadoCra": {
+					"exclude": [],
+					"fieldOrder": 15,
+					"include": ["delete", "read", "update", "insert"],
+					"isList": false,
+					"noChange": ["delete", "read", "update"],
+					"required": true,
+					"type": "java.lang.Boolean"
+				},
 				"autorizadoFinanciera": {
 					"exclude": [],
 					"fieldOrder": 10,
@@ -14732,7 +14759,7 @@ wm.types = {
 					"isList": false,
 					"noChange": ["delete", "read", "update"],
 					"required": true,
-					"type": "java.lang.Long"
+					"type": "java.lang.Integer"
 				},
 				"idPersona": {
 					"exclude": [],
@@ -14835,7 +14862,7 @@ wm.types = {
 					"include": [],
 					"isList": false,
 					"noChange": [],
-					"required": false,
+					"required": true,
 					"type": "java.lang.Boolean"
 				},
 				"autorizadoFinanciera": {

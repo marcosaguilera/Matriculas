@@ -21,7 +21,7 @@
             <column name="commentfinanc" length="65535"/>
         </property>
         <property name="autorizadoCra" type="boolean">
-            <column name="autorizado_cra"/>
+            <column name="autorizado_cra" not-null="true"/>
         </property>
         <property name="commentCra" type="string">
             <column name="comment_cra" length="65535"/>

@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.InscAlumCostoCopy
- *  06/09/2014 16:21:44
+ *  06/13/2014 10:26:51
  * 
  */
 public class InscAlumCostoCopy {

@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  *  aprendoz_desarrollo.VistaInscAlumnCursoId
- *  06/09/2014 16:21:42
+ *  06/13/2014 10:26:51
  * 
  */
 public class VistaInscAlumnCursoId

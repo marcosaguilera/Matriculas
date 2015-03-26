@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.BimestreSy
- *  06/09/2014 16:21:42
+ *  06/13/2014 10:26:50
  * 
  */
 public class BimestreSy {

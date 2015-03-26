@@ -6,28 +6,31 @@ import java.util.Date;
 
 /**
  *  aprendoz_desarrollo.ActualizacionGrupoFamiliarCopy
- *  06/09/2014 16:21:43
+ *  06/13/2014 10:26:51
  * 
  */
 public class ActualizacionGrupoFamiliarCopy {
 
     private Integer idActualizacionGrupoFamiliar;
     private GrupoFamiliar grupoFamiliar;
+    private Date fechaCreacion;
     private Date fecha;
     private Byte actualizado;
 
     public ActualizacionGrupoFamiliarCopy() {
     }
 
-    public ActualizacionGrupoFamiliarCopy(Integer idActualizacionGrupoFamiliar, Date fecha, Byte actualizado) {
+    public ActualizacionGrupoFamiliarCopy(Integer idActualizacionGrupoFamiliar, Date fechaCreacion, Date fecha, Byte actualizado) {
         this.idActualizacionGrupoFamiliar = idActualizacionGrupoFamiliar;
+        this.fechaCreacion = fechaCreacion;
         this.fecha = fecha;
         this.actualizado = actualizado;
     }
 
-    public ActualizacionGrupoFamiliarCopy(Integer idActualizacionGrupoFamiliar, GrupoFamiliar grupoFamiliar, Date fecha, Byte actualizado) {
+    public ActualizacionGrupoFamiliarCopy(Integer idActualizacionGrupoFamiliar, GrupoFamiliar grupoFamiliar, Date fechaCreacion, Date fecha, Byte actualizado) {
         this.idActualizacionGrupoFamiliar = idActualizacionGrupoFamiliar;
         this.grupoFamiliar = grupoFamiliar;
+        this.fechaCreacion = fechaCreacion;
         this.fecha = fecha;
         this.actualizado = actualizado;
     }
@@ -46,6 +49,14 @@ public class ActualizacionGrupoFamiliarCopy {
 
     public void setGrupoFamiliar(GrupoFamiliar grupoFamiliar) {
         this.grupoFamiliar = grupoFamiliar;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
     public Date getFecha() {

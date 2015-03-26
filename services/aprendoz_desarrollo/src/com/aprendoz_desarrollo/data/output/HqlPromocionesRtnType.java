@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "hqlPromociones" on 06/09/2014 18:05:27
+ * Generated for query "hqlPromociones" on 06/13/2014 10:27:10
  * 
  */
 public class HqlPromocionesRtnType {
