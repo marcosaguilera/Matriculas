@@ -188,6 +188,15 @@
 		}, {
 			"name": "cod3",
 			"type": "java.lang.String"
+		}, {
+			"name": "cod4",
+			"type": "java.lang.String"
+		}, {
+			"name": "cod5",
+			"type": "java.lang.String"
+		}, {
+			"name": "cod6",
+			"type": "java.lang.String"
 		}],
 		"returnType": "[com.aprendoz_desarrollo.data.output.GetTodosCostosRtnType]"
 	}, {

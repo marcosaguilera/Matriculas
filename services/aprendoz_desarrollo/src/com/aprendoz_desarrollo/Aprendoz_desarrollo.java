@@ -47,7 +47,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "aprendoz_desarrollo"
- *  06/13/2014 10:28:16
+ *  03/27/2015 16:48:02
  * 
  */
 @SuppressWarnings("unchecked")
@@ -58,8 +58,8 @@ public class Aprendoz_desarrollo
     private DataServiceManager dsMgr;
     private TaskManager taskMgr;
 
-    public List<GetTodosCostosRtnType> getTodosCostos(Integer idp, String cod, Boolean nuevo, Integer sy, String cod2, Integer idgrado, String cod3) {
-        return ((List<GetTodosCostosRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getTodosCostosQueryName), idp, cod, nuevo, sy, cod2, idgrado, cod3));
+    public List<GetTodosCostosRtnType> getTodosCostos(Integer idp, String cod, Boolean nuevo, Integer sy, String cod2, Integer idgrado, String cod3, String cod4, String cod5, String cod6) {
+        return ((List<GetTodosCostosRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Aprendoz_desarrolloConstants.getTodosCostosQueryName), idp, cod, nuevo, sy, cod2, idgrado, cod3, cod4, cod5, cod6));
     }
 
     public List<_hqlFichaMedicaByUserRtnType> _hqlFichaMedicaByUser(Integer idp) {

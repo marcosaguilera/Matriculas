@@ -256,7 +256,7 @@ Main.widgets = {
 								}],
 								Actualizacion: ["wm.TabLayers", {}, {}, {
 									inicio: ["wm.Layer", {"caption":"INICIO","horizontalAlign":"left","verticalAlign":"top","padding":"100","lock":true,"showing":false}, {}, {
-										a_getUserName: ["wm.TextEditor", {"width":"423px","caption":"nombre de usuario","showing":false,"disabled":true}, {"onchange":"a_getUserNameChange"}, {
+										a_getUserName: ["wm.TextEditor", {"width":"423px","caption":"nombre de usuario","showing":false,"disabled":true,"displayValue":"e"}, {"onchange":"a_getUserNameChange"}, {
 											binding: ["wm.Binding", {}, {}, {
 												wire: ["wm.Wire", {"targetProperty":"dataValue","source":"a_getUserNameSv.dataValue"}, {}]
 											}],
@@ -300,7 +300,7 @@ Main.widgets = {
 												}]
 											}]
 										}],
-										page_ActualizaDatos: ["wm.PageContainer", {"border":"0","pageName":"ActualizaDatos","deferLoad":true}, {}],
+										page_ActualizaDatos: ["wm.PageContainer", {"border":"0","pageName":"ActualizaDatos","deferLoad":true,"showing":false}, {}],
 										ficha_medica: ["wm.Panel", {"height":"100%","width":"100%","lock":true,"horizontalAlign":"center","verticalAlign":"top","showing":false,"padding":"0, 0, 0, 250","autoScroll":true}, {}, {
 											label19: ["wm.Label", {"height":"30px","width":"100%","border":"0","align":"center","caption":"DATOS DEL ESTUDIANTE"}, {}, {
 												format: ["wm.DataFormatter", {}, {}]
@@ -400,7 +400,7 @@ Main.widgets = {
 														idcosto1: ["wm.DataGridColumn", {"caption":" ","field":"idcosto","columnWidth":"20px","display":"Number","dataExpression":"'<img src=\"resources/images/imagelists/buy.gif\" height=\"16\" width=\"16\" /><center>'"}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
-														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","index":3,"display":"Number","dataExpression":"\"$ \"+${valor}"}, {}, {
+														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","columnWidth":"100px","index":3,"display":"Number","dataExpression":"\"$ \"+${valor}"}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
 														inscrito1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","index":4,"dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }"}, {}, {
@@ -410,10 +410,10 @@ Main.widgets = {
 															format: ["wm.DataFormatter", {}, {}]
 														}]
 													}],
-													controls_panel: ["wm.Panel", {"height":"100%","width":"110px","lock":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
-														agregar_alim: ["wm.Button", {"height":"32px","width":"102px","borderColor":"#538312","caption":"+ Agregar","margin":"0"}, {"onclick":"agregar_alimClick"}],
+													controls_panel: ["wm.Panel", {"height":"100%","width":"110px","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
+														agregar_alim: ["wm.Button", {"height":"32px","width":"102px","borderColor":"#538312","caption":"+ Agregar","margin":"0","disabled":true}, {"onclick":"agregar_alimClick"}],
 														spacer15: ["wm.Spacer", {"height":"4px","width":"96px"}, {}],
-														quitar_alim: ["wm.Button", {"height":"32px","width":"102px","borderColor":"#980c10","caption":"- Quitar","margin":"0"}, {"onclick":"quitar_alimClick"}]
+														quitar_alim: ["wm.Button", {"height":"32px","width":"102px","borderColor":"#980c10","caption":"- Quitar","margin":"0","disabled":true}, {"onclick":"quitar_alimClick"}]
 													}],
 													spacer28: ["wm.Spacer", {"height":"48px","width":"115px"}, {}]
 												}],
@@ -428,7 +428,7 @@ Main.widgets = {
 													detalles_importantes: ["wm.TextEditor", {"width":"70%","height":"60px","singleLine":false}, {}, {
 														editor: ["wm._TextEditor", {}, {}]
 													}],
-													panel47: ["wm.Panel", {"height":"100%","width":"110px","horizontalAlign":"left","verticalAlign":"top"}, {}, {
+													panel47: ["wm.Panel", {"height":"100%","width":"50px","horizontalAlign":"left","verticalAlign":"top"}, {}, {
 														guardar_restricciones_alimenticias: ["wm.Button", {"height":"48px","width":"100%","borderColor":"#Aaa","caption":"Guardar detalles","showing":false}, {"onclick":"guardar_restricciones_alimenticiasClick"}]
 													}]
 												}],
@@ -440,7 +440,9 @@ Main.widgets = {
 											}],
 											transporte: ["wm.Panel", {"height":"640px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
 												iFrame1: ["wm.IFrame", {"height":"450px","width":"100%","border":"0","source":"http://www.rochester.edu.co/aprendoz_uploads/media/M20152016/anim_transporte_2015/anim_transporte_2015.html"}, {}],
-												panel34: ["wm.Panel", {"height":"19px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"left","verticalAlign":"top"}, {}],
+												msn_transporte: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_12px","wm_TextDecoration_Bold"]},"height":"31px","width":"100%","border":"0","align":"center","caption":"*Tenga en cuenta que hay 6 opciones de transporte."}, {}, {
+													format: ["wm.DataFormatter", {}, {}]
+												}],
 												panel33: ["wm.Panel", {"height":"110px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
 													transporteDataGrid: ["wm.DataGrid", {"border":"0","width":"70%"}, {}, {
 														binding: ["wm.Binding", {}, {}, {
@@ -452,7 +454,7 @@ Main.widgets = {
 														idcosto1: ["wm.DataGridColumn", {"caption":"+","field":"idcosto","columnWidth":"45px","index":1}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
 														}],
-														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","index":3,"display":"Number","dataExpression":"\"$ \"+${valor}"}, {}, {
+														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","columnWidth":"100px","index":3,"display":"Number","dataExpression":"\"$ \"+${valor}"}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
 														column1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","index":4,"dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }"}, {}, {
@@ -493,7 +495,7 @@ Main.widgets = {
 														idcosto1: ["wm.DataGridColumn", {"caption":"+","field":"idcosto","columnWidth":"45px","index":1}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
 														}],
-														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","index":4,"display":"Number"}, {}, {
+														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","columnWidth":"100px","index":4,"display":"Number","dataExpression":"\"$ \"+${valor}"}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
 														inscrito1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","index":5,"dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }"}, {}, {
@@ -529,7 +531,7 @@ Main.widgets = {
 														idcosto1: ["wm.DataGridColumn", {"caption":" ","field":"idcosto","columnWidth":"20px","display":"Number","dataExpression":"'<img src=\"resources/images/imagelists/buy.gif\" height=\"16\" width=\"16\" /><center>'"}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
-														valor1: ["wm.DataGridColumn", {"caption":"valor","field":"valor","index":5,"display":"Number"}, {}, {
+														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","columnWidth":"100px","index":5,"display":"Number","dataExpression":"\"$ \"+${valor}"}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
 														inscrito1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","index":6,"dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }"}, {}, {
@@ -610,23 +612,27 @@ Main.widgets = {
 												}]
 											}]
 										}],
-										impresion_documentos: ["wm.Panel", {"height":"100%","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
+										impresion_documentos: ["wm.Panel", {"height":"100%","width":"100%","horizontalAlign":"left","verticalAlign":"top"}, {}, {
 											panel29: ["wm.Panel", {"height":"79px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
 												mensaje_documentos: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_16px"]},"height":"100%","width":"100%","border":"0","align":"center","caption":"Por favor oprima clic sobre cada uno de los botones e imprima los documentos allí señalados.<br>Para efectos de matrícula estos documentos deben ser presentados.","singleLine":false}, {}, {
 													format: ["wm.DataFormatter", {}, {}]
 												}]
 											}],
 											panel_documentos: ["wm.Panel", {"height":"48px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"middle"}, {}, {
-												contrato_butt: ["wm.Button", {"height":"48px","width":"170px","borderColor":"#1c74bc","caption":"Contrato de Matrícula"}, {"onclick":"contrato_buttClick"}],
+												contrato_butt: ["wm.Button", {"height":"48px","width":"170px","borderColor":"#1c74bc","caption":"1. Contrato de Matrícula"}, {"onclick":"contrato_buttClick"}],
 												contrato_alim_butt: ["wm.Button", {"_classes":{"domNode":["wm_TextDecoration_Bold"]},"height":"48px","width":"130px","borderColor":"#1c79b3","caption":"Contrato alimentos","showing":false}, {"onclick":"contrato_alim_buttClick"}],
 												contrato_trans_butt: ["wm.Button", {"_classes":{"domNode":["wm_TextDecoration_Bold"]},"height":"48px","width":"130px","borderColor":"#1c79b3","caption":"Contrato transporte","showing":false}, {"onclick":"contrato_trans_buttClick"}],
-												recibo_matricula_butt: ["wm.Button", {"height":"48px","width":"190px","borderColor":"#1c74bc","caption":"Recibo de matrícula"}, {"onclick":"recibo_matricula_buttClick"}],
+												recibo_matricula_butt: ["wm.Button", {"height":"48px","width":"190px","borderColor":"#1c74bc","caption":"2. Recibo de matrícula"}, {"onclick":"recibo_matricula_buttClick"}],
 												bancos_butt: ["wm.Button", {"height":"48px","width":"130px","caption":"Recibo de pago en bancos","showing":false}, {"onclick":"bancos_buttClick"}]
 											}],
 											panel5: ["wm.Panel", {"height":"48px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
-												mensualidades_butt: ["wm.Button", {"height":"48px","width":"170px","borderColor":"#1c74bc","caption":"Presupuesto de mensualidades"}, {"onclick":"mensualidades_buttClick"}],
+												mensualidades_butt: ["wm.Button", {"height":"48px","width":"170px","borderColor":"#1c74bc","caption":"3. Presupuesto de mensualidades"}, {"onclick":"mensualidades_buttClick"}],
 												pagare_butt: ["wm.Button", {"height":"48px","width":"110px","borderColor":"#1c74bc","caption":"Pagaré","showing":false}, {"onclick":"pagare_buttClick"}],
-												contrato_seg_butt: ["wm.Button", {"_classes":{"domNode":["wm_TextDecoration_Bold"]},"height":"100%","width":"190px","borderColor":"#1c79b3","caption":"Contrato seguro de vida"}, {"onclick":"contrato_seg_buttClick"}]
+												pagare1_butt: ["wm.Button", {"height":"48px","width":"190px","borderColor":"#1c74bc","caption":"4. Pagaré"}, {"onclick":"pagare1_buttClick"}]
+											}],
+											panel4: ["wm.Panel", {"height":"48px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+												contrato_seg_butt: ["wm.Button", {"_classes":{"domNode":["wm_TextDecoration_Bold"]},"height":"100%","width":"170px","borderColor":"#1c79b3","caption":"5. Contrato seguro de vida"}, {"onclick":"contrato_seg_buttClick"}],
+												spacer3: ["wm.Spacer", {"height":"48px","width":"190px"}, {}]
 											}],
 											spacer6: ["wm.Spacer", {"height":"48px","width":"96px"}, {}],
 											panel50: ["wm.Panel", {"height":"48px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
@@ -683,7 +689,7 @@ Main.widgets = {
 											message_final: ["wm.Label", {"_classes":{"domNode":["wm_BackgroundColor_White","wm_Border_TopStyleCurved8px"]},"height":"55px","width":"100%","border":"0","align":"center","caption":"Para finalizar el proceso de matrícula, por favor organizar los documentos relacionados a continuación y traerlos el día asignado en las instrucciones enviadas a su correo.","singleLine":false}, {}, {
 												format: ["wm.DataFormatter", {}, {}]
 											}],
-											html_nuevo: ["wm.Html", {"height":"100%","width":"100%","border":"0","html":"<ul> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Paz y Salvo de Tesorer&iacute;a del Jard&iacute;n o Colegio anterior. </span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Fotocopia del carn&eacute; de la EPS a la que est&aacute; afiliado el ni&ntilde;o (a).</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Examen de optometr&iacute;a y ort&oacute;ptica.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Examen de audiometr&iacute;a.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Informe m&eacute;dico de salud general en el que, adem&aacute;s, manifiesten si el ni&ntilde;o(a) puede tomar clases de nataci&oacute;n, e indique el esquema de vacunaci&oacute;n al d&iacute;a.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Contrato de matr&iacute;cula firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Fotocopia de las c&eacute;dulas ampliadas al 150% de Padre, Madre y Acudiente.&nbsp;</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Recibo de pago en bancos (factura de matr&iacute;cula) firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Presupuesto de mensualidades firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Fotocopia del comprobante del pago realizado a trav&eacute;s del sistema PSE o de la consignaci&oacute;n del Banco de Bogot&aacute;, por concepto de pago del saldo de la matr&iacute;cula.</span></span></p> \t</li> </ul>","padding":"15"}, {}],
+											html_nuevo: ["wm.Html", {"height":"100%","width":"100%","border":"0","html":"<ul> \t<li> \t<h3>Paz y Salvo de Tesorer&iacute;a del Jard&iacute;n o Colegio anterior.</h3> \t</li> \t<li> \t<h3>Copia aut&eacute;ntica del registro civil de nacimiento del estudiante.</h3> \t</li> \t<li> \t<h3>Fotocopia del carn&eacute; de la EPS a la que est&aacute; afiliado el ni&ntilde;o (a).</h3> \t</li> \t<li> \t<h3>Examen de agudeza visual y ort&oacute;ptica (seguimiento ocular) con opt&oacute;metra.</h3> \t</li> \t<li> \t<h3>Fotocopia del carn&eacute; de vacunas</h3> \t</li> \t<li> \t<h3>Audiometr&iacute;a sencilla con audi&oacute;loga.</h3> \t</li> \t<li> \t<h3>Informe m&eacute;dico de salud general en el que, adem&aacute;s, manifiesten si el ni&ntilde;o(a) puede tomar clases de nataci&oacute;n, e indique el esquema de vacunaci&oacute;n al d&iacute;a.</h3> \t</li> \t<li> \t<h3>Contrato de matr&iacute;cula firmado por ambos padres y acudiente.</h3> \t</li> \t<li> \t<h3>Fotocopia de las c&eacute;dulas ampliadas al 150% de Padre, Madre y Acudiente.&nbsp;</h3> \t</li> \t<li> \t<h3>Recibo de pago en bancos (factura de matr&iacute;cula) firmado por ambos padres y acudiente.</h3> \t</li> \t<li> \t<h3>Presupuesto de mensualidades firmado por ambos padres y acudiente.</h3> \t</li> \t<li> \t<h3>Fotocopia del comprobante del pago realizado a trav&eacute;s del sistema PSE o de la consignaci&oacute;n del Banco de Bogot&aacute;, por concepto de pago del saldo de la matr&iacute;cula.</h3> \t</li> </ul>","padding":"15"}, {}],
 											html_antiguo: ["wm.Html", {"height":"100%","width":"100%","border":"0","html":"<ul> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Fotocopia del carn&eacute; de la EPS a la que est&aacute; afiliado el ni&ntilde;o (a) (en caso de cambio de eps en el &uacute;ltimo a&ntilde;o&nbsp;)&nbsp;.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Contrato de matr&iacute;cula firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Recibo de pago en bancos (factura de matr&iacute;cula) firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Presupuesto de mensualidades firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Fotocopia del comprobante del pago realizado a trav&eacute;s del sistema PSE o de la consignaci&oacute;n del Banco de Bogot&aacute;, por concepto de pago del saldo de la matr&iacute;cula.</span></span></p> \t</li> </ul>","showing":false}, {}],
 											label1: ["wm.Label", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"80px","width":"100%","border":"0","align":"center","caption":"Para realizar el proceso con otro estudiante haga clic en el botón <u>Cambiar estudiante</u>. Seleccione un estudiante diferente en la sección de <u>Ficha de Salud</u> y continué con el proceso.<br><br>Use el botón <u>Terminar</u> para cerrar la sesión y finalizar el proceso.","singleLine":false}, {}, {
 												format: ["wm.DataFormatter", {}, {}]
