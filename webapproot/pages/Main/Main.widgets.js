@@ -108,7 +108,7 @@ Main.widgets = {
 	}],
 	transporte_lista_rutas_dias: ["wm.LiveVariable", {"autoUpdate":false,"startUpdate":false,"liveSource":"com.aprendoz_desarrollo.data.Rutas"}, {}],
 	l_familia_tipo_persona: ["wm.LiveVariable", {"autoUpdate":false,"startUpdate":false,"liveSource":"com.aprendoz_desarrollo.data.TipoPersona"}, {}],
-	a_getUserNameSv: ["wm.ServiceVariable", {"service":"securityService","operation":"getUserName","startUpdate":true,"autoUpdate":true}, {"onSuccess":"a_getUserNameSvSuccess"}, {
+	a_getUserNameSv: ["wm.ServiceVariable", {"service":"securityService","operation":"getUserName","autoUpdate":true,"startUpdate":true}, {"onSuccess":"a_getUserNameSvSuccess"}, {
 		input: ["wm.ServiceInput", {"type":"getUserNameInputs"}, {}]
 	}],
 	a_getInforUser: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"personaGetInfo"}, {"onSuccess":"a_getInforUserSuccess"}, {
@@ -132,7 +132,7 @@ Main.widgets = {
 	a_sv_sendMailPermanent: ["wm.ServiceVariable", {"service":"EnviarMailPermanente","operation":"sendEmailNotification"}, {"onSuccess":"a_sv_sendMailPermanentSuccess","onError":"a_sv_sendMailPermanentError","onBeforeUpdate":"a_sv_sendMailPermanentBeforeUpdate"}, {
 		input: ["wm.ServiceInput", {"type":"sendEmailNotificationInputs"}, {}]
 	}],
-	isAuthenticatedSV: ["wm.ServiceVariable", {"service":"securityService","operation":"isAuthenticated","startUpdate":true,"autoUpdate":true}, {"onSuccess":"isAuthenticatedSVSuccess"}, {
+	isAuthenticatedSV: ["wm.ServiceVariable", {"service":"securityService","operation":"isAuthenticated","autoUpdate":true,"startUpdate":true}, {"onSuccess":"isAuthenticatedSVSuccess"}, {
 		input: ["wm.ServiceInput", {"type":"isAuthenticatedInputs"}, {}]
 	}],
 	getCount: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"returExitsValue"}, {"onSuccess":"getCountSuccess"}, {
@@ -220,7 +220,7 @@ Main.widgets = {
 	_verificaExistenciaFichaMedica: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"_existeFichaMedicaByUser"}, {"onSuccess":"_verificaExistenciaFichaMedicaSuccess"}, {
 		input: ["wm.ServiceInput", {"type":"_existeFichaMedicaByUserInputs"}, {}]
 	}],
-	a_anuncio: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"_getAnuncio","startUpdate":true,"autoUpdate":true}, {"onSuccess":"a_anuncioSuccess"}, {
+	a_anuncio: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"_getAnuncio","autoUpdate":true,"startUpdate":true}, {"onSuccess":"a_anuncioSuccess"}, {
 		input: ["wm.ServiceInput", {"type":"_getAnuncioInputs"}, {}]
 	}],
 	hsl_promociones: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"_hqlPromociones"}, {"onSuccess":"hsl_promocionesSuccess"}, {
@@ -232,21 +232,31 @@ Main.widgets = {
 	a_actualizaServicioAsopadres: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"updateServicios"}, {"onSuccess":"a_actualizaServicioAsopadresSuccess"}, {
 		input: ["wm.ServiceInput", {"type":"updateServiciosInputs"}, {}]
 	}],
+	showMapTrans: ["wm.NavigationCall", {"operation":"gotoDialogPage"}, {}, {
+		input: ["wm.ServiceInput", {"type":"gotoDialogPageInputs"}, {}, {
+			binding: ["wm.Binding", {}, {}, {
+				wire: ["wm.Wire", {"targetProperty":"pageName","expression":"\"Mapa\""}, {}],
+				wire2: ["wm.Wire", {"targetProperty":"hideControls","expression":"false"}, {}],
+				wire3: ["wm.Wire", {"targetProperty":"width","expression":"860"}, {}],
+				wire1: ["wm.Wire", {"targetProperty":"height","expression":"600"}, {}]
+			}]
+		}]
+	}],
 	layoutBox1: ["wm.Layout", {"height":"908px","width":"740px","horizontalAlign":"left","verticalAlign":"top"}, {}, {
 		FancyCentered: ["wm.Template", {"height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
 			FancyCentered1: ["wm.Template", {"height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
 				templateMain: ["wm.Template", {"_classes":{"domNode":["template-main"]},"height":"100%","horizontalAlign":"center","verticalAlign":"top","width":"100%","layoutKind":"left-to-right","autoScroll":true}, {}, {
 					content: ["wm.Panel", {"height":"800px","width":"950px","horizontalAlign":"left","verticalAlign":"top","freeze":true}, {}, {
-						panelHeader: ["wm.Panel", {"_classes":{"domNode":["template-header-panel","wm_BackgroundColor_White"]},"height":"80px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"left","verticalAlign":"top","showing":false}, {}],
-						panel1: ["wm.Panel", {"height":"24px","width":"100%","layoutKind":"left-to-right","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
+						panelHeader: ["wm.Panel", {"_classes":{"domNode":["template-header-panel","wm_BackgroundColor_White"]},"height":"80px","width":"100%","horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right","showing":false}, {}],
+						panel1: ["wm.Panel", {"height":"24px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right","showing":false}, {}, {
 							templateTopLeft: ["wm.Panel", {"_classes":{"domNode":["template-top-left"]},"height":"100%","width":"24px","horizontalAlign":"left","verticalAlign":"top"}, {}],
 							templateTop: ["wm.Panel", {"_classes":{"domNode":["template-top-center"]},"height":"100%","width":"100%","horizontalAlign":"left","verticalAlign":"top"}, {}],
 							templateTopRight: ["wm.Panel", {"_classes":{"domNode":["template-top-right"]},"height":"100%","width":"24px","horizontalAlign":"left","verticalAlign":"top"}, {}]
 						}],
-						panel2: ["wm.Panel", {"height":"100%","width":"100%","layoutKind":"left-to-right","horizontalAlign":"left","verticalAlign":"top","freeze":true}, {}, {
-							templateLeft: ["wm.Panel", {"_classes":{"domNode":["template-left"]},"height":"100%","width":"24px","horizontalAlign":"left","verticalAlign":"top","showing":false,"freeze":true}, {}],
+						panel2: ["wm.Panel", {"height":"100%","width":"100%","horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right","freeze":true}, {}, {
+							templateLeft: ["wm.Panel", {"_classes":{"domNode":["template-left"]},"height":"100%","width":"24px","horizontalAlign":"left","verticalAlign":"top","freeze":true,"showing":false}, {}],
 							templateContent: ["wm.Panel", {"_classes":{"domNode":["template-content"]},"height":"100%","width":"100%","horizontalAlign":"left","verticalAlign":"top"}, {}, {
-								aprendoz_header: ["wm.Panel", {"height":"34px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"left","verticalAlign":"middle"}, {}, {
+								aprendoz_header: ["wm.Panel", {"height":"34px","width":"100%","horizontalAlign":"left","verticalAlign":"middle","layoutKind":"left-to-right"}, {}, {
 									logo: ["wm.Picture", {"height":"100%","border":"0","width":"150px","source":"resources/images/logos/logo.jpg","aspect":"v","showing":false}, {}],
 									spacer1: ["wm.Spacer", {"height":"11px","width":"100%"}, {}],
 									label11: ["wm.Label", {"_classes":{"domNode":["wm_TextDecoration_Bold"]},"height":"100%","width":"46px","border":"0","align":"center","caption":"Salir"}, {}, {
@@ -256,13 +266,13 @@ Main.widgets = {
 								}],
 								Actualizacion: ["wm.TabLayers", {}, {}, {
 									inicio: ["wm.Layer", {"caption":"INICIO","horizontalAlign":"left","verticalAlign":"top","padding":"100","lock":true,"showing":false}, {}, {
-										a_getUserName: ["wm.TextEditor", {"width":"423px","caption":"nombre de usuario","showing":false,"disabled":true}, {"onchange":"a_getUserNameChange"}, {
+										a_getUserName: ["wm.TextEditor", {"width":"423px","caption":"nombre de usuario","disabled":true,"showing":false}, {"onchange":"a_getUserNameChange"}, {
 											binding: ["wm.Binding", {}, {}, {
 												wire: ["wm.Wire", {"targetProperty":"dataValue","source":"a_getUserNameSv.dataValue"}, {}]
 											}],
 											editor: ["wm._TextEditor", {}, {}]
 										}],
-										a_getGroupCode: ["wm.NumberEditor", {"showing":false,"disabled":true,"width":"423px","caption":"codigo familia"}, {"onchange":"a_getGroupCodeChange"}, {
+										a_getGroupCode: ["wm.NumberEditor", {"width":"423px","caption":"codigo familia","disabled":true,"showing":false}, {"onchange":"a_getGroupCodeChange"}, {
 											editor: ["wm._NumberEditor", {}, {}]
 										}],
 										inicio_nombreCompleto_label: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_20px"]},"height":"30px","width":"100%","border":"0","align":"center"}, {}, {
@@ -273,7 +283,7 @@ Main.widgets = {
 										}]
 									}],
 									matricula: ["wm.Layer", {"caption":"PROCESO DE MATRICULAS","horizontalAlign":"left","verticalAlign":"top","padding":"5"}, {}, {
-										panel_botones_pasos: ["wm.Panel", {"height":"48px","width":"100%","layoutKind":"left-to-right","lock":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
+										panel_botones_pasos: ["wm.Panel", {"height":"48px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 											actualizacion_butt: ["wm.Button", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","width":"100%","borderColor":"#1E0E67","caption":"1. ACTUALIZACIÓN DE DATOS"}, {}],
 											enfermeria_butt: ["wm.Button", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","width":"100%","borderColor":"#1E0E67","caption":"2. FICHA DE SALUD","showing":false}, {}],
 											servicios_butt: ["wm.Button", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","width":"100%","borderColor":"#1E0E67","caption":"3. INFORMACIÓN Y SELECCIÓN DE SERVICIOS","showing":false}, {}],
@@ -282,36 +292,36 @@ Main.widgets = {
 											pago_butt: ["wm.Button", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","width":"100%","borderColor":"#1E0E67","caption":"6. SELECCIONAR MODALIDAD DE PAGO","showing":false}, {}],
 											preparacion_butt: ["wm.Button", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","width":"100%","borderColor":"#1E0E67","caption":"7. PREPARACIÓN DE DOCUMENTOS","showing":false}, {}]
 										}],
-										top_banner: ["wm.Panel", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px"]},"height":"132px","width":"100%","layoutKind":"left-to-right","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false,"border":"1","borderColor":"#aaa"}, {}, {
+										top_banner: ["wm.Panel", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px"]},"height":"132px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","border":"1","layoutKind":"left-to-right","borderColor":"#aaa","showing":false}, {}, {
 											header_iframe: ["wm.IFrame", {"height":"140px","width":"100%","border":"0","source":"http://aprendoz.rochester.edu.co/recursos/bnr_salud/bnr_salud.html"}, {}]
 										}],
-										top_banner_servicios: ["wm.Panel", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px"]},"height":"132px","width":"100%","layoutKind":"left-to-right","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false,"border":"1","borderColor":"#aaa"}, {}, {
+										top_banner_servicios: ["wm.Panel", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px"]},"height":"132px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","border":"1","layoutKind":"left-to-right","borderColor":"#aaa","showing":false}, {}, {
 											header_iframe1: ["wm.IFrame", {"height":"140px","width":"100%","border":"0","source":"http://aprendoz.rochester.edu.co/recursos/bnr_servicios/bnr_servicios.html"}, {}]
 										}],
 										header_message: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px"]},"height":"30px","width":"100%","border":"0","align":"center","caption":"Por favor seleccione el estudiante, pase por cada una de las pestañas y agregue los servicios que va a contratar","showing":false}, {}, {
 											format: ["wm.DataFormatter", {}, {}]
 										}],
-										panel_selector_principal: ["wm.Panel", {"height":"32px","width":"100%","layoutKind":"left-to-right","lock":true,"horizontalAlign":"center","verticalAlign":"middle","showing":false}, {}, {
+										panel_selector_principal: ["wm.Panel", {"height":"32px","width":"100%","lock":true,"horizontalAlign":"center","verticalAlign":"middle","layoutKind":"left-to-right","showing":false}, {}, {
 											matricula_select_estudiante: ["wm.SelectEditor", {"width":"400px","caption":"Seleccione el estudiante","height":"28px","captionSize":"72%"}, {"onchange":"matricula_select_estudianteChange"}, {
 												editor: ["wm._SelectEditor", {"displayField":"completo","dataField":"idpersona","required":true,"displayExpression":"${codigo}+\" - \"+${completo}"}, {}, {
 													binding: ["wm.Binding", {}, {}, {
-														wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"estudiante_grupoFamiliar"}, {}]
+														wire: ["wm.Wire", {"targetProperty":"dataSet","source":"estudiante_grupoFamiliar","expression":undefined}, {}]
 													}]
 												}]
 											}]
 										}],
 										page_ActualizaDatos: ["wm.PageContainer", {"border":"0","pageName":"ActualizaDatos","deferLoad":true}, {}],
-										ficha_medica: ["wm.Panel", {"height":"100%","width":"100%","lock":true,"horizontalAlign":"center","verticalAlign":"top","showing":false,"padding":"0, 0, 0, 250","autoScroll":true}, {}, {
+										ficha_medica: ["wm.Panel", {"height":"100%","width":"100%","padding":"0, 0, 0, 250","lock":true,"horizontalAlign":"center","verticalAlign":"top","autoScroll":true,"showing":false}, {}, {
 											label19: ["wm.Label", {"height":"30px","width":"100%","border":"0","align":"center","caption":"DATOS DEL ESTUDIANTE"}, {}, {
 												format: ["wm.DataFormatter", {}, {}]
 											}],
-											idFicha: ["wm.NumberEditor", {"showing":false,"width":"100%","caption":"id ficha tecnica","readonly":true}, {}, {
+											idFicha: ["wm.NumberEditor", {"width":"100%","caption":"id ficha tecnica","readonly":true,"showing":false}, {}, {
 												editor: ["wm._NumberEditor", {}, {}]
 											}],
 											nombrecompleto: ["wm.TextEditor", {"width":"100%","caption":"Nombre y Apellidos","height":"26px","readonly":true}, {}, {
 												editor: ["wm._TextEditor", {}, {}]
 											}],
-											panel41: ["wm.Panel", {"height":"27px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"right","verticalAlign":"middle"}, {}, {
+											panel41: ["wm.Panel", {"height":"27px","width":"100%","horizontalAlign":"right","verticalAlign":"middle","layoutKind":"left-to-right"}, {}, {
 												edad: ["wm.NumberEditor", {"width":"100%","caption":"Edad","display":"Text","height":"26px","captionSize":"80%","readonly":true}, {}, {
 													editor: ["wm._TextEditor", {}, {}]
 												}],
@@ -322,7 +332,7 @@ Main.widgets = {
 											label20: ["wm.Label", {"height":"30px","width":"100%","border":"0","align":"center","caption":"INFORMACIÓN MÉDICA"}, {}, {
 												format: ["wm.DataFormatter", {}, {}]
 											}],
-											panel42: ["wm.Panel", {"height":"27px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"right","verticalAlign":"top"}, {}, {
+											panel42: ["wm.Panel", {"height":"27px","width":"100%","horizontalAlign":"right","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 												rh: ["wm.TextEditor", {"width":"150%","caption":"Grupo sanguineo","height":"100%","captionSize":"80%","readonly":true}, {}, {
 													editor: ["wm._TextEditor", {}, {}]
 												}],
@@ -333,7 +343,7 @@ Main.widgets = {
 													editor: ["wm._TextEditor", {}, {}]
 												}]
 											}],
-											panel43: ["wm.Panel", {"height":"27px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"right","verticalAlign":"top"}, {}, {
+											panel43: ["wm.Panel", {"height":"27px","width":"100%","horizontalAlign":"right","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 												telefono: ["wm.TextEditor", {"width":"50%","caption":"Télefono","height":"100%","captionSize":"75%","readonly":true}, {}, {
 													editor: ["wm._TextEditor", {}, {}]
 												}],
@@ -341,13 +351,13 @@ Main.widgets = {
 													editor: ["wm._TextEditor", {}, {}]
 												}]
 											}],
-											seguro_medico: ["wm.TextEditor", {"width":"100%","caption":"¿Tendrá el seguro de accidentes de Suramericana? ","showing":false,"height":"32px","captionSize":"80%"}, {}, {
+											seguro_medico: ["wm.TextEditor", {"width":"100%","caption":"¿Tendrá el seguro de accidentes de Suramericana? ","height":"32px","captionSize":"80%","showing":false}, {}, {
 												editor: ["wm._TextEditor", {}, {}]
 											}],
 											medico_tratante: ["wm.TextEditor", {"width":"100%","caption":"Médico Tratante","height":"30px"}, {}, {
 												editor: ["wm._TextEditor", {}, {}]
 											}],
-											panel16: ["wm.Panel", {"height":"33px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"left","verticalAlign":"top"}, {}, {
+											panel16: ["wm.Panel", {"height":"33px","width":"100%","horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 												alergias: ["wm.TextAreaEditor", {"height":"100%","width":"100%","caption":"Alergias a medicamentos o alimentos"}, {}, {
 													editor: ["wm._TextAreaEditor", {}, {}]
 												}],
@@ -368,15 +378,15 @@ Main.widgets = {
 											recomendaciones: ["wm.TextAreaEditor", {"height":"32px","width":"100%","caption":"Recomendaciones especiales"}, {}, {
 												editor: ["wm._TextAreaEditor", {}, {}]
 											}],
-											formularioFichaMedica: ["wm.LiveForm", {"height":"100px","verticalAlign":"top","horizontalAlign":"left","showing":false,"lock":true}, {"onSuccess":"formularioFichaMedicaSuccess"}],
-											panel48: ["wm.Panel", {"height":"38px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"right","verticalAlign":"top"}, {}, {
+											formularioFichaMedica: ["wm.LiveForm", {"height":"100px","verticalAlign":"top","horizontalAlign":"left","lock":true,"showing":false}, {"onSuccess":"formularioFichaMedicaSuccess"}],
+											panel48: ["wm.Panel", {"height":"38px","width":"100%","horizontalAlign":"right","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 												volver_ficha_medica: ["wm.Button", {"height":"100%","width":"96px","borderColor":"#1c74b3","caption":"Atras","showing":false}, {"onclick":"volver_ficha_medicaClick"}],
 												guardar_ficha: ["wm.Button", {"height":"100%","width":"120px","borderColor":"#1c74b3","caption":"Guardar"}, {"onclick":"guardar_fichaClick"}],
 												actualizar_ficha: ["wm.Button", {"height":"100%","width":"94px","borderColor":"#aaa","caption":"Actualizar","showing":false}, {"onclick":"actualizar_fichaClick"}]
 											}]
 										}],
-										panel_botones: ["wm.Panel", {"height":"36px","width":"100%","layoutKind":"left-to-right","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
-											home_butt: ["wm.Picture", {"height":"100%","border":"1","width":"60px","source":"resources/images/buttons/home.png","aspect":"h","showing":false,"margin":"4","borderColor":"#aaa"}, {"onclick":"home_buttClick"}],
+										panel_botones: ["wm.Panel", {"height":"36px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right","showing":false}, {}, {
+											home_butt: ["wm.Picture", {"height":"100%","border":"1","width":"60px","margin":"4","source":"resources/images/buttons/home.png","aspect":"h","borderColor":"#aaa","showing":false}, {"onclick":"home_buttClick"}],
 											volver_servicios: ["wm.Button", {"height":"100%","width":"70px","borderColor":"#1c74b3","caption":"Atras"}, {"onclick":"volver_serviciosClick"}],
 											alimento_butt: ["wm.Button", {"height":"100%","width":"115px","borderColor":"#aaa","caption":"1. Alimentación","disabled":true,"showing":false}, {"onclick":"alimento_buttClick"}],
 											transporte_butt: ["wm.Button", {"height":"100%","width":"105px","borderColor":"#aaa","caption":"2. Transporte","disabled":true,"showing":false}, {"onclick":"transporte_buttClick"}],
@@ -384,15 +394,15 @@ Main.widgets = {
 											impresion_butt: ["wm.Button", {"_classes":{"domNode":["wm_FontColor_White"]},"height":"100%","width":"180px","borderColor":"#3079ED","caption":"Finalizar y pagar","disabled":true,"iconUrl":"resources/images/buttons/print.png","iconWidth":"18px","iconHeight":"18px","showing":false}, {"onclick":"impresion_buttClick"}],
 											asopadres_butt: ["wm.Button", {"height":"100%","width":"190px","borderColor":"#aaa","caption":"4. Información de asopadres","disabled":true,"showing":false}, {"onclick":"asopadres_buttClick"}]
 										}],
-										panel_servicios: ["wm.Panel", {"height":"100%","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false,"border":"1","padding":"10","autoScroll":true,"borderColor":"#bbbbbb"}, {}, {
-											alimentacion: ["wm.Panel", {"height":"730px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
+										panel_servicios: ["wm.Panel", {"height":"100%","width":"100%","padding":"10","lock":true,"horizontalAlign":"left","verticalAlign":"top","border":"1","autoScroll":true,"borderColor":"#bbbbbb","showing":false}, {}, {
+											alimentacion: ["wm.Panel", {"height":"730px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
 												iFrame2: ["wm.IFrame", {"height":"450px","width":"100%","border":"0","source":"http://www.rochester.edu.co/aprendoz_uploads/media/M20152016/anim_alimentos_2015/anim_alimentos_2015.html"}, {}],
-												panel27: ["wm.Panel", {"height":"19px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"left","verticalAlign":"top"}, {}],
-												panel30: ["wm.Panel", {"height":"110px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+												panel27: ["wm.Panel", {"height":"19px","width":"100%","horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right"}, {}],
+												panel30: ["wm.Panel", {"height":"110px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 													spacer2: ["wm.Spacer", {"height":"44px","width":"61px"}, {}],
 													alimentosDataGrid: ["wm.DataGrid", {"border":"0","width":"80%"}, {}, {
 														binding: ["wm.Binding", {}, {}, {
-															wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"a_listadoServiciosAlimentos"}, {}]
+															wire: ["wm.Wire", {"targetProperty":"dataSet","source":"a_listadoServiciosAlimentos","expression":undefined}, {}]
 														}],
 														nombre1: ["wm.DataGridColumn", {"caption":"Nombre servicio","field":"nombre","columnWidth":"100%","index":2}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
@@ -400,51 +410,60 @@ Main.widgets = {
 														idcosto1: ["wm.DataGridColumn", {"caption":" ","field":"idcosto","columnWidth":"20px","display":"Number","dataExpression":"'<img src=\"resources/images/imagelists/buy.gif\" height=\"16\" width=\"16\" /><center>'"}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
-														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","index":3,"display":"Number","dataExpression":"\"$ \"+${valor}"}, {}, {
+														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","columnWidth":"100px","display":"Number","dataExpression":"\"$ \"+${valor}","index":3}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
-														inscrito1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","index":4,"dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }"}, {}, {
+														inscrito1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }","index":4}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
 														}],
 														column1: ["wm.DataGridColumn", {"caption":"+","field":"idcosto","columnWidth":"45px","index":1}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
 														}]
 													}],
-													controls_panel: ["wm.Panel", {"height":"100%","width":"110px","lock":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
-														agregar_alim: ["wm.Button", {"height":"32px","width":"102px","borderColor":"#538312","caption":"+ Agregar","margin":"0"}, {"onclick":"agregar_alimClick"}],
+													controls_panel: ["wm.Panel", {"height":"100%","width":"110px","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
+														agregar_alim: ["wm.Button", {"height":"32px","width":"102px","borderColor":"#538312","caption":"+ Agregar","margin":"0","disabled":true}, {"onclick":"agregar_alimClick"}],
 														spacer15: ["wm.Spacer", {"height":"4px","width":"96px"}, {}],
-														quitar_alim: ["wm.Button", {"height":"32px","width":"102px","borderColor":"#980c10","caption":"- Quitar","margin":"0"}, {"onclick":"quitar_alimClick"}]
+														quitar_alim: ["wm.Button", {"height":"32px","width":"102px","borderColor":"#980c10","caption":"- Quitar","margin":"0","disabled":true}, {"onclick":"quitar_alimClick"}]
 													}],
 													spacer28: ["wm.Spacer", {"height":"48px","width":"115px"}, {}]
 												}],
-												panel46: ["wm.Panel", {"height":"33px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"middle"}, {}, {
+												panel46: ["wm.Panel", {"height":"33px","width":"100%","horizontalAlign":"center","verticalAlign":"middle","layoutKind":"left-to-right"}, {}, {
 													picture12: ["wm.Picture", {"height":"18px","border":"0","width":"22px","source":"resources/images/buttons/nearView.png","showing":false}, {}],
 													label22: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"26px","width":"70%","border":"0","caption":"Alergias señaladas en la ficha médica","singleLine":false}, {}, {
 														format: ["wm.DataFormatter", {}, {}]
 													}],
 													spacer25: ["wm.Spacer", {"height":"48px","width":"115px"}, {}]
 												}],
-												panel45: ["wm.Panel", {"height":"65px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+												panel45: ["wm.Panel", {"height":"65px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 													detalles_importantes: ["wm.TextEditor", {"width":"70%","height":"60px","singleLine":false}, {}, {
 														editor: ["wm._TextEditor", {}, {}]
 													}],
-													panel47: ["wm.Panel", {"height":"100%","width":"110px","horizontalAlign":"left","verticalAlign":"top"}, {}, {
+													panel47: ["wm.Panel", {"height":"100%","width":"50px","horizontalAlign":"left","verticalAlign":"top"}, {}, {
 														guardar_restricciones_alimenticias: ["wm.Button", {"height":"48px","width":"100%","borderColor":"#Aaa","caption":"Guardar detalles","showing":false}, {"onclick":"guardar_restricciones_alimenticiasClick"}]
 													}]
 												}],
 												detalleAlimento: ["wm.LiveForm", {"height":"18px","verticalAlign":"top","horizontalAlign":"left","showing":false}, {"onSuccess":"detalleAlimentoSuccess"}],
-												base_boton_continuar: ["wm.Panel", {"height":"50px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"right","verticalAlign":"top"}, {}, {
+												base_boton_continuar: ["wm.Panel", {"height":"50px","width":"100%","horizontalAlign":"right","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 													continuar_servicios: ["wm.Button", {"height":"48px","width":"230px","borderColor":"#1c79b3","caption":"Continuar con Transporte"}, {"onclick":"continuar_serviciosClick"}]
 												}],
-												panel38: ["wm.Panel", {"height":"48px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}]
+												panel38: ["wm.Panel", {"height":"48px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}]
 											}],
-											transporte: ["wm.Panel", {"height":"640px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
+											transporte: ["wm.Panel", {"height":"675px","width":"100%","horizontalAlign":"left","verticalAlign":"top"}, {}, {
 												iFrame1: ["wm.IFrame", {"height":"450px","width":"100%","border":"0","source":"http://www.rochester.edu.co/aprendoz_uploads/media/M20152016/anim_transporte_2015/anim_transporte_2015.html"}, {}],
-												panel34: ["wm.Panel", {"height":"19px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"left","verticalAlign":"top"}, {}],
-												panel33: ["wm.Panel", {"height":"110px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+												msn_transporte: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_12px","wm_TextDecoration_Bold"]},"height":"31px","width":"100%","border":"0","align":"center","caption":"*Tenga en cuenta que hay 6 opciones de transporte."}, {}, {
+													format: ["wm.DataFormatter", {}, {}]
+												}],
+												panel33: ["wm.Panel", {"height":"100%","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
+													map_panel: ["wm.Panel", {"height":"100%","width":"120px","padding":"5","horizontalAlign":"center","verticalAlign":"middle","margin":"5"}, {}, {
+														map_pic: ["wm.Picture", {"height":"80%","border":"0","width":"80%","source":"http://www.rochester.edu.co/aprendoz_uploads/media/M20152016/files/map.png","aspect":"v"}, {"onclick":"showMapTrans"}],
+														label_map: ["wm.Label", {"height":"35px","width":"100%","border":"0","align":"center","caption":"Ver mapa de transporte","singleLine":false}, {"onclick":"showMapTrans"}, {
+															format: ["wm.DataFormatter", {}, {}]
+														}]
+													}],
+													spacer4: ["wm.Spacer", {"height":"47px","width":"24px"}, {}],
 													transporteDataGrid: ["wm.DataGrid", {"border":"0","width":"70%"}, {}, {
 														binding: ["wm.Binding", {}, {}, {
-															wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"a_listadoServicios"}, {}]
+															wire: ["wm.Wire", {"targetProperty":"dataSet","source":"a_listadoServicios","expression":undefined}, {}]
 														}],
 														nombre1: ["wm.DataGridColumn", {"caption":"Nombre servicio","field":"nombre","columnWidth":"100%","index":2}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
@@ -452,16 +471,17 @@ Main.widgets = {
 														idcosto1: ["wm.DataGridColumn", {"caption":"+","field":"idcosto","columnWidth":"45px","index":1}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
 														}],
-														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","index":3,"display":"Number","dataExpression":"\"$ \"+${valor}"}, {}, {
+														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","columnWidth":"100px","display":"Number","dataExpression":"\"$ \"+${valor}","index":3}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
-														column1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","index":4,"dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }"}, {}, {
+														column1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }","index":4}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
 														}],
 														column2: ["wm.DataGridColumn", {"caption":" ","columnWidth":"20px","dataExpression":"'<img src=\"resources/images/imagelists/buy.gif\" height=\"16\" width=\"16\" /><center>'"}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
 														}]
 													}],
+													spacer5: ["wm.Spacer", {"height":"45px","width":"18px"}, {}],
 													layers8: ["wm.Layers", {"width":"110px"}, {}, {
 														layer23: ["wm.Layer", {"caption":"layer23","horizontalAlign":"left","verticalAlign":"top"}, {}, {
 															agregar_trans: ["wm.Button", {"height":"32px","width":"102px","borderColor":"#538312","caption":"+ Agregar","margin":"0"}, {"onclick":"agregar_transClick"}],
@@ -471,21 +491,21 @@ Main.widgets = {
 													}]
 												}],
 												spacer29: ["wm.Spacer", {"height":"153px","width":"95px","showing":false}, {}],
-												nav_panel_transportes: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"58px","width":"100%","layoutKind":"left-to-right","lock":true,"horizontalAlign":"right","verticalAlign":"top","showing":false,"padding":"4"}, {}, {
+												nav_panel_transportes: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"58px","width":"100%","padding":"4","lock":true,"horizontalAlign":"right","verticalAlign":"top","layoutKind":"left-to-right","showing":false}, {}, {
 													iraSeguro: ["wm.Button", {"height":"100%","width":"260px","borderColor":"#Aaa","caption":"Continuar al paso No. 3","iconUrl":"resources/images/buttons/daycare.png","iconMargin":"0 0px 0 0"}, {"onclick":"iraSeguroClick"}]
 												}],
-												panel8: ["wm.Panel", {"height":"46px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"right","verticalAlign":"top"}, {}, {
+												panel8: ["wm.Panel", {"height":"46px","width":"100%","horizontalAlign":"right","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 													volver_transportes: ["wm.Button", {"height":"100%","width":"96px","borderColor":"#1c79b3","caption":"Atras"}, {"onclick":"volver_transportesClick"}],
 													continuar_seguros: ["wm.Button", {"height":"100%","width":"230px","borderColor":"#1c79b3","caption":"Continuar con Seguros"}, {"onclick":"continuar_segurosClick"}]
 												}]
 											}],
 											seguro: ["wm.Panel", {"height":"650px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
 												iFrame4: ["wm.IFrame", {"height":"450px","width":"100%","border":"0","source":"http://www.rochester.edu.co/aprendoz_uploads/media/M20152016/anim_seguros_2015/anim_seguros_2015.html"}, {}],
-												panel28: ["wm.Panel", {"height":"19px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"left","verticalAlign":"top"}, {}],
-												panel31: ["wm.Panel", {"height":"110px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+												panel28: ["wm.Panel", {"height":"19px","width":"100%","horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right"}, {}],
+												panel31: ["wm.Panel", {"height":"110px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 													seguroDataGrid: ["wm.DataGrid", {"border":"0","width":"70%"}, {}, {
 														binding: ["wm.Binding", {}, {}, {
-															wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"a_listadoServiciosSeguros"}, {}]
+															wire: ["wm.Wire", {"targetProperty":"dataSet","source":"a_listadoServiciosSeguros","expression":undefined}, {}]
 														}],
 														nombre1: ["wm.DataGridColumn", {"caption":"Nombre servicio","field":"nombre","columnWidth":"100%","index":2}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
@@ -493,10 +513,10 @@ Main.widgets = {
 														idcosto1: ["wm.DataGridColumn", {"caption":"+","field":"idcosto","columnWidth":"45px","index":1}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
 														}],
-														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","index":4,"display":"Number"}, {}, {
+														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","columnWidth":"100px","display":"Number","dataExpression":"\"$ \"+${valor}","index":4}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
-														inscrito1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","index":5,"dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }"}, {}, {
+														inscrito1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }","index":5}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
 														}],
 														column1: ["wm.DataGridColumn", {"caption":" ","field":"idcosto","columnWidth":"20px","dataExpression":"'<img src=\"resources/images/imagelists/buy.gif\" height=\"16\" width=\"16\" /><center>'"}, {}, {
@@ -511,17 +531,17 @@ Main.widgets = {
 														}]
 													}]
 												}],
-												panel12: ["wm.Panel", {"height":"48px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"right","verticalAlign":"top"}, {}, {
+												panel12: ["wm.Panel", {"height":"48px","width":"100%","horizontalAlign":"right","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 													atras_seguro: ["wm.Button", {"height":"100%","width":"96px","borderColor":"#1c79b3","caption":"Atras"}, {"onclick":"atras_seguroClick"}],
 													continuar_seguro: ["wm.Button", {"height":"100%","width":"190px","borderColor":"#1c79b3","caption":"Continuar con Asopadres"}, {"onclick":"continuar_seguroClick"}]
 												}]
 											}],
 											asopadres: ["wm.Panel", {"height":"610px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
 												iFrame3: ["wm.IFrame", {"height":"450px","width":"100%","border":"0","source":"http://www.rochester.edu.co/aprendoz_uploads/media/M20152016/anim_asopadres_2015/anim_asopadres_2015.html"}, {}],
-												panel17: ["wm.Panel", {"height":"110px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+												panel17: ["wm.Panel", {"height":"110px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 													asopadresDatGrid: ["wm.DataGrid", {"border":"0","width":"70%"}, {}, {
 														binding: ["wm.Binding", {}, {}, {
-															wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"a_listadoServiciosAsopadres"}, {}]
+															wire: ["wm.Wire", {"targetProperty":"dataSet","source":"a_listadoServiciosAsopadres","expression":undefined}, {}]
 														}],
 														nombre1: ["wm.DataGridColumn", {"caption":"Nombre servicio","field":"nombre","columnWidth":"100%","index":2}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
@@ -529,10 +549,10 @@ Main.widgets = {
 														idcosto1: ["wm.DataGridColumn", {"caption":" ","field":"idcosto","columnWidth":"20px","display":"Number","dataExpression":"'<img src=\"resources/images/imagelists/buy.gif\" height=\"16\" width=\"16\" /><center>'"}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
-														valor1: ["wm.DataGridColumn", {"caption":"valor","field":"valor","index":5,"display":"Number"}, {}, {
+														valor1: ["wm.DataGridColumn", {"caption":"Valor (COP)","field":"valor","columnWidth":"100px","display":"Number","dataExpression":"\"$ \"+${valor}","index":5}, {}, {
 															format: ["wm.NumberFormatter", {}, {}]
 														}],
-														inscrito1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","index":6,"dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }"}, {}, {
+														inscrito1: ["wm.DataGridColumn", {"caption":"Inscrito","field":"inscrito","columnWidth":"47px","dataExpression":"if(${inscrito}==true){\t'<img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /><center>' \t}  if(${inscrito}==false){\t'<img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /><center>' }","index":6}, {}, {
 															format: ["wm.DataFormatter", {}, {}]
 														}],
 														column1: ["wm.DataGridColumn", {"caption":"+","field":"idcosto","columnWidth":"45px","index":1}, {}, {
@@ -545,42 +565,42 @@ Main.widgets = {
 														quitar_aso: ["wm.Button", {"height":"32px","width":"102px","borderColor":"#980c10","caption":"- Quitar","margin":"0"}, {"onclick":"quitar_asoClick"}]
 													}]
 												}],
-												panel13: ["wm.Panel", {"height":"48px","width":"100%","layoutKind":"left-to-right","lock":true,"horizontalAlign":"right","verticalAlign":"top"}, {}, {
+												panel13: ["wm.Panel", {"height":"48px","width":"100%","lock":true,"horizontalAlign":"right","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 													atras_asopadres: ["wm.Button", {"height":"100%","width":"96px","borderColor":"#1c79b3","caption":"Atras"}, {"onclick":"atras_asopadresClick"}],
 													asopadres_finalizar: ["wm.Button", {"height":"100%","width":"110px","borderColor":"#1c79b3","caption":"Continuar"}, {"onclick":"asopadres_finalizarClick"}]
 												}]
 											}]
 										}],
-										reponsable_pagos: ["wm.Panel", {"height":"100%","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false,"padding":"2, 20, 20, 20"}, {}, {
-											reponsable_pago_main_panel: ["wm.Panel", {"height":"100%","width":"100%","horizontalAlign":"center","verticalAlign":"top","padding":"10"}, {}, {
+										reponsable_pagos: ["wm.Panel", {"height":"100%","width":"100%","padding":"2, 20, 20, 20","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
+											reponsable_pago_main_panel: ["wm.Panel", {"height":"100%","width":"100%","padding":"10","horizontalAlign":"center","verticalAlign":"top"}, {}, {
 												reponsable_message: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px","wm_TextDecoration_Bold"]},"height":"60px","width":"96%","border":"0","align":"center","caption":"Recuerde que el responsable de pago es quien ha realizado el trámite de solicitud de  la tarjeta de crédito Diners-Davivienda para pago de mensualidades.","singleLine":false}, {}, {
 													format: ["wm.DataFormatter", {}, {}]
 												}],
-												panel35: ["wm.Panel", {"height":"94px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+												panel35: ["wm.Panel", {"height":"94px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 													picture2: ["wm.Picture", {"height":"18px","border":"0","width":"18px"}, {}],
 													label14: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"100%","width":"581px","border":"0","caption":"Por favor seleccione la persona responsable de los pagos ante el colegio, quien deberá asistir el día de la matrícula, traer su documento de identidad original y una fotocopia de la misma, ampliada al 150% y diligenciar el formulario de solicitud de tarjeta de crédito Diners de Davivienda para efectuar los pagos de las mensualidades.","singleLine":false}, {}, {
 														format: ["wm.DataFormatter", {}, {}]
 													}]
 												}],
 												spacer26: ["wm.Spacer", {"height":"15px","width":"96px"}, {}],
-												panel49: ["wm.Panel", {"height":"55px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"left","verticalAlign":"middle","showing":false}, {}, {
+												panel49: ["wm.Panel", {"height":"55px","width":"100%","horizontalAlign":"left","verticalAlign":"middle","layoutKind":"left-to-right","showing":false}, {}, {
 													spacer27: ["wm.Spacer", {"height":"48px","width":"25px"}, {}],
 													picture13: ["wm.Picture", {"height":"18px","border":"0","width":"18px"}, {}],
 													label23: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_12px"]},"height":"45px","width":"83%","border":"0","caption":"¡Importante!<br/>Seleccione el <u>Responsable de pago</u> para habilitar los botones <b>PAGAR EN LINEA</b> y <b>PAGAR EN BANCO</b>","singleLine":false}, {}, {
 														format: ["wm.DataFormatter", {}, {}]
 													}]
 												}],
-												panel32: ["wm.Panel", {"height":"300px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
-													layers11: ["wm.Layers", {"width":"620px","height":"300px"}, {}, {
+												panel32: ["wm.Panel", {"height":"300px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
+													layers11: ["wm.Layers", {"height":"300px","width":"620px"}, {}, {
 														layer6: ["wm.Layer", {"caption":"layer6","horizontalAlign":"left","verticalAlign":"top"}, {}, {
 															responsableDataGrid: ["wm.DataGrid", {"border":"0"}, {}, {
 																binding: ["wm.Binding", {}, {}, {
-																	wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"impresion_grupoFamiliar"}, {}]
+																	wire: ["wm.Wire", {"targetProperty":"dataSet","source":"impresion_grupoFamiliar","expression":undefined}, {}]
 																}],
-																responsable1: ["wm.DataGridColumn", {"caption":"Responsable de pago","field":"responsable","columnWidth":"77px","index":2,"dataExpression":"if(${responsable}==true){\t'<center><img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /></center>' \t}  if(${responsable}==false){\t'<center><img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /></center>' }"}, {}, {
+																responsable1: ["wm.DataGridColumn", {"caption":"Responsable de pago","field":"responsable","columnWidth":"77px","dataExpression":"if(${responsable}==true){\t'<center><img src=\"resources/images/imagelists/ok.gif\" height=\"16\" width=\"16\" /></center>' \t}  if(${responsable}==false){\t'<center><img src=\"resources/images/imagelists/bad.png\" height=\"16\" width=\"16\" /></center>' }","index":2}, {}, {
 																	format: ["wm.DataFormatter", {}, {}]
 																}],
-																apellido2: ["wm.DataGridColumn", {"caption":"Integrante grupo familiar","field":"apellido2","columnWidth":"100%","index":1,"dataExpression":"${nombre1}+\" \"+${nombre2}+\" \"+${apellido1}+\" \"+${apellido2}"}, {}, {
+																apellido2: ["wm.DataGridColumn", {"caption":"Integrante grupo familiar","field":"apellido2","columnWidth":"100%","dataExpression":"${nombre1}+\" \"+${nombre2}+\" \"+${apellido1}+\" \"+${apellido2}","index":1}, {}, {
 																	format: ["wm.DataFormatter", {}, {}]
 																}],
 																tipoPersona1: ["wm.DataGridColumn", {"caption":"Rol","field":"tipoPersona","columnWidth":"85px","index":3}, {}, {
@@ -596,7 +616,7 @@ Main.widgets = {
 														}]
 													}],
 													spacer21: ["wm.Spacer", {"height":"48px","width":"15px"}, {}],
-													layers12: ["wm.Layers", {"width":"120px","height":"300px"}, {}, {
+													layers12: ["wm.Layers", {"height":"300px","width":"120px"}, {}, {
 														layer25: ["wm.Layer", {"caption":"layer25","horizontalAlign":"center","verticalAlign":"top"}, {}, {
 															agregar_imp: ["wm.Button", {"height":"32px","width":"102px","borderColor":"#538312","caption":"+ Elegir","margin":"0"}, {"onclick":"agregar_impClick"}],
 															spacer22: ["wm.Spacer", {"height":"3px","width":"96px"}, {}],
@@ -604,46 +624,50 @@ Main.widgets = {
 														}]
 													}]
 												}],
-												panel15: ["wm.Panel", {"height":"50px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+												panel15: ["wm.Panel", {"height":"50px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 													volver_responsable: ["wm.Button", {"height":"48px","width":"96px","borderColor":"#1c74b3","caption":"Atras"}, {"onclick":"volver_responsableClick"}],
 													continuar_responsable: ["wm.Button", {"height":"48px","width":"150px","borderColor":"#1c74b3","caption":"Continuar","disabled":true}, {"onclick":"continuar_responsableClick"}]
 												}]
 											}]
 										}],
 										impresion_documentos: ["wm.Panel", {"height":"100%","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
-											panel29: ["wm.Panel", {"height":"79px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+											panel29: ["wm.Panel", {"height":"79px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 												mensaje_documentos: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_16px"]},"height":"100%","width":"100%","border":"0","align":"center","caption":"Por favor oprima clic sobre cada uno de los botones e imprima los documentos allí señalados.<br>Para efectos de matrícula estos documentos deben ser presentados.","singleLine":false}, {}, {
 													format: ["wm.DataFormatter", {}, {}]
 												}]
 											}],
-											panel_documentos: ["wm.Panel", {"height":"48px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"middle"}, {}, {
-												contrato_butt: ["wm.Button", {"height":"48px","width":"170px","borderColor":"#1c74bc","caption":"Contrato de Matrícula"}, {"onclick":"contrato_buttClick"}],
+											panel_documentos: ["wm.Panel", {"height":"48px","width":"100%","horizontalAlign":"center","verticalAlign":"middle","layoutKind":"left-to-right"}, {}, {
+												contrato_butt: ["wm.Button", {"height":"48px","width":"170px","borderColor":"#1c74bc","caption":"1. Contrato de Matrícula"}, {"onclick":"contrato_buttClick"}],
 												contrato_alim_butt: ["wm.Button", {"_classes":{"domNode":["wm_TextDecoration_Bold"]},"height":"48px","width":"130px","borderColor":"#1c79b3","caption":"Contrato alimentos","showing":false}, {"onclick":"contrato_alim_buttClick"}],
 												contrato_trans_butt: ["wm.Button", {"_classes":{"domNode":["wm_TextDecoration_Bold"]},"height":"48px","width":"130px","borderColor":"#1c79b3","caption":"Contrato transporte","showing":false}, {"onclick":"contrato_trans_buttClick"}],
-												recibo_matricula_butt: ["wm.Button", {"height":"48px","width":"190px","borderColor":"#1c74bc","caption":"Recibo de matrícula"}, {"onclick":"recibo_matricula_buttClick"}],
+												recibo_matricula_butt: ["wm.Button", {"height":"48px","width":"190px","borderColor":"#1c74bc","caption":"2. Recibo de matrícula"}, {"onclick":"recibo_matricula_buttClick"}],
 												bancos_butt: ["wm.Button", {"height":"48px","width":"130px","caption":"Recibo de pago en bancos","showing":false}, {"onclick":"bancos_buttClick"}]
 											}],
-											panel5: ["wm.Panel", {"height":"48px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
-												mensualidades_butt: ["wm.Button", {"height":"48px","width":"170px","borderColor":"#1c74bc","caption":"Presupuesto de mensualidades"}, {"onclick":"mensualidades_buttClick"}],
+											panel5: ["wm.Panel", {"height":"48px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
+												mensualidades_butt: ["wm.Button", {"height":"48px","width":"170px","borderColor":"#1c74bc","caption":"3. Presupuesto de mensualidades"}, {"onclick":"mensualidades_buttClick"}],
 												pagare_butt: ["wm.Button", {"height":"48px","width":"110px","borderColor":"#1c74bc","caption":"Pagaré","showing":false}, {"onclick":"pagare_buttClick"}],
-												contrato_seg_butt: ["wm.Button", {"_classes":{"domNode":["wm_TextDecoration_Bold"]},"height":"100%","width":"190px","borderColor":"#1c79b3","caption":"Contrato seguro de vida"}, {"onclick":"contrato_seg_buttClick"}]
+												pagare1_butt: ["wm.Button", {"height":"48px","width":"190px","borderColor":"#1c74bc","caption":"4. Pagaré"}, {"onclick":"pagare1_buttClick"}]
+											}],
+											panel4: ["wm.Panel", {"height":"48px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
+												contrato_seg_butt: ["wm.Button", {"_classes":{"domNode":["wm_TextDecoration_Bold"]},"height":"100%","width":"170px","borderColor":"#1c79b3","caption":"5. Contrato seguro de vida"}, {"onclick":"contrato_seg_buttClick"}],
+												spacer3: ["wm.Spacer", {"height":"48px","width":"190px"}, {}]
 											}],
 											spacer6: ["wm.Spacer", {"height":"48px","width":"96px"}, {}],
-											panel50: ["wm.Panel", {"height":"48px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+											panel50: ["wm.Panel", {"height":"48px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 												volver_impresion: ["wm.Button", {"height":"48px","width":"96px","borderColor":"#1c74bc","caption":"Atras"}, {"onclick":"volver_impresionClick"}],
 												documentos_continuar: ["wm.Button", {"height":"48px","width":"150px","borderColor":"#1c74bc","caption":"Continuar"}, {"onclick":"documentos_continuarClick"}]
 											}]
 										}],
-										pagos: ["wm.Panel", {"height":"100%","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false,"padding":"10"}, {}, {
+										pagos: ["wm.Panel", {"height":"100%","width":"100%","padding":"10","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
 											pago_head_message: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_14px"]},"height":"48px","width":"100%","border":"0","align":"center","caption":"Oprima clic en una de las dos opciones de pago para seleccionar la que más se acomode a sus necesidades."}, {}, {
 												format: ["wm.DataFormatter", {}, {}]
 											}],
-											panel40: ["wm.Panel", {"height":"50px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+											panel40: ["wm.Panel", {"height":"50px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 												pagar_pse: ["wm.Button", {"height":"100%","width":"190px","caption":"PAGAR EN LINEA","disabled":true,"iconUrl":"resources/images/buttons/pse_conx.png","iconWidth":"25px","iconHeight":"20px","iconMargin":"0 0px 0 0"}, {"onclick":"pagar_pseClick"}],
 												pagar_banco: ["wm.Button", {"height":"100%","width":"230px","caption":"PAGAR EN BANCO<br/>(comprobante de pago de matrícula)","disabled":true,"iconUrl":"resources/images/buttons/bank.png","iconWidth":"25px","iconHeight":"20px","iconMargin":"0 0px 0 0"}, {"onclick":"pagar_bancoClick"}]
 											}],
-											resument_de_pago: ["wm.Panel", {"_classes":{"domNode":["wm_Border_BottomStyleCurved12px","wm_BackgroundColor_White","wm_Border_TopStyleCurved4px"]},"height":"389px","width":"100%","horizontalAlign":"center","verticalAlign":"top","showing":false,"border":"1","padding":"3","borderColor":"#bbb"}, {}, {
-												panel44: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray","wm_Border_TopStyleCurved4px"]},"height":"34px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"middle","border":"1","borderColor":"#bbb"}, {}, {
+											resument_de_pago: ["wm.Panel", {"_classes":{"domNode":["wm_Border_BottomStyleCurved12px","wm_BackgroundColor_White","wm_Border_TopStyleCurved4px"]},"height":"389px","width":"100%","padding":"3","horizontalAlign":"center","verticalAlign":"top","border":"1","borderColor":"#bbb","showing":false}, {}, {
+												panel44: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray","wm_Border_TopStyleCurved4px"]},"height":"34px","width":"100%","horizontalAlign":"center","verticalAlign":"middle","border":"1","layoutKind":"left-to-right","borderColor":"#bbb"}, {}, {
 													picture11: ["wm.Picture", {"height":"18px","border":"0","width":"20px","source":"resources/images/buttons/check.png"}, {}],
 													label21: ["wm.Label", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px","wm_Border_BottomStyleCurved4px"]},"height":"30px","width":"60%","border":"0","caption":"A continuación verifique los detalles antes de realizar el Pago por PSE"}, {}, {
 														format: ["wm.DataFormatter", {}, {}]
@@ -674,21 +698,21 @@ Main.widgets = {
 												pagar_pse_butt: ["wm.Button", {"_classes":{"domNode":["wm_Border_TopStyleCurved12px","wm_Border_BottomStyleCurved12px","wm_BackgroundColor_White"]},"height":"109px","width":"109px","borderColor":"#bbb","caption":"","margin":"0","disabled":true,"iconWidth":"200%","iconHeight":"50%","iconMargin":"0 0px 0 0"}, {"onclick":"pagar_pse_buttClick"}]
 											}],
 											spacer30: ["wm.Spacer", {"height":"29px","width":"96px"}, {}],
-											panel36: ["wm.Panel", {"height":"62px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"middle"}, {}, {
+											panel36: ["wm.Panel", {"height":"62px","width":"100%","horizontalAlign":"center","verticalAlign":"middle","layoutKind":"left-to-right"}, {}, {
 												volver_pago: ["wm.Button", {"height":"48px","width":"96px","borderColor":"#1c74bc","caption":"Atras"}, {"onclick":"volver_pagoClick"}],
 												continuar_final: ["wm.Button", {"height":"48px","width":"150px","borderColor":"#1c74bc","caption":"Continuar","disabled":true}, {"onclick":"continuar_finalClick"}]
 											}]
 										}],
-										preparacion: ["wm.Panel", {"height":"100%","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false,"padding":"5"}, {}, {
+										preparacion: ["wm.Panel", {"height":"100%","width":"100%","padding":"5","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
 											message_final: ["wm.Label", {"_classes":{"domNode":["wm_BackgroundColor_White","wm_Border_TopStyleCurved8px"]},"height":"55px","width":"100%","border":"0","align":"center","caption":"Para finalizar el proceso de matrícula, por favor organizar los documentos relacionados a continuación y traerlos el día asignado en las instrucciones enviadas a su correo.","singleLine":false}, {}, {
 												format: ["wm.DataFormatter", {}, {}]
 											}],
-											html_nuevo: ["wm.Html", {"height":"100%","width":"100%","border":"0","html":"<ul> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Paz y Salvo de Tesorer&iacute;a del Jard&iacute;n o Colegio anterior. </span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Fotocopia del carn&eacute; de la EPS a la que est&aacute; afiliado el ni&ntilde;o (a).</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Examen de optometr&iacute;a y ort&oacute;ptica.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Examen de audiometr&iacute;a.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Informe m&eacute;dico de salud general en el que, adem&aacute;s, manifiesten si el ni&ntilde;o(a) puede tomar clases de nataci&oacute;n, e indique el esquema de vacunaci&oacute;n al d&iacute;a.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Contrato de matr&iacute;cula firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Fotocopia de las c&eacute;dulas ampliadas al 150% de Padre, Madre y Acudiente.&nbsp;</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Recibo de pago en bancos (factura de matr&iacute;cula) firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Presupuesto de mensualidades firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Fotocopia del comprobante del pago realizado a trav&eacute;s del sistema PSE o de la consignaci&oacute;n del Banco de Bogot&aacute;, por concepto de pago del saldo de la matr&iacute;cula.</span></span></p> \t</li> </ul>","padding":"15"}, {}],
+											html_nuevo: ["wm.Html", {"height":"100%","width":"100%","border":"0","html":"<ul> \t<li> \t<h3>Paz y Salvo de Tesorer&iacute;a del Jard&iacute;n o Colegio anterior.</h3> \t</li> \t<li> \t<h3>Copia aut&eacute;ntica del registro civil de nacimiento del estudiante.</h3> \t</li> \t<li> \t<h3>Fotocopia del carn&eacute; de la EPS a la que est&aacute; afiliado el ni&ntilde;o (a).</h3> \t</li> \t<li> \t<h3>Examen de agudeza visual y ort&oacute;ptica (seguimiento ocular) con opt&oacute;metra.</h3> \t</li> \t<li> \t<h3>Fotocopia del carn&eacute; de vacunas</h3> \t</li> \t<li> \t<h3>Audiometr&iacute;a sencilla con audi&oacute;loga.</h3> \t</li> \t<li> \t<h3>Informe m&eacute;dico de salud general en el que, adem&aacute;s, manifiesten si el ni&ntilde;o(a) puede tomar clases de nataci&oacute;n, e indique el esquema de vacunaci&oacute;n al d&iacute;a.</h3> \t</li> \t<li> \t<h3>Contrato de matr&iacute;cula firmado por ambos padres y acudiente.</h3> \t</li> \t<li> \t<h3>Fotocopia de las c&eacute;dulas ampliadas al 150% de Padre, Madre y Acudiente.&nbsp;</h3> \t</li> \t<li> \t<h3>Recibo de pago en bancos (factura de matr&iacute;cula) firmado por ambos padres y acudiente.</h3> \t</li> \t<li> \t<h3>Presupuesto de mensualidades firmado por ambos padres y acudiente.</h3> \t</li> \t<li> \t<h3>Fotocopia del comprobante del pago realizado a trav&eacute;s del sistema PSE o de la consignaci&oacute;n del Banco de Bogot&aacute;, por concepto de pago del saldo de la matr&iacute;cula.</h3> \t</li> </ul>","padding":"15"}, {}],
 											html_antiguo: ["wm.Html", {"height":"100%","width":"100%","border":"0","html":"<ul> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Fotocopia del carn&eacute; de la EPS a la que est&aacute; afiliado el ni&ntilde;o (a) (en caso de cambio de eps en el &uacute;ltimo a&ntilde;o&nbsp;)&nbsp;.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Contrato de matr&iacute;cula firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Recibo de pago en bancos (factura de matr&iacute;cula) firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Presupuesto de mensualidades firmado por ambos padres y acudiente.</span></span></p> \t</li> \t<li dir=\"ltr\"> \t<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><span style=\"background-color:transparent; font-family:cambria\">Fotocopia del comprobante del pago realizado a trav&eacute;s del sistema PSE o de la consignaci&oacute;n del Banco de Bogot&aacute;, por concepto de pago del saldo de la matr&iacute;cula.</span></span></p> \t</li> </ul>","showing":false}, {}],
 											label1: ["wm.Label", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"80px","width":"100%","border":"0","align":"center","caption":"Para realizar el proceso con otro estudiante haga clic en el botón <u>Cambiar estudiante</u>. Seleccione un estudiante diferente en la sección de <u>Ficha de Salud</u> y continué con el proceso.<br><br>Use el botón <u>Terminar</u> para cerrar la sesión y finalizar el proceso.","singleLine":false}, {}, {
 												format: ["wm.DataFormatter", {}, {}]
 											}],
-											panel6: ["wm.Panel", {"_classes":{"domNode":["wm_Border_BottomStyleCurved8px","wm_BackgroundColor_White"]},"height":"48px","width":"100%","layoutKind":"left-to-right","horizontalAlign":"center","verticalAlign":"top"}, {}, {
+											panel6: ["wm.Panel", {"_classes":{"domNode":["wm_Border_BottomStyleCurved8px","wm_BackgroundColor_White"]},"height":"48px","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right"}, {}, {
 												atras_preparacion: ["wm.Button", {"height":"100%","width":"96px","borderColor":"#1c74b3","caption":"Atras"}, {"onclick":"atras_preparacionClick"}],
 												volver_butt: ["wm.Button", {"height":"100%","width":"200px","borderColor":"#1c74b3","caption":"Matricular otro estudiante","showing":false}, {"onclick":"volver_buttClick"}],
 												cambiar_estudiante_butt: ["wm.Button", {"height":"48px","width":"180px","borderColor":"#1c74b3","caption":"Cambiar estudiante"}, {"onclick":"cambiar_estudiante_buttClick"}],
@@ -698,14 +722,14 @@ Main.widgets = {
 									}]
 								}]
 							}],
-							templateRight: ["wm.Panel", {"_classes":{"domNode":["template-right"]},"height":"100%","width":"24px","horizontalAlign":"left","verticalAlign":"top","showing":false,"freeze":true}, {}]
+							templateRight: ["wm.Panel", {"_classes":{"domNode":["template-right"]},"height":"100%","width":"24px","horizontalAlign":"left","verticalAlign":"top","freeze":true,"showing":false}, {}]
 						}],
-						panel3: ["wm.Panel", {"height":"24px","width":"100%","layoutKind":"left-to-right","lock":true,"horizontalAlign":"left","verticalAlign":"top","showing":false}, {}, {
+						panel3: ["wm.Panel", {"height":"24px","width":"100%","lock":true,"horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right","showing":false}, {}, {
 							templateBottomLeft: ["wm.Panel", {"_classes":{"domNode":["template-bottom-left"]},"height":"100%","width":"24px","horizontalAlign":"left","verticalAlign":"top"}, {}],
 							templateBottom: ["wm.Panel", {"_classes":{"domNode":["template-bottom-center"]},"height":"100%","width":"100%","horizontalAlign":"left","verticalAlign":"top"}, {}],
 							templateBottomRight: ["wm.Panel", {"_classes":{"domNode":["template-bottom-right"]},"height":"100%","width":"24px","horizontalAlign":"left","verticalAlign":"top"}, {}]
 						}],
-						panelFooter: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_10px","wm_FontColor_Graphite","wm_BackgroundColor_VeryLightGray","wm_Border_BottomStyleCurved4px"]},"height":"48px","width":"100%","border":"0","align":"right","padding":"10,20","margin":"0","caption":"Aprendoz  Colegio Rochester<br>Todos los derechos reservados 2014-2015","singleLine":false}, {}, {
+						panelFooter: ["wm.Label", {"_classes":{"domNode":["wm_FontSizePx_10px","wm_FontColor_Graphite","wm_BackgroundColor_VeryLightGray","wm_Border_BottomStyleCurved4px"]},"height":"48px","width":"100%","border":"0","align":"right","caption":"Aprendoz  Colegio Rochester<br>Todos los derechos reservados 2014-2015","singleLine":false,"padding":"10,20","margin":"0"}, {}, {
 							format: ["wm.DataFormatter", {}, {}]
 						}]
 					}]

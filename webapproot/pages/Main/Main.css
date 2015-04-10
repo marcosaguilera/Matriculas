@@ -469,7 +469,7 @@
   color: #281d73;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 }
-.Main .Main-picture1 {
+.Main .Main-map_pic {
   cursor: pointer;
 }
 .Main .Main-inicio_ir_a_facturacion {
@@ -2591,5 +2591,48 @@ border-radius: 5px 5px 0px 0px;
 
 .Main .Main-reponsable_message {
 	  color: #A62A2A !important;
+}
+
+.Main .Main-pagare1_butt {
+	      color: white;
+	      border: 1px solid #1c74b3;
+  border-top-color: #2c8ed1;
+  border-bottom-color: #0d5b97;
+  background: #2181cf;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37a3eb", endColorstr="#2181cf");
+  background: -webkit-gradient(linear, left top, left bottom, from(#37a3eb), to(#2181cf));
+  background: -moz-linear-gradient(top, #37a3eb, #2181cf);
+  -moz-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+  -webkit-box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+  box-shadow: 0 1px 0 #ddd,inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+  -webkit-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+  -moz-text-shadow: rgba(0,0,0,0.2) 0 1px 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+  padding: 5px 16px;
+  cursor: pointer;
+  overflow: visible;
+  font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.Main .Main-map_panel {
+	background-color: #D3D3D3 !important;
+	  border-radius: 10px;
+  border: solid 1px #9C9C9C !important;
+}
+
+.Main .Main-label_map {
+	background-color: #3c9bd8 !important;
+	  color: #fff !important;
+  border-radius: 2px 2px 8px 8px;
+  margin: 11px 0 0 2px !important;
+  cursor: pointer;
 }
 

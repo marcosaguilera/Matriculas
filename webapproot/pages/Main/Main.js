@@ -16,22 +16,13 @@ dojo.declare("Main", wm.Page, {
   }, 
  
   UltimaCalifdataGrid1Selected: function(inSender, inIndex) {
-    try {
       this.lavista.update();     
-    } catch(e) {
-      console.error('ERROR IN dataGrid1Selected: ' + e); 
-    } 
   },
  
 
   button1Click: function(inSender, inEvent) {
-    try {
        url= "resources/pdfcontrato/contratoRochester2011.pdf";
            window.open(url,"_BLANK");
-      
-    } catch(e) {
-      console.error('ERROR IN button1Click: ' + e); 
-    } 
   },
   button2Click: function(inSender, inEvent) {
     try {
@@ -149,8 +140,7 @@ dojo.declare("Main", wm.Page, {
     } 
   },
  
-  
-  
+
   //cuando termine de cargar la variable de apr_logrados satisfactoriamente, se cargara el grafico 
    apr_logradosSuccess: function(inSender, inDeprecated) {
     try { 
@@ -1724,12 +1714,21 @@ dojo.declare("Main", wm.Page, {
     }},
   contrato_seg_buttClick: function(inSender, inEvent) {
     try { 
-    var url= "http://aprendoz.rochester.edu.co/recursos/SOLICITUD_VG_EDUCATIVO_SIMPLIFICADA.pdf";
+    var url= "http://www.rochester.edu.co/aprendoz_uploads/media/M20152016/files/SOLICITUD_DE_AFILIACION_2014VGE.pdf";
        window.open(url, "_BLANK");
       
     } catch(e) {
       console.error('ERROR IN contrato_seg_buttClick: ' + e); 
     }},
+  pagare1_buttClick: function(inSender, inEvent) {
+    try {
+    var url= "http://www.rochester.edu.co/aprendoz_uploads/media/M20152016/files/PAGARE_2015-2016.pdf";
+       window.open(url, "_BLANK");  
+      
+    } catch(e) {
+      console.error('ERROR IN pagare1_buttClick: ' + e); 
+    } 
+  },
   pagar_bancoClick: function(inSender, inEvent) {
       this.continuar_final.enable();
       var url= "http://aprendoz.rochester.edu.co/recursos/Formato_de_consignacion_Banco_de_Bogota.pdf";
@@ -1794,21 +1793,21 @@ dojo.declare("Main", wm.Page, {
     },
 
   _fichaMedicasvSuccess: function(inSender, inDeprecated) {
-     var _json = main._fichaMedicasv.getItem(0);
+     var _json   = main._fichaMedicasv.getItem(0);
      var _nombre = _json.data.nombrecompleto;
      var _emergencia = _json.data.emergencia;
-     var _eps = _json.data.eps;
-     var _fecha = _json.data.fecha;
-     var _grado = _json.data.grado;
+     var _eps    = _json.data.eps;
+     var _fecha  = _json.data.fecha;
+     var _grado  = _json.data.grado;
      var _prepagada = _json.data.prepagada;
-     var _rh = _json.data.rh;
-     var _telefono= _json.data.telefono;
+     var _rh     = _json.data.rh;
+     var _telefono  = _json.data.telefono;
 
-        var pureDate= _fecha;
-        var bornDate = new Date(pureDate);   
-        var yearBorn= bornDate.getFullYear();
-        var monthBorn= bornDate.getMonth()+1;
-        var dayBorn= bornDate.getDate();
+     var pureDate= _fecha;
+     var bornDate = new Date(pureDate);   
+     var yearBorn= bornDate.getFullYear();
+     var monthBorn= bornDate.getMonth()+1;
+     var dayBorn= bornDate.getDate();
 
      this.edad.setDataValue(this.calculateAge(monthBorn, dayBorn, yearBorn)+" Años"); 
      this.nombrecompleto.setDataValue(_nombre);
@@ -1832,7 +1831,7 @@ dojo.declare("Main", wm.Page, {
      this._whoIsPayResponsible.input.setValue("idgf", _grupo);
      this._whoIsPayResponsible.update();
 
-     this.concepto.setDataValue("PAGO_MATRICULA_2014-2015_FUND._COLEGIO_ROCHESTER");
+     this.concepto.setDataValue("PAGO_MATRICULA_2015-2016_FUND._COLEGIO_ROCHESTER");
      this.pagar_pse_butt.enable();
 
      var _id=  this.matricula_select_estudiante.getDataValue();
@@ -1984,25 +1983,22 @@ dojo.declare("Main", wm.Page, {
       console.error('ERROR IN _whoIsPayResponsibleSuccess: ' + e); 
     }},
   guardar_restricciones_alimenticiasClick: function(inSender, inEvent) {
-    try {
+
       //---> id persona
-     var idpersona= this.matricula_select_estudiante.getDataValue();
-     var detalles= this.detalles_importantes.getDataValue();
-     var now= new Date();
-     /*this._detallesAlimentos.input.setValue("idp", idpersona);
-     this._detallesAlimentos.input.setValue("alergias", detalles);
-     this._detallesAlimentos.input.setValue("especiales", detalles);
-     this._detallesAlimentos.update();*/
+      var idpersona= this.matricula_select_estudiante.getDataValue();
+      var detalles= this.detalles_importantes.getDataValue();
+      var now= new Date();
+      /*this._detallesAlimentos.input.setValue("idp", idpersona);
+      this._detallesAlimentos.input.setValue("alergias", detalles);
+      this._detallesAlimentos.input.setValue("especiales", detalles);
+      this._detallesAlimentos.update();*/
       this.alimentoVar.setValue("persona.idPersona", idpersona);
       this.alimentoVar.setValue("alergias", detalles);
       this.alimentoVar.setValue("recomendacionesEspeciales", detalles);
        
       this.detalleAlimento.setDataSet(this.alimentoVar);          
       this.detalleAlimento.insertData();   
-      
-    } catch(e) {
-      console.error('ERROR IN guardar_restricciones_alimenticiasClick: ' + e); 
-    }      
+  
   },
   
   detalleAlimentoSuccess: function(inSender, inData) {   
@@ -2028,17 +2024,18 @@ dojo.declare("Main", wm.Page, {
      this.medicamentos_no_permitidos.setDataValue(_medicamentosAlerta);
      this.recomendaciones.setDataValue(_recomendaciones);
   },
+  
   guardar_fichaClick: function(inSender, inEvent) {
-    var _string= this.matricula_select_estudiante.getDisplayValue();
-    var _codigo= _string.substring(0,5);
+    var _string = this.matricula_select_estudiante.getDisplayValue();
+    var _codigo = _string.substring(0,5);
     console.log(_codigo);
 
-      if(_codigo >= 14000 && _codigo <=14999){
+      if(_codigo >= 15000 && _codigo <=15999){
         var idpersona= this.matricula_select_estudiante.getDataValue();
         this._verificaExistenciaFichaMedica.input.setValue("idp", idpersona);
         this._verificaExistenciaFichaMedica.update();
       }
-      if(_codigo < 14000 || _codigo > 14999){
+      if(_codigo < 15000 || _codigo > 15999){
         this.hsl_promociones.input.setValue("codigo", _codigo); 
         this.hsl_promociones.update(); 
       }  
@@ -2056,31 +2053,31 @@ dojo.declare("Main", wm.Page, {
      var _cra= _json.data.cra;
 
      if(_academica == false && _financiera == false && _cra==false ){
-       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista académico, administrativo y CRA. Por favor comuníquese con el Director de Nivel, Giovanny Rentería (Ext. 4103) y Henry Sanchez (Ext. 4705).");
+       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista académico, administrativo y CRA. Por favor comuníquese con el Director de Nivel, Giovanny Rentería (Ext. 4103) y Henry Sanchez (Ext. 4705).");
      }
 
      if(_academica == false && _cra==false && _financiera == true ){
-       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista académico y CRA. Por favor comuníquese con el Director de Nivel y Henry Sanchez (Ext. 4705).");
+       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista académico y CRA. Por favor comuníquese con el Director de Nivel y Henry Sanchez (Ext. 4705).");
      }
 
      if(_academica == false && _cra==true && _financiera == false ){
-       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista académico y administrativo. Por favor comuníquese con el Director de Nivel y Giovanny Rentería (Ext. 4103).");
+       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista académico y administrativo. Por favor comuníquese con el Director de Nivel y Giovanny Rentería (Ext. 4103).");
      }
 
      if(_academica == false && _cra==true && _financiera == true ){
-       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista académico. Por favor comuníquese con el Director de Nivel.");
+       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista académico. Por favor comuníquese con el Director de Nivel.");
      }
 
      if(_academica == true && _cra==false && _financiera == false ){
-       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista administrativo y CRA. Por favor comuníquese con Giovanny Rentería (Ext. 4103) y Henry Sanchez (Ext. 4705).");
+       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista administrativo y CRA. Por favor comuníquese con Flor Angela Muñoz (Ext. 4103) y Henry Sanchez (Ext. 4705).");
      }
 
      if(_academica == true && _cra==false && _financiera == true ){
-       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista del CRA. Por favor comuníquese con Henry Sanchez (Ext. 4705).");
+       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista del CRA. Por favor comuníquese con Henry Sanchez (Ext. 4705).");
      }
 
      if(_academica == true && _cra==true && _financiera == false ){
-       alert("Mensaje informativo:\n\nEl estudiante tienes algo pendiente desde el punto de vista administrativo. Por favor comuníquese con Giovanny Rentería (Ext. 4103).");
+       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista administrativo. Por favor comuníquese con Flor Angela Muñoz (Ext. 4103).");
      }
 
      if(_academica == true && _cra==true && _financiera == true){     
@@ -2104,6 +2101,7 @@ dojo.declare("Main", wm.Page, {
      var _medicamentos= this.medicamentos.getDataValue();
      var _medicamentosAlerta= this.medicamentos_no_permitidos.getDataValue();
      var _recomendaciones= this.recomendaciones.getDataValue();
+     
       if(_cont == 1){
         this._fichaMedicaVar.setValue("idfichaMedica", _idficha);
         this._fichaMedicaVar.setValue("persona.idPersona", idpersona);
@@ -2157,7 +2155,7 @@ dojo.declare("Main", wm.Page, {
      this.top_banner.hide();
      this.panel_selector_principal.show();
      this.header_message.show();
-     this.top_banner_servicios.show();
+     //this.top_banner_servicios.show();
      this.panel_botones.show();
      this.panel_servicios.show();
      this.panel_botones.show();
@@ -2178,32 +2176,43 @@ dojo.declare("Main", wm.Page, {
     } catch(e) {
       console.error('ERROR IN formularioFichaMedicaSuccess: ' + e); 
     }},
+    
   estudiante_gradoGrupoFamiliarSuccess: function(inSender, inDeprecated) {
     try {
-     var idpersona= this.matricula_select_estudiante.getDataValue();
-     var _json= main.estudiante_gradoGrupoFamiliar.getItem(0); 
-     var _grado= _json.data.idgrado;
-     var _sy= _json.data.idsy;
-     var _codigoTransportes= "0023";
-     var _codigoTransportes2= "0023A";
-     var _codigoAlimentos= "0021";
-     var _codigoAlimentos2= "0022";
-     var _seguroVida= "0011";
-     var _seguroAccidente= "0012";
-     var _asopadres= "0014";
-     var _asopadres2= "0015";
-     var _asopadres3= "0016";
-     var _false= false;
-     var _true= true;
-     var _codigo= _json.data.codigo;
+     var idpersona   = this.matricula_select_estudiante.getDataValue();
+     var _json       = main.estudiante_gradoGrupoFamiliar.getItem(0); 
+
+     var _grado      = _json.data.idgrado;
+     var _sy         = _json.data.idsy;
+
+     var _codigoTransportes    = "0035";   // TRANSPORTE COMPLETO CERCANO
+     var _codigoTransportes2   = "0036";   // TRANSPORTE COMPLETO INTERMEDIO
+     var _codigoTransportes3   = "0037";   // TRANSPORTE COMPLETO LEJANO
+     var _codigoTransportes4   = "0038";   // TRANSPORTE MEDIO CERCANO
+     var _codigoTransportes5   = "0039";   // TRANSPORTE MEDIO INTERMEDIO
+     var _codigoTransportes6   = "0041";   // TRANSPORTE MEDIO LEJANO
+     var _codigoAlimentos      = "0021";
+     var _codigoAlimentos2     = "0022";
+     var _seguroVida           = "0011";
+     var _seguroAccidente      = "0012";
+     var _asopadres            = "0014";
+     var _asopadres2           = "0015";
+     var _asopadres3           = "0016";
+     var _false                = false;
+     var _true                 = true;
+     var _codigo               = _json.data.codigo;
      console.log(_codigo);
-     if(_codigo >= 14000 && _codigo <= 14999){
+
+     if(_codigo >= 15000 && _codigo <= 15999){
       console.log("ingreso por #1");
        //transportes
        this.a_listadoServicios.input.setValue("idp", idpersona);
        this.a_listadoServicios.input.setValue("cod", _codigoTransportes);
-       this.a_listadoServicios.input.setValue("cod2", _codigoTransportes);
-       this.a_listadoServicios.input.setValue("cod3", _codigoTransportes2);
+       this.a_listadoServicios.input.setValue("cod2", _codigoTransportes2);
+       this.a_listadoServicios.input.setValue("cod3", _codigoTransportes3);
+       this.a_listadoServicios.input.setValue("cod4", _codigoTransportes4);
+       this.a_listadoServicios.input.setValue("cod5", _codigoTransportes5);
+       this.a_listadoServicios.input.setValue("cod6", _codigoTransportes6);
        this.a_listadoServicios.input.setValue("nuevo", _true);
        this.a_listadoServicios.input.setValue("sy", _sy);
        this.a_listadoServicios.input.setValue("idgrado", _grado);
@@ -2237,13 +2246,16 @@ dojo.declare("Main", wm.Page, {
        this.a_listadoServiciosAsopadres.update();
      }
      
-     else if(_codigo < 14000 || _codigo >14999){ /*else if(_codigo < 12000 || _codigo >13999){*/
+     else if(_codigo < 15000 || _codigo > 15999){ /*else if(_codigo < 12000 || _codigo >13999){*/
       console.log("ingreso por #2");
        //transportes
        this.a_listadoServicios.input.setValue("idp", idpersona);
        this.a_listadoServicios.input.setValue("cod", _codigoTransportes);
-       this.a_listadoServicios.input.setValue("cod2", _codigoTransportes);
-       this.a_listadoServicios.input.setValue("cod3", _codigoTransportes2);
+       this.a_listadoServicios.input.setValue("cod2", _codigoTransportes2);
+       this.a_listadoServicios.input.setValue("cod3", _codigoTransportes3);
+       this.a_listadoServicios.input.setValue("cod4", _codigoTransportes4);
+       this.a_listadoServicios.input.setValue("cod5", _codigoTransportes5);
+       this.a_listadoServicios.input.setValue("cod6", _codigoTransportes6);
        this.a_listadoServicios.input.setValue("nuevo", _false);
        this.a_listadoServicios.input.setValue("sy", _sy);
        this.a_listadoServicios.input.setValue("idgrado", _grado);
@@ -2453,7 +2465,7 @@ dojo.declare("Main", wm.Page, {
      this.header_message.hide();
      this.page_ActualizaDatos.hide();
      this.top_banner.hide();
-     this.top_banner_servicios.hide();
+     //this.top_banner_servicios.hide();
      this.reponsable_pagos.show(); 
 
      /*detalles de los reponsables de pagos*/
@@ -2616,7 +2628,7 @@ dojo.declare("Main", wm.Page, {
      this.impresion_documentos.hide();
      this.pagos.hide();
      this.page_ActualizaDatos.hide();
-     this.top_banner_servicios.hide();
+     //this.top_banner_servicios.hide();
      this.top_banner.show();
      this.panel_selector_principal.show();
      this.header_message.show();
@@ -2648,7 +2660,7 @@ dojo.declare("Main", wm.Page, {
      this.top_banner.hide();
      this.panel_selector_principal.show();
      this.header_message.show();
-     this.top_banner_servicios.show();
+     //this.top_banner_servicios.show();
      this.panel_botones.show();
      this.panel_servicios.show();
      this.panel_botones.show();
@@ -2685,7 +2697,7 @@ dojo.declare("Main", wm.Page, {
      this.header_message.hide();
      this.page_ActualizaDatos.hide();
      this.top_banner.hide();
-     this.top_banner_servicios.hide();
+     //this.top_banner_servicios.hide();
      this.reponsable_pagos.show(); 
 
      /*detalles de los reponsables de pagos*/
@@ -2755,7 +2767,7 @@ dojo.declare("Main", wm.Page, {
      main.impresion_documentos.hide();
      main.pagos.hide();
      main.page_ActualizaDatos.hide();
-     main.top_banner_servicios.hide();
+     //main.top_banner_servicios.hide();
      main.preparacion.hide();
      main.asopadres.hide();
      main.top_banner.show();
@@ -2763,5 +2775,6 @@ dojo.declare("Main", wm.Page, {
      main.header_message.show();
      main.ficha_medica.show();  
   },
+  
   _end: 0
 });

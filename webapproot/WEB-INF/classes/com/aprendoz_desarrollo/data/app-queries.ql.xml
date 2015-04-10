@@ -9,9 +9,12 @@
         <query-param name="cod2" type="java.lang.String"/>
         <query-param name="idgrado" type="java.lang.Integer"/>
         <query-param name="cod3" type="java.lang.String"/>
+        <query-param name="cod4" type="java.lang.String"/>
+        <query-param name="cod5" type="java.lang.String"/>
+        <query-param name="cod6" type="java.lang.String"/>
         SELECT _c.idCosto as idcosto, _c.codigo as codigo, _c.nombreProducto as nombre, _c.valor as valor, _c.nuevo as nuevo, _iac.inscrito as inscrito, _iac.idInscAlumCosto as idiac, _g.idGrado as idgrado
 FROM InscAlumCosto _iac INNER JOIN _iac.costos _c INNER JOIN _iac.persona _p INNER JOIN _iac.sy as _sy INNER JOIN _c.grado _g
-WHERE _p.idPersona=:idp AND ( _c.codigo=:cod OR _c.codigo=:cod2 OR _c.codigo=:cod3 ) AND _c.nuevo=:nuevo AND _sy.idSy=:sy and  _g.idGrado=:idgrado
+WHERE _p.idPersona=:idp AND ( _c.codigo=:cod OR _c.codigo=:cod2 OR _c.codigo=:cod3 OR _c.codigo=:cod4 OR _c.codigo=:cod5 OR _c.codigo=:cod6 ) AND _c.nuevo=:nuevo AND _sy.idSy=:sy and  _g.idGrado=:idgrado
     </query>
     <query name="_hqlFichaMedicaByUser">
         <query-param name="idp" type="java.lang.Integer"/>
@@ -204,7 +207,7 @@ Persona p WHERE p.nombreLdap=:usuario
         <query-param name="idp" type="java.lang.Integer"/>
         SELECT SUM(iac.valorFinalDescuento) as totalPagar
 FROM InscAlumCosto iac INNER JOIN iac.costos as c INNER JOIN iac.persona as p INNER JOIN iac.sy as sy
-WHERE p.idPersona=:idp AND iac.inscrito=1 and c.anual=1and sy.idSy=5
+WHERE p.idPersona=:idp AND iac.inscrito=1 and c.anual=1and sy.idSy=6
     </query>
     <query name="mailPadre">
         <query-param name="grupo" type="java.lang.Integer"/>
@@ -239,7 +242,7 @@ WHERE _p.codigo=:codigo and _sy.idSy=4
         <query-param name="idp" type="java.lang.Integer"/>
         SELECT _p.idPersona as idpersona, _p.codigo as codigo, _c.idCurso as idcurso, _c.curso as curso, _g.idGrado as idgrado, _g.grado as grado , _sy.idSy as idsy, _sy.schoolYear as sy
 FROM InscAlumCurso _iac INNER JOIN _iac.persona _p INNER JOIN _iac.curso _c INNER JOIN _iac.sy _sy INNER JOIN _c.grado _g
-WHERE _p.idPersona=:idp and _sy.idSy= 5
+WHERE _p.idPersona=:idp and _sy.idSy= 6
 ORDER BY _sy.idSy DESC
     </query>
     <query name="getTipoPersonaByUser">
