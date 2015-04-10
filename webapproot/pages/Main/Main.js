@@ -2202,7 +2202,7 @@ dojo.declare("Main", wm.Page, {
      var _true                 = true;
      var _codigo               = _json.data.codigo;
      console.log(_codigo);
-     debugger;
+
      if(_codigo >= 15000 && _codigo <= 15999){
       console.log("ingreso por #1");
        //transportes

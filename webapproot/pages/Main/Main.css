@@ -469,7 +469,7 @@
   color: #281d73;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 }
-.Main .Main-picture1 {
+.Main .Main-map_pic {
   cursor: pointer;
 }
 .Main .Main-inicio_ir_a_facturacion {
@@ -2620,5 +2620,19 @@ border-radius: 5px 5px 0px 0px;
   font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
   font-size: 12px;
   font-weight: normal;
+}
+
+.Main .Main-map_panel {
+	background-color: #D3D3D3 !important;
+	  border-radius: 10px;
+  border: solid 1px #9C9C9C !important;
+}
+
+.Main .Main-label_map {
+	background-color: #3c9bd8 !important;
+	  color: #fff !important;
+  border-radius: 2px 2px 8px 8px;
+  margin: 11px 0 0 2px !important;
+  cursor: pointer;
 }
 
