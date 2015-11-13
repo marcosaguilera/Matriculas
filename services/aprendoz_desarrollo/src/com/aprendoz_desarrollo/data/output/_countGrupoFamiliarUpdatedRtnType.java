@@ -4,7 +4,7 @@ package com.aprendoz_desarrollo.data.output;
 
 
 /**
- * Generated for query "_countGrupoFamiliarUpdated" on 03/27/2015 16:46:24
+ * Generated for query "_countGrupoFamiliarUpdated" on 11/13/2015 09:18:45
  * 
  */
 public class _countGrupoFamiliarUpdatedRtnType {

@@ -698,7 +698,6 @@ dojo.declare("Main", wm.Page, {
   },
   
   a_getUserNameChange: function(inSender, inDisplayValue, inDataValue) {
-    try {
       this.a_getInforUser.input.setValue("username", this.a_getUserName.getDataValue());
       this.a_getInforUser.update();
       this.a_getTipoPersona.input.setValue("user", this.a_getUserName.getDataValue());
@@ -706,10 +705,18 @@ dojo.declare("Main", wm.Page, {
       this.a_informacionUsuario.input.setValue("user", this.a_getUserName.getDataValue());
       this.a_informacionUsuario.update();
       
-    } catch(e) {
-      console.error('ERROR IN a_getUserNameChange: ' + e); 
-    } 
+      var now = new Date().getTime();
+
+         this.insert_log.setValue("accionRealizada", "ingreso_matriculas_padres");
+         this.insert_log.setValue("fechaCreacion", now);
+         this.insert_log.setValue("fechaModificacion", now);
+         this.insert_log.setValue("tablaAfectada", "access");
+         this.insert_log.setValue("usuario", this.a_getUserName.getDataValue());
+
+         this.accessLogLiveForm.setDataSet(this.insert_log);          
+         this.accessLogLiveForm.insertData();       
   },
+  
   a_getInforUserSuccess: function(inSender, inDeprecated) {
     try {
      var nombre= main.a_getInforUser.getItem(0);
@@ -2030,12 +2037,12 @@ dojo.declare("Main", wm.Page, {
     var _codigo = _string.substring(0,5);
     console.log(_codigo);
 
-      if(_codigo >= 15000 && _codigo <=15999){
+      if(_codigo >= 16000 && _codigo <=16999){
         var idpersona= this.matricula_select_estudiante.getDataValue();
         this._verificaExistenciaFichaMedica.input.setValue("idp", idpersona);
         this._verificaExistenciaFichaMedica.update();
       }
-      if(_codigo < 15000 || _codigo > 15999){
+      if(_codigo < 16000 || _codigo > 16999){
         this.hsl_promociones.input.setValue("codigo", _codigo); 
         this.hsl_promociones.update(); 
       }  
@@ -2053,7 +2060,7 @@ dojo.declare("Main", wm.Page, {
      var _cra= _json.data.cra;
 
      if(_academica == false && _financiera == false && _cra==false ){
-       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista académico, administrativo y CRA. Por favor comuníquese con el Director de Nivel, Giovanny Rentería (Ext. 4103) y Henry Sanchez (Ext. 4705).");
+       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista académico, administrativo y CRA. Por favor comuníquese con el Director de Nivel, Cartera (Ext. 4103) y Henry Sanchez (Ext. 4705).");
      }
 
      if(_academica == false && _cra==false && _financiera == true ){
@@ -2061,7 +2068,7 @@ dojo.declare("Main", wm.Page, {
      }
 
      if(_academica == false && _cra==true && _financiera == false ){
-       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista académico y administrativo. Por favor comuníquese con el Director de Nivel y Giovanny Rentería (Ext. 4103).");
+       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista académico y administrativo. Por favor comuníquese con el Director de Nivel y Cartera (Ext. 4103).");
      }
 
      if(_academica == false && _cra==true && _financiera == true ){
@@ -2069,7 +2076,7 @@ dojo.declare("Main", wm.Page, {
      }
 
      if(_academica == true && _cra==false && _financiera == false ){
-       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista administrativo y CRA. Por favor comuníquese con Flor Angela Muñoz (Ext. 4103) y Henry Sanchez (Ext. 4705).");
+       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista administrativo y CRA. Por favor comuníquese con Cartera (Ext. 4103) y Henry Sanchez (Ext. 4705).");
      }
 
      if(_academica == true && _cra==false && _financiera == true ){
@@ -2077,7 +2084,7 @@ dojo.declare("Main", wm.Page, {
      }
 
      if(_academica == true && _cra==true && _financiera == false ){
-       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista administrativo. Por favor comuníquese con Flor Angela Muñoz (Ext. 4103).");
+       alert("Mensaje informativo:\n\nEl estudiante tiene algo pendiente desde el punto de vista administrativo. Por favor comuníquese con Cartera (Ext. 4103).");
      }
 
      if(_academica == true && _cra==true && _financiera == true){     
@@ -2179,12 +2186,13 @@ dojo.declare("Main", wm.Page, {
     
   estudiante_gradoGrupoFamiliarSuccess: function(inSender, inDeprecated) {
     try {
+     debugger;
      var idpersona   = this.matricula_select_estudiante.getDataValue();
      var _json       = main.estudiante_gradoGrupoFamiliar.getItem(0); 
-
+     debugger;
      var _grado      = _json.data.idgrado;
      var _sy         = _json.data.idsy;
-
+     debugger;
      var _codigoTransportes    = "0035";   // TRANSPORTE COMPLETO CERCANO
      var _codigoTransportes2   = "0036";   // TRANSPORTE COMPLETO INTERMEDIO
      var _codigoTransportes3   = "0037";   // TRANSPORTE COMPLETO LEJANO
@@ -2202,8 +2210,8 @@ dojo.declare("Main", wm.Page, {
      var _true                 = true;
      var _codigo               = _json.data.codigo;
      console.log(_codigo);
-
-     if(_codigo >= 15000 && _codigo <= 15999){
+     debugger;
+     if(_codigo >= 12000 && _codigo <= 15999){
       console.log("ingreso por #1");
        //transportes
        this.a_listadoServicios.input.setValue("idp", idpersona);
@@ -2246,7 +2254,7 @@ dojo.declare("Main", wm.Page, {
        this.a_listadoServiciosAsopadres.update();
      }
      
-     else if(_codigo < 15000 || _codigo > 15999){ /*else if(_codigo < 12000 || _codigo >13999){*/
+     else if(_codigo < 12000 || _codigo > 15999){ /*else if(_codigo < 12000 || _codigo >13999){*/
       console.log("ingreso por #2");
        //transportes
        this.a_listadoServicios.input.setValue("idp", idpersona);

@@ -6,7 +6,7 @@ ActualizaDatos.widgets = {
 			}]
 		}]
 	}],
-	a_getUsernameActualizaDatos: ["wm.ServiceVariable", {"service":"securityService","operation":"getUserName","autoUpdate":true,"startUpdate":true}, {"onSuccess":"a_getUsernameActualizaDatosSuccess"}, {
+	a_getUsernameActualizaDatos: ["wm.ServiceVariable", {"service":"securityService","operation":"getUserName","startUpdate":true,"autoUpdate":true}, {"onSuccess":"a_getUsernameActualizaDatosSuccess"}, {
 		input: ["wm.ServiceInput", {"type":"getUserNameInputs"}, {}]
 	}],
 	personaLiveVariable1: ["wm.LiveVariable", {"autoUpdate":false,"startUpdate":false,"liveSource":"app.personaLiveView1","maxResults":1}, {"onSuccess":"personaLiveVariable1Success"}],
@@ -33,10 +33,10 @@ ActualizaDatos.widgets = {
 	returnValueIfGrupoFmailiarExists: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"returnExistsValueGrupoFamiliar"}, {"onSuccess":"returnValueIfGrupoFmailiarExistsSuccess"}, {
 		input: ["wm.ServiceInput", {"type":"returnExistsValueGrupoFamiliarInputs"}, {}]
 	}],
-	ls_paises: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"hql_ls_pais","autoUpdate":true,"startUpdate":true}, {}, {
+	ls_paises: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"hql_ls_pais","startUpdate":true,"autoUpdate":true}, {}, {
 		input: ["wm.ServiceInput", {"type":"hql_ls_paisInputs"}, {}]
 	}],
-	ls_hql_grados: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"hq_ls_grado","autoUpdate":true,"startUpdate":true}, {}, {
+	ls_hql_grados: ["wm.ServiceVariable", {"service":"aprendoz_desarrollo","operation":"hq_ls_grado","startUpdate":true,"autoUpdate":true}, {}, {
 		input: ["wm.ServiceInput", {"type":"hq_ls_gradoInputs"}, {}]
 	}],
 	a_ls_paises: ["wm.LiveVariable", {"liveSource":"com.aprendoz_desarrollo.data.Pais"}, {}],
@@ -65,15 +65,15 @@ ActualizaDatos.widgets = {
 			editor: ["wm._TextEditor", {}, {}]
 		}],
 		button1: ["wm.Button", {"height":"31px","width":"264px","caption":"Click me","showing":false}, {"onclick":"serviceVariable1"}],
-		gui_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","width":"100%","horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right","padding":"5"}, {}, {
+		gui_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","width":"100%","horizontalAlign":"left","verticalAlign":"top","padding":"5","layoutKind":"left-to-right"}, {}, {
 			left_spacer: ["wm.Spacer", {"height":"48px","width":"30px"}, {}],
 			center_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_White"]},"height":"100%","width":"100%","horizontalAlign":"left","verticalAlign":"top"}, {}, {
-				instructivo: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"135px","width":"100%","horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right","padding":"0"}, {}, {
+				instructivo: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"135px","width":"100%","horizontalAlign":"left","verticalAlign":"top","padding":"0","layoutKind":"left-to-right"}, {}, {
 					guia: ["wm.IFrame", {"_classes":{"domNode":["wm_Border_TopStyleCurved4px","wm_Border_BottomStyleCurved4px"]},"height":"100%","width":"100%","border":"1","source":"http://aprendoz.rochester.edu.co/recursos/bnr_actualiz/bnr_actualiz.html","borderColor":"#aaa"}, {}]
 				}],
 				spacer1: ["wm.Spacer", {"height":"20px","width":"96px"}, {}],
 				personaLivePanel1: ["wm.LivePanel", {"verticalAlign":"top","horizontalAlign":"left"}, {}, {
-					userNameBox: ["wm.TextEditor", {"width":"215px","caption":"username","showing":false,"displayValue":"h","readonly":true}, {}, {
+					userNameBox: ["wm.TextEditor", {"width":"215px","caption":"username","showing":false,"displayValue":"g","readonly":true}, {}, {
 						binding: ["wm.Binding", {}, {}, {
 							wire: ["wm.Wire", {"targetProperty":"dataValue","source":"a_getUsernameActualizaDatos.dataValue"}, {}]
 						}],
@@ -90,14 +90,14 @@ ActualizaDatos.widgets = {
 							personaSelect: ["wm.SelectEditor", {"_classes":{"domNode":["wm_FontSizePx_12px"],"captionNode":["wm_FontSizePx_10px"]},"width":"510px","caption":"Seleccione un integrante","height":"28px"}, {"onchange":"personaSelectChange"}, {
 								editor: ["wm._SelectEditor", {"displayField":"nombreCompleto","dataField":"pid","displayExpression":"${code}+\" - \"+${nombreCompleto}+\" - \"+${tipo}"}, {}, {
 									binding: ["wm.Binding", {}, {}, {
-										wire: ["wm.Wire", {"targetProperty":"dataSet","source":"a_getUserGroup","expression":undefined}, {}]
+										wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"a_getUserGroup"}, {}]
 									}]
 								}]
 							}]
 						}]
 					}],
 					space1: ["wm.Spacer", {"height":"150px","width":"96px","showing":false}, {}],
-					middlePanel: ["wm.Panel", {"height":"100%","width":"100%","horizontalAlign":"center","verticalAlign":"top","layoutKind":"left-to-right","lock":true,"padding":"10","showing":false}, {}, {
+					middlePanel: ["wm.Panel", {"height":"100%","width":"100%","horizontalAlign":"center","verticalAlign":"top","padding":"10","layoutKind":"left-to-right","lock":true,"showing":false}, {}, {
 						layers2: ["wm.Layers", {}, {}, {
 							layer2: ["wm.Layer", {"caption":"layer2","horizontalAlign":"center","verticalAlign":"top"}, {}, {
 								message: ["wm.Label", {"height":"54px","width":"100%","border":"0","align":"center","caption":"ACTUALIZACIÓN DE DATOS COMPLETA <br/><br/><br/>","singleLine":false}, {}, {
@@ -110,7 +110,7 @@ ActualizaDatos.widgets = {
 					contentPanel: ["wm.LivePanel", {"verticalAlign":"top","horizontalAlign":"left"}, {}, {
 						personaDataGrid1: ["wm.DataGrid", {"_classes":{"domNode":["omgDataGrid"]},"border":"0","height":"122px","showing":false}, {"onSelected":"personaDataGrid1Selected"}, {
 							binding: ["wm.Binding", {}, {}, {
-								wire: ["wm.Wire", {"targetProperty":"dataSet","source":"personaLiveVariable1","expression":undefined}, {}]
+								wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"personaLiveVariable1"}, {}]
 							}],
 							idPersona1: ["wm.DataGridColumn", {"caption":"Persona","field":"idPersona","display":"Number","autoSize":undefined}, {}, {
 								format: ["wm.NumberFormatter", {}, {}]
@@ -134,10 +134,10 @@ ActualizaDatos.widgets = {
 						panel1: ["wm.Panel", {"height":"100%","width":"100%","horizontalAlign":"left","verticalAlign":"top","layoutKind":"left-to-right","autoScroll":true}, {}, {
 							personaLiveForm1: ["wm.LiveForm", {"height":"800px","verticalAlign":"top","horizontalAlign":"left","readonly":true,"validateBeforeSave":true,"autoScroll":true}, {"onSuccess":"personaLiveVariable1","onUpdateData":"personaLiveForm1UpdateData","onBeginUpdate":"personaLiveForm1BeginUpdate"}, {
 								binding: ["wm.Binding", {}, {}, {
-									wire: ["wm.Wire", {"targetProperty":"dataSet","source":"personaDataGrid1.selectedItem","expression":undefined}, {}],
-									wire1: ["wm.Wire", {"targetProperty":"dataOutput.grupoFamiliar","source":"grupoFamiliarRelatedEditor1.dataOutput","expression":undefined}, {}],
-									wire3: ["wm.Wire", {"targetProperty":"dataOutput.tipoPersona","source":"tipoPersonaRelatedEditor1.dataOutput","expression":undefined}, {}],
-									wire2: ["wm.Wire", {"targetProperty":"dataOutput.pais","source":"relatedEditor1.dataOutput","expression":undefined}, {}]
+									wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"personaDataGrid1.selectedItem"}, {}],
+									wire1: ["wm.Wire", {"targetProperty":"dataOutput.grupoFamiliar","expression":undefined,"source":"grupoFamiliarRelatedEditor1.dataOutput"}, {}],
+									wire3: ["wm.Wire", {"targetProperty":"dataOutput.tipoPersona","expression":undefined,"source":"tipoPersonaRelatedEditor1.dataOutput"}, {}],
+									wire2: ["wm.Wire", {"targetProperty":"dataOutput.pais","expression":undefined,"source":"relatedEditor1.dataOutput"}, {}]
 								}],
 								idPersonaEditor1: ["wm.Editor", {"caption":"Identificador","width":"100%","height":"26px","display":"Number","readonly":true,"formField":"idPersona","showing":false}, {}, {
 									editor: ["wm._NumberEditor", {}, {}]
@@ -189,7 +189,7 @@ ActualizaDatos.widgets = {
 											editor: ["wm._SelectEditor", {"displayField":"name","dataField":"dataValue","required":true}, {}, {
 												optionsVar: ["wm.Variable", {"type":"EntryData"}, {}],
 												binding: ["wm.Binding", {}, {}, {
-													wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_tipo_identificacion","expression":undefined}, {}]
+													wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"ls_tipo_identificacion"}, {}]
 												}]
 											}]
 										}],
@@ -206,14 +206,14 @@ ActualizaDatos.widgets = {
 										nacionalidadEditor1: ["wm.Editor", {"caption":"Nacionalidad","width":"100%","height":"26px","display":"Select","readonly":true,"formField":"nacionalidad"}, {"onchange":"nacionalidadEditor1Change"}, {
 											editor: ["wm._SelectEditor", {"displayField":"nacionalidad","dataField":"nacionalidad","required":true}, {}, {
 												binding: ["wm.Binding", {}, {}, {
-													wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_nacionalidades","expression":undefined}, {}]
+													wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"ls_nacionalidades"}, {}]
 												}]
 											}]
 										}],
 										lugarNacimientoDepartamentoEditor1: ["wm.Editor", {"caption":"Departamento nacimiento","width":"100%","height":"26px","display":"Select","readonly":true,"formField":"lugarNacimientoDepartamento"}, {}, {
 											editor: ["wm._SelectEditor", {"displayField":"estado","dataField":"estado"}, {}, {
 												binding: ["wm.Binding", {}, {}, {
-													wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_departamentos","expression":undefined}, {}]
+													wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"ls_departamentos"}, {}]
 												}]
 											}]
 										}],
@@ -233,8 +233,8 @@ ActualizaDatos.widgets = {
 										}],
 										relatedEditor1: ["wm.RelatedEditor", {"formField":"pais","fitToContentHeight":true,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
 											binding: ["wm.Binding", {}, {}, {
-												wire: ["wm.Wire", {"targetProperty":"dataSet","source":"personaDataGrid1.selectedItem.pais","expression":undefined}, {}],
-												wire1: ["wm.Wire", {"targetProperty":"dataOutput","source":"paisLookup1.selectedItem","expression":undefined}, {}]
+												wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"personaDataGrid1.selectedItem.pais"}, {}],
+												wire1: ["wm.Wire", {"targetProperty":"dataOutput","expression":undefined,"source":"paisLookup1.selectedItem"}, {}]
 											}],
 											paisLookup1: ["wm.Editor", {"caption":"País de nacimiento","width":"100%","height":"26px","display":"Lookup","readonly":true,"formField":""}, {"onchange":"paisLookup1Change"}, {
 												editor: ["wm._LookupEditor", {"displayField":"pais"}, {}]
@@ -287,7 +287,7 @@ ActualizaDatos.widgets = {
 											editor: ["wm._TextEditor", {"required":true}, {}]
 										}],
 										viveConEditor1: ["wm.Editor", {"caption":"Vive con","width":"100%","height":"26px","display":"Select","readonly":true,"formField":"viveCon"}, {}, {
-											editor: ["wm._SelectEditor", {"displayField":"name","dataField":"dataValue","options":"MADRE, PADRE, ACUDIENTE, AMBOS PADRES, NO APLICA","required":true}, {}, {
+											editor: ["wm._SelectEditor", {"displayField":"name","dataField":"dataValue","required":true,"options":"MADRE, PADRE, ACUDIENTE, AMBOS PADRES, NO APLICA"}, {}, {
 												optionsVar: ["wm.Variable", {"type":"EntryData"}, {}]
 											}]
 										}]
@@ -332,7 +332,7 @@ ActualizaDatos.widgets = {
 										epsEditor1: ["wm.Editor", {"caption":"E.P.S","width":"100%","height":"26px","display":"Select","readonly":true,"formField":"eps"}, {}, {
 											editor: ["wm._SelectEditor", {"displayField":"eps","dataField":"eps"}, {}, {
 												binding: ["wm.Binding", {}, {}, {
-													wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_eps","expression":undefined}, {}]
+													wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"ls_eps"}, {}]
 												}]
 											}]
 										}],
@@ -348,7 +348,7 @@ ActualizaDatos.widgets = {
 											editor: ["wm._TextEditor", {}, {}]
 										}],
 										tipoSangreEditor1: ["wm.Editor", {"caption":"Tipo de sangre (RH)","width":"100%","height":"26px","display":"Select","readonly":true,"formField":"tipoSangre"}, {}, {
-											editor: ["wm._SelectEditor", {"displayField":"name","dataField":"dataValue","options":"A+, A-, AB+, AB-, B+, B-, O+, O-, NO APLICA","required":true}, {}, {
+											editor: ["wm._SelectEditor", {"displayField":"name","dataField":"dataValue","required":true,"options":"A+, A-, AB+, AB-, B+, B-, O+, O-, NO APLICA"}, {}, {
 												optionsVar: ["wm.Variable", {"type":"EntryData"}, {}]
 											}]
 										}]
@@ -364,7 +364,7 @@ ActualizaDatos.widgets = {
 										gradoIngresoEditor1: ["wm.Editor", {"caption":"Grado de ingreso","width":"100%","height":"26px","display":"Select","readonly":true,"formField":"gradoIngreso"}, {}, {
 											editor: ["wm._SelectEditor", {"displayField":"grado","dataField":"grado","startUpdate":true}, {}, {
 												binding: ["wm.Binding", {}, {}, {
-													wire: ["wm.Wire", {"targetProperty":"dataSet","source":"ls_hql_grados","expression":undefined}, {}]
+													wire: ["wm.Wire", {"targetProperty":"dataSet","expression":undefined,"source":"ls_hql_grados"}, {}]
 												}]
 											}]
 										}],
@@ -431,7 +431,7 @@ ActualizaDatos.widgets = {
 									savePanel1: ["wm.Panel", {"height":"100%","width":"100%","horizontalAlign":"right","verticalAlign":"top","layoutKind":"left-to-right","showing":false}, {}, {
 										saveButton1: ["wm.RoundedButton", {"caption":"Guardar Datos","width":"130px","height":"100%"}, {"onclick":"editPanel1.saveData"}, {
 											binding: ["wm.Binding", {}, {}, {
-												wire: ["wm.Wire", {"targetProperty":"disabled","source":"editPanel1.formInvalid","expression":undefined}, {}]
+												wire: ["wm.Wire", {"targetProperty":"disabled","expression":undefined,"source":"editPanel1.formInvalid"}, {}]
 											}]
 										}],
 										cancelButton1: ["wm.RoundedButton", {"caption":"Cancelar","width":"100px","height":"100%"}, {"onclick":"editPanel1.cancelEdit"}]
@@ -440,12 +440,12 @@ ActualizaDatos.widgets = {
 										newButton1: ["wm.RoundedButton", {"caption":"New","width":"100px","height":"100%","showing":false}, {"onclick":"editPanel1.beginDataInsert"}],
 										updateButton1: ["wm.RoundedButton", {"caption":"Actualizar","width":"130px","height":"100%","disabled":true}, {"onclick":"editPanel1.beginDataUpdate"}, {
 											binding: ["wm.Binding", {}, {}, {
-												wire: ["wm.Wire", {"targetProperty":"disabled","source":"editPanel1.formUneditable","expression":undefined}, {}]
+												wire: ["wm.Wire", {"targetProperty":"disabled","expression":undefined,"source":"editPanel1.formUneditable"}, {}]
 											}]
 										}],
 										deleteButton1: ["wm.RoundedButton", {"caption":"Delete","width":"100px","height":"100%","disabled":true,"showing":false}, {"onclick":"editPanel1.deleteData"}, {
 											binding: ["wm.Binding", {}, {}, {
-												wire: ["wm.Wire", {"targetProperty":"disabled","source":"editPanel1.formUneditable","expression":undefined}, {}]
+												wire: ["wm.Wire", {"targetProperty":"disabled","expression":undefined,"source":"editPanel1.formUneditable"}, {}]
 											}]
 										}]
 									}]
@@ -454,8 +454,8 @@ ActualizaDatos.widgets = {
 						}]
 					}]
 				}],
-				insertVerificacionPersonaLiveForm: ["wm.LiveForm", {"height":"61px","verticalAlign":"top","horizontalAlign":"left","lock":true,"showing":false}, {"onSuccess":"insertVerificacionPersonaLiveFormSuccess"}],
-				nonAcepted_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"100%","width":"100%","horizontalAlign":"center","verticalAlign":"middle","layoutKind":"left-to-right","lock":true,"padding":"10","showing":false}, {}, {
+				insertVerificacionPersonaLiveForm: ["wm.LiveForm", {"height":"61px","verticalAlign":"top","horizontalAlign":"left","showing":false,"lock":true}, {"onSuccess":"insertVerificacionPersonaLiveFormSuccess"}],
+				nonAcepted_panel: ["wm.Panel", {"_classes":{"domNode":["wm_BackgroundColor_VeryLightGray"]},"height":"100%","width":"100%","horizontalAlign":"center","verticalAlign":"middle","padding":"10","layoutKind":"left-to-right","lock":true,"showing":false}, {}, {
 					layers3: ["wm.Layers", {}, {}, {
 						layer3: ["wm.Layer", {"caption":"layer2","horizontalAlign":"center","verticalAlign":"middle"}, {}, {
 							message1: ["wm.Label", {"height":"116px","width":"100%","border":"0","align":"center","caption":"¡LO SENTIMOS!<br/>El proceso de actualización de datos por parte de tus padres, no ha sido realizado.<br>Una vez realizado podrás ingresar para ver tus calificaciones<br/><br/>Haga click en el botón para salir","singleLine":false}, {}, {
@@ -470,7 +470,7 @@ ActualizaDatos.widgets = {
 						format: ["wm.DataFormatter", {}, {}]
 					}],
 					picture4: ["wm.Picture", {"height":"25px","border":"0","width":"25px","source":"resources/images/buttons/number_3.png","aspect":"h","showing":false}, {}],
-					boton_actualizar: ["wm.Button", {"height":"100%","width":"128px","borderColor":"#1c74b3","margin":"6","caption":"Guardar"}, {"onclick":"boton_actualizarClick"}]
+					boton_actualizar: ["wm.Button", {"height":"100%","width":"128px","borderColor":"#1c74b3","caption":"Guardar","margin":"6"}, {"onclick":"boton_actualizarClick"}]
 				}]
 			}],
 			right_spacer: ["wm.Spacer", {"height":"48px","width":"30px"}, {}]
